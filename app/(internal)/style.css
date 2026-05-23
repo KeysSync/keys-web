@@ -350,7 +350,12 @@ html[data-theme="dark"]
 }
 
 html[data-theme="dark"] .col-actions .col-top .box {
-  border-color: rgba(242, 246, 250, 0.12);
+  border-color: #000000;
+}
+
+html[data-theme="dark"] .apresentation {
+  background-color: #1c1c26;
+  border-color: rgba(242, 246, 250, 0.1);
 }
 
 html[data-theme="dark"] .apresentation h1,

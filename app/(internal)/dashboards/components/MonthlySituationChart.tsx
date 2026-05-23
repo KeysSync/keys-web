@@ -110,14 +110,15 @@ const MonthlySituationChart = () => {
                 <CartesianGrid
                   vertical={false}
                   strokeDasharray="4 4"
-                  stroke="rgba(8, 8, 12, 0.08)"
+                  className="dashboard-monthly-card__grid"
                 />
                 <XAxis
                   dataKey="name"
                   tickLine={false}
                   axisLine={false}
                   tickMargin={10}
-                  tick={{ fill: "rgba(8, 8, 12, 0.55)", fontSize: 12 }}
+                  className="dashboard-monthly-card__axis-tick"
+                  tick={{ fontSize: 12 }}
                 />
                 <YAxis
                   hide
@@ -130,6 +131,7 @@ const MonthlySituationChart = () => {
                   cursor={{ fill: "rgba(8, 8, 12, 0.04)" }}
                   content={
                     <ChartTooltipContent
+                      className="dashboard-monthly-card__tooltip"
                       formatter={(value) => formatCurrency(Number(value))}
                     />
                   }
@@ -144,7 +146,7 @@ const MonthlySituationChart = () => {
                     formatter={(value) =>
                       formatCurrency(Number(value))
                     }
-                    className="fill-[#08080C] text-[11px] font-semibold"
+                    className="dashboard-monthly-card__bar-label text-[11px] font-semibold"
                   />
                 </Bar>
               </BarChart>

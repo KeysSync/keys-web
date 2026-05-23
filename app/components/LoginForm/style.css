@@ -4,7 +4,7 @@
   align-items: center;
   gap: 1.5rem;
   padding: 2.5rem;
-  width: min(100%, 25rem);
+  width: min(100%, 30rem);
   border-radius: 1rem;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);

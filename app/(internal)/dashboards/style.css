@@ -1,3 +1,11 @@
+.dashboards-layout {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .dashboard-page {
   display: flex;
   flex-direction: column;
@@ -495,4 +503,158 @@
   .dashboard-monthly-card__balance-value {
     font-size: 30px;
   }
+}
+
+html[data-theme='dark'] .dashboard-page {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-page__header {
+  border-bottom-color: rgba(242, 246, 250, 0.1);
+}
+
+html[data-theme='dark'] .dashboard-page__title {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-page__subtitle {
+  color: rgba(242, 246, 250, 0.55);
+}
+
+html[data-theme='dark'] .dashboard-section__title {
+  color: rgba(242, 246, 250, 0.45);
+}
+
+html[data-theme='dark'] .dashboard-section__description {
+  color: rgba(242, 246, 250, 0.55);
+}
+
+html[data-theme='dark'] .dashboard-kpi-card {
+  background: #1c1c26;
+  border-color: rgba(242, 246, 250, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme='dark'] .dashboard-kpi-card:hover {
+  border-color: rgba(242, 246, 250, 0.16);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme='dark'] .dashboard-kpi-card__title {
+  color: rgba(242, 246, 250, 0.65);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card {
+  background: #1c1c26;
+  border-color: rgba(242, 246, 250, 0.1);
+  color: #f2f6fa;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__title {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__badge {
+  color: #3dd68c;
+  background: rgba(9, 215, 102, 0.18);
+  border-color: rgba(9, 215, 102, 0.28);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__projections {
+  background: #0d0d12;
+  border-color: rgba(242, 246, 250, 0.08);
+}
+
+html[data-theme='dark'] .dashboard-projection__label,
+html[data-theme='dark'] .dashboard-projection__amount {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-projection__info {
+  color: rgba(242, 246, 250, 0.38);
+}
+
+html[data-theme='dark'] .dashboard-projection__track {
+  background: rgba(242, 246, 250, 0.1);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__chart-panel {
+  background: #14141c;
+  border-color: rgba(242, 246, 250, 0.08);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__chart-title {
+  color: rgba(242, 246, 250, 0.45);
+}
+
+.dashboard-monthly-card__chart .recharts-cartesian-grid line {
+  stroke: rgba(8, 8, 12, 0.08);
+}
+
+.dashboard-monthly-card__chart .recharts-cartesian-axis-tick text {
+  fill: rgba(8, 8, 12, 0.55);
+}
+
+.dashboard-monthly-card__chart .recharts-label-list text {
+  fill: #08080c;
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__chart .recharts-cartesian-grid line {
+  stroke: rgba(242, 246, 250, 0.12);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__chart .recharts-cartesian-axis-tick text {
+  fill: rgba(242, 246, 250, 0.55);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__chart .recharts-label-list text {
+  fill: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__chart .recharts-tooltip-cursor {
+  fill: rgba(242, 246, 250, 0.06);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__tooltip {
+  border-color: rgba(242, 246, 250, 0.12);
+  background: #1c1c26;
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__tooltip span {
+  color: rgba(242, 246, 250, 0.85);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__tooltip .font-medium,
+html[data-theme='dark'] .dashboard-monthly-card__tooltip .font-mono {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__balance {
+  background: linear-gradient(
+    135deg,
+    rgba(9, 215, 102, 0.16) 0%,
+    rgba(15, 138, 95, 0.1) 100%
+  );
+  border-color: rgba(9, 215, 102, 0.24);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__balance-icon {
+  color: #3dd68c;
+  background: rgba(9, 215, 102, 0.2);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__balance-label {
+  color: rgba(242, 246, 250, 0.62);
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__balance-value {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .dashboard-monthly-card__balance-tag {
+  color: #3dd68c;
+  background: #1c1c26;
+  border-color: rgba(9, 215, 102, 0.28);
 }
