@@ -5,9 +5,11 @@ import {
   FileSpreadsheetIcon,
   FlagIcon,
   HouseIcon,
-  LogsIcon
+  LogsIcon,
+  SettingsIcon
 } from "lucide-react";
 import Link from "next/link";
+import SidebarActions from "./SidebarActions";
 import "./style.css";
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
@@ -49,6 +51,14 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
     },
   ];
 
+  const bottomActions = [
+    {
+      icon: <SettingsIcon />,
+      label: "Configurações",
+      href: "/configuracoes",
+    },
+  ];
+
   return (
     <div className="internal-layout">
       <div className="col-actions">
@@ -58,15 +68,12 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
         </div>
         <div className="col-middle">
-          {actions.map((action) => (
-            <Link href={action.href} key={action.href} className="box">
-              {action.icon}
-            </Link>
-          ))}
+          <SidebarActions actions={actions} />
         </div>
         <div className="col-bottom">
+          <SidebarActions actions={bottomActions} />
           <Link href="/login">
-            <div className="box"></div>
+            <div className="box box-avatar"></div>
           </Link>
         </div>
       </div>
