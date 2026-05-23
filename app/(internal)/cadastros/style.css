@@ -52,8 +52,11 @@
   --cad-text: #08080c;
   --cad-text-muted: rgba(8, 8, 12, 0.55);
   --cad-text-faint: rgba(8, 8, 12, 0.45);
-  --cad-roxo: #972dc8;
   --cad-info: #0962d7;
+  --cad-info-hover: #0754b8;
+  --cad-info-soft: rgba(9, 98, 215, 0.12);
+  --cad-success: #26995a;
+  --cad-success-hover: #08c45c;
 
   display: flex;
   flex-direction: column;
@@ -96,8 +99,8 @@
 }
 
 .cadastros-list-search-input:focus {
-  border-color: var(--cad-roxo);
-  box-shadow: 0 0 0 3px rgba(151, 45, 200, 0.12);
+  border-color: var(--cad-info);
+  box-shadow: 0 0 0 3px var(--cad-info-soft);
 }
 
 .cadastros-list-btn-primary {
@@ -107,16 +110,17 @@
   padding: 0.6rem 1.1rem;
   border: none;
   border-radius: 0.6rem;
-  background: var(--cad-roxo);
+  background: var(--cad-success);
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(151, 45, 200, 0.35);
+  box-shadow: 0 4px 14px rgba(9, 215, 102, 0.35);
+  transition: background 0.15s ease;
 }
 
-.cadastros-list-btn-primary:hover {
-  filter: brightness(1.06);
+.cadastros-list-btn-primary:hover:not(:disabled) {
+  background: var(--cad-success-hover);
 }
 
 .cadastros-list-panel {
@@ -169,7 +173,7 @@
 }
 
 .cadastros-list-table tbody tr:hover {
-  background: rgba(151, 45, 200, 0.04);
+  background: rgba(9, 98, 215, 0.06);
 }
 
 .cadastros-list-table tbody tr:last-child td {
@@ -365,8 +369,8 @@
   width: 2rem;
   height: 2rem;
   border-radius: 0.45rem;
-  background: rgba(151, 45, 200, 0.12);
-  color: var(--cad-roxo);
+  background: var(--cad-info-soft);
+  color: var(--cad-info);
 }
 
 .cadastros-list-entity-title {
@@ -409,8 +413,8 @@
 }
 
 .cadastros-badge--tipo-pf {
-  background: rgba(151, 45, 200, 0.12);
-  color: var(--cad-roxo);
+  background: var(--cad-info-soft);
+  color: var(--cad-info);
 }
 
 .cadastros-badge--tipo-pj {
@@ -457,8 +461,13 @@
   align-items: center;
   justify-content: center;
   min-height: 12rem;
-  color: #972dc8;
+  color: #0962d7;
   font-weight: 500;
+}
+
+.cadastros-tabs [role='tab'][data-state='active'] {
+  color: #0962d7;
+  border-bottom-color: #0962d7;
 }
 
 html[data-theme='dark'] .cadastros-page {
@@ -480,6 +489,9 @@ html[data-theme='dark'] .cadastros-list {
   --cad-text: #f2f6fa;
   --cad-text-muted: rgba(242, 246, 250, 0.55);
   --cad-text-faint: rgba(242, 246, 250, 0.45);
+  --cad-info-hover: #3d8ef0;
+  --cad-success-hover: #2ee07f;
+  --cad-info-soft: rgba(9, 98, 215, 0.22);
 }
 
 html[data-theme='dark'] .cadastros-list-panel {
@@ -487,7 +499,7 @@ html[data-theme='dark'] .cadastros-list-panel {
 }
 
 html[data-theme='dark'] .cadastros-list-table tbody tr:hover {
-  background: rgba(151, 45, 200, 0.1);
+  background: rgba(9, 98, 215, 0.14);
 }
 
 html[data-theme='dark'] .cadastros-list-code {
@@ -505,8 +517,8 @@ html[data-theme='dark'] .cadastros-badge--contrato-pendente {
 }
 
 html[data-theme='dark'] .cadastros-badge--tipo-pf {
-  color: #c77deb;
-  background: rgba(151, 45, 200, 0.22);
+  color: #6eb5ff;
+  background: rgba(9, 98, 215, 0.22);
 }
 
 html[data-theme='dark'] .cadastros-badge--tipo-pj {
@@ -539,7 +551,11 @@ html[data-theme='dark'] .cadastros-tabs [role='tab']:hover {
 }
 
 html[data-theme='dark'] .cadastros-tabs [role='tab'][data-state='active'] {
-  color: #c77deb;
-  border-bottom-color: #972dc8;
+  color: #6eb5ff;
+  border-bottom-color: #0962d7;
   background: transparent;
+}
+
+html[data-theme='dark'] .cadastros-loading {
+  color: #6eb5ff;
 }

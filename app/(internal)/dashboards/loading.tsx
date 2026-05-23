@@ -1,7 +1,5 @@
+import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
+
 export default function DashboardsLoading() {
-  return (
-    <div>
-      <h1>Dashboards Loading</h1>
-    </div>
-  );
-}   
+  return <PageSpinner />;
+}

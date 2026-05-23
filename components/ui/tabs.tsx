@@ -55,12 +55,12 @@ const TabsTrigger = React.forwardRef<
       ref={ref}
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#972dc8]/40 focus-visible:ring-offset-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0962d7]/40 focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
         variant === "default" &&
           "rounded-md px-3 py-1.5 text-[rgba(8,8,12,0.55)] hover:text-[#08080c] data-[state=active]:bg-white data-[state=active]:text-[#08080c] data-[state=active]:shadow-sm",
         variant === "line" &&
-          "rounded-none border-0 border-b-0 bg-transparent px-0 pb-3 pt-1 text-[rgba(8,8,12,0.55)] shadow-none ring-offset-0 hover:bg-transparent hover:text-[#08080c] data-[state=active]:border-b-2 data-[state=active]:border-[#972dc8] data-[state=active]:font-semibold data-[state=active]:text-[#972dc8]",
+          "rounded-none border-0 border-b-0 bg-transparent px-0 pb-3 pt-1 text-[rgba(8,8,12,0.55)] shadow-none ring-offset-0 hover:bg-transparent hover:text-[#08080c] data-[state=active]:border-b-2 data-[state=active]:border-[#0962d7] data-[state=active]:font-semibold data-[state=active]:text-[#0962d7]",
         className,
       )}
       {...props}
@@ -76,7 +76,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#972dc8]/40",
+      "mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0962d7]/40",
       className,
     )}
     {...props}

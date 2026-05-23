@@ -1,7 +1,5 @@
+import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
+
 export default function CadastrosLoading() {
-    return (
-        <div>
-            <h1>Cadastros Loading</h1>
-        </div>
-    );
+  return <PageSpinner />;
 }

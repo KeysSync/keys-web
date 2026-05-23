@@ -1,7 +1,5 @@
+import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
+
 export default function LogsLoading() {
-    return (
-        <div>
-            <h1>Logs Loading</h1>
-        </div>
-    );
+  return <PageSpinner />;
 }

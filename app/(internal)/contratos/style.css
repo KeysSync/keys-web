@@ -1,6 +1,5 @@
 .contratos-layout {
   --keys-branco: #f2f6fa;
-  --keys-roxo: #972dc8;
 
   flex: 1;
   width: 100%;
@@ -15,10 +14,11 @@ html[data-theme='dark'] .contratos-layout {
 
 .contratos-page {
   --keys-preto: #08080c;
-  --keys-roxo: #972dc8;
   --keys-branco: #f2f6fa;
   --keys-info: #0962d7;
-  --keys-success: #09d766;
+  --keys-info-hover: #0754b8;
+  --keys-success: #26995a;
+  --keys-success-hover: #08c45c;
   --keys-warning: #ffc600;
   --keys-danger: #fe5448;
   --keys-surface: #ffffff;
@@ -26,8 +26,7 @@ html[data-theme='dark'] .contratos-layout {
   --keys-border: rgba(8, 8, 12, 0.12);
   --keys-text-muted: rgba(8, 8, 12, 0.55);
   --keys-text-faint: rgba(8, 8, 12, 0.45);
-  --keys-roxo-soft: rgba(151, 45, 200, 0.12);
-  --keys-info-soft: rgba(9, 98, 215, 0.1);
+  --keys-info-soft: rgba(9, 98, 215, 0.12);
   --keys-success-soft: rgba(9, 215, 102, 0.14);
   --keys-warning-soft: rgba(255, 198, 0, 0.22);
   --keys-danger-soft: rgba(254, 84, 72, 0.14);
@@ -94,19 +93,20 @@ html[data-theme='dark'] .contratos-layout {
 }
 
 .contratos-btn-outline:hover:not(:disabled) {
-  border-color: var(--keys-roxo);
-  color: var(--keys-roxo);
+  border-color: var(--keys-info);
+  color: var(--keys-info);
 }
 
 .contratos-btn-primary {
   border: none;
-  background: var(--keys-roxo);
+  background: var(--keys-success);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(151, 45, 200, 0.35);
+  box-shadow: 0 4px 14px rgba(9, 215, 102, 0.35);
 }
 
-.contratos-btn-primary:hover {
-  filter: brightness(1.06);
+.contratos-btn-primary:hover:not(:disabled) {
+  background: var(--keys-success-hover);
+  filter: none;
 }
 
 .contratos-stats {
@@ -145,9 +145,9 @@ html[data-theme='dark'] .contratos-layout {
   flex-shrink: 0;
 }
 
-.contratos-stat-icon--roxo {
-  background: var(--keys-roxo-soft);
-  color: var(--keys-roxo);
+.contratos-stat-icon--info {
+  background: var(--keys-info-soft);
+  color: var(--keys-info);
 }
 
 .contratos-stat-icon--success {
@@ -250,9 +250,14 @@ html[data-theme='dark'] .contratos-layout {
 }
 
 .contratos-tab--active {
-  background: var(--keys-roxo);
+  background: var(--keys-info);
   color: #fff;
   font-weight: 600;
+}
+
+.contratos-tab--active:hover {
+  background: var(--keys-info-hover);
+  color: #fff;
 }
 
 .contratos-toolbar-right {
@@ -291,8 +296,8 @@ html[data-theme='dark'] .contratos-layout {
 }
 
 .contratos-search:focus {
-  border-color: var(--keys-roxo);
-  box-shadow: 0 0 0 3px var(--keys-roxo-soft);
+  border-color: var(--keys-info);
+  box-shadow: 0 0 0 3px var(--keys-info-soft);
 }
 
 .contratos-table-wrap {
@@ -332,7 +337,7 @@ html[data-theme='dark'] .contratos-layout {
 }
 
 .contratos-table tbody tr:hover {
-  background: rgba(151, 45, 200, 0.04);
+  background: rgba(9, 98, 215, 0.06);
 }
 
 .contratos-table tbody tr:last-child td {
@@ -366,8 +371,8 @@ html[data-theme='dark'] .contratos-layout {
   width: 2rem;
   height: 2rem;
   border-radius: 0.45rem;
-  background: var(--keys-roxo-soft);
-  color: var(--keys-roxo);
+  background: var(--keys-info-soft);
+  color: var(--keys-info);
 }
 
 .contratos-imovel-titulo {
@@ -507,7 +512,7 @@ html[data-theme='dark'] .contratos-layout {
   justify-content: center;
   min-height: 12rem;
   width: 100%;
-  color: var(--keys-roxo);
+  color: var(--keys-info);
   font-weight: 500;
   background: var(--keys-branco);
 }
@@ -550,8 +555,9 @@ html[data-theme='dark'] .contratos-page {
   --keys-border: rgba(242, 246, 250, 0.1);
   --keys-text-muted: rgba(242, 246, 250, 0.55);
   --keys-text-faint: rgba(242, 246, 250, 0.45);
-  --keys-roxo-soft: rgba(151, 45, 200, 0.22);
-  --keys-info-soft: rgba(9, 98, 215, 0.2);
+  --keys-info-hover: #3d8ef0;
+  --keys-success-hover: #2ee07f;
+  --keys-info-soft: rgba(9, 98, 215, 0.22);
   --keys-success-soft: rgba(9, 215, 102, 0.18);
   --keys-warning-soft: rgba(255, 198, 0, 0.18);
   --keys-danger-soft: rgba(254, 84, 72, 0.2);
@@ -563,8 +569,8 @@ html[data-theme='dark'] .contratos-panel {
 }
 
 html[data-theme='dark'] .contratos-btn-outline:hover:not(:disabled) {
-  border-color: var(--keys-roxo);
-  color: #c77deb;
+  border-color: var(--keys-info);
+  color: #6eb5ff;
 }
 
 html[data-theme='dark'] .contratos-stat-value--success {
@@ -604,13 +610,13 @@ html[data-theme='dark'] .contratos-search::placeholder {
 }
 
 html[data-theme='dark'] .contratos-table tbody tr:hover {
-  background: rgba(151, 45, 200, 0.1);
+  background: rgba(9, 98, 215, 0.14);
 }
 
 html[data-theme='dark'] .contratos-table th {
-  border-bottom-color: rgba(151, 45, 200, 0.25);
+  border-bottom-color: rgba(9, 98, 215, 0.28);
 }
 
 html[data-theme='dark'] .contratos-loading {
-  color: #c77deb;
+  color: #6eb5ff;
 }

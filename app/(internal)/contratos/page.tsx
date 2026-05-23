@@ -115,7 +115,7 @@ export default function ContratosPage() {
 
       <div className="contratos-stats">
         <article className="contratos-stat-card">
-          <div className="contratos-stat-icon contratos-stat-icon--roxo">
+          <div className="contratos-stat-icon contratos-stat-icon--info">
             <FileText size={22} />
           </div>
           <div>

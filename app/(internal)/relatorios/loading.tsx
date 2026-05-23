@@ -1,7 +1,5 @@
+import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
+
 export default function RelatoriosLoading() {
-    return (
-        <div>
-            <h1>Relatorios Loading</h1>
-        </div>
-    );
+  return <PageSpinner />;
 }

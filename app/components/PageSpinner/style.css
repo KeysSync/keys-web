@@ -1,0 +1,23 @@
+.page-spinner {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  width: 100%;
+}
+
+.page-spinner__ring {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 3px solid rgba(8, 8, 12, 0.12);
+  border-top-color: #08080c;
+  border-radius: 50%;
+  animation: page-spinner-spin 0.7s linear infinite;
+}
+
+@keyframes page-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

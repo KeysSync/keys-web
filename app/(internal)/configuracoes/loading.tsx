@@ -1,7 +1,5 @@
+import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
+
 export default function ConfiguracoesLoading() {
-    return (
-        <div>
-            <h1>Configuracoes Loading</h1>
-        </div>
-    );
+  return <PageSpinner />;
 }

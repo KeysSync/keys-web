@@ -1,7 +1,5 @@
+import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
+
 export default function ContratosLoading() {
-  return (
-    <div>
-      <h1>Contratos Loading</h1>
-    </div>
-  );
+  return <PageSpinner />;
 }
