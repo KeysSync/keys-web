@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import "./style.css";
 
@@ -56,6 +57,7 @@ function GoogleIcon() {
 }
 
 export function LoginForm() {
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -75,9 +77,9 @@ export function LoginForm() {
       return;
     }
 
-    // TODO: integrar com autenticação real
+    // mock de autenticação
     await new Promise((resolve) => setTimeout(resolve, 400));
-    setLoading(false);
+    router.push("/internal");
   }
 
   return (
