@@ -101,7 +101,37 @@
   }
 }
 
+.apresentation {
+
+  .box-logo {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  h1 {
+    margin-top: 24px;
+    font-size: 36px;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+  }
+
+  p {
+    font-size: 26px;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+  }
+}
+
 /* layout internal */
+
+
+/* layout external */
 
 .system {
   flex: 1;

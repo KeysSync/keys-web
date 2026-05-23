@@ -1,4 +1,13 @@
-import { FileIcon, FileSpreadsheetIcon, HouseIcon, UserIcon } from "lucide-react";
+import {
+  BadgePercentIcon,
+  CircleDollarSignIcon,
+  CopyPlusIcon,
+  FileSpreadsheetIcon,
+  FlagIcon,
+  HouseIcon,
+  LogsIcon
+} from "lucide-react";
+import Link from "next/link";
 import "./style.css";
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,32 +15,37 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
     {
       icon: <HouseIcon />,
       label: "Dashboard",
-      href: "/internal",
+      href: "/dashboards",
     },
     {
       icon: <FileSpreadsheetIcon />,
       label: "Contratos",
-      href: "/internal/contratos",
+      href: "/contratos",
     },
     {
-      icon: <UserIcon />,
+      icon: <BadgePercentIcon />,
       label: "Lançamentos",
-      href: "/internal/lancamentos",
+      href: "/lancamentos",
     },
     {
-      icon: <FileIcon />,
+      icon: <CircleDollarSignIcon />,
+      label: "Financeiro",
+      href: "/financeiro",
+    },
+    {
+      icon: <FlagIcon />,
       label: "Relatórios",
-      href: "/internal/relatorios",
+      href: "/relatorios",
     },
     {
-      icon: <FileIcon />,
+      icon: <CopyPlusIcon />,
       label: "Cadastros",
-      href: "/internal/usuarios",
+      href: "/cadastros",
     },
     {
-      icon: <FileIcon />,
+      icon: <LogsIcon />,
       label: "Logs",
-      href: "/internal/usuarios",
+      href: "/logs",
     },
   ];
 
@@ -39,17 +53,21 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="internal-layout">
       <div className="col-actions">
         <div className="col-top">
-          <div className="box"></div>
+          <Link href="/">
+            <div className="box"></div>
+          </Link>
         </div>
         <div className="col-middle">
           {actions.map((action) => (
-            <a href={action.href} key={action.href} className="box">
+            <Link href={action.href} key={action.href} className="box">
               {action.icon}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="col-bottom">
-          <div className="box"></div>
+          <Link href="/login">
+            <div className="box"></div>
+          </Link>
         </div>
       </div>
       <div className="system">

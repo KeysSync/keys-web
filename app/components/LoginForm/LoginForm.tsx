@@ -79,7 +79,7 @@ export function LoginForm() {
 
     // mock de autenticação
     await new Promise((resolve) => setTimeout(resolve, 400));
-    router.push("/internal");
+    router.push("/");
   }
 
   return (
