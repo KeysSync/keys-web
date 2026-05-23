@@ -30,7 +30,6 @@ html[data-theme='dark'] {
   --font-mono: ui-monospace, monospace;
 }
 
-/**/
 body {
   background: var(--background);
   color: var(--foreground);
@@ -45,23 +44,19 @@ body {
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-/* width */
 *::-webkit-scrollbar {
   width: var(--scrollbar-width);
   height: var(--scrollbar-width);
 }
 
-/* Track */
 *::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
 }
 
-/* Handle */
 *::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
 }
 
-/* Handle on hover */
 *::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover);
 }
@@ -72,4 +67,18 @@ body {
 
 ::-webkit-scrollbar-button {
   display: none;
+}
+
+/* Tabs line — dark mode */
+html[data-theme='dark'] [role='tablist'][class*='border-b'] {
+  border-color: rgba(242, 246, 250, 0.1);
+}
+
+html[data-theme='dark'] [role='tab'] {
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-theme='dark'] [role='tab']:not([data-state='active']) {
+  border-bottom: none !important;
 }

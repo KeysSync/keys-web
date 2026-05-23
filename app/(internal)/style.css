@@ -264,11 +264,6 @@
     overflow: auto;
     padding: 24px;
   }
-
-  .internal-box:has(> .contratos-layout) {
-    padding: 0;
-    overflow: hidden;
-  }
 }
 
 html[data-theme="dark"] .internal-layout {
