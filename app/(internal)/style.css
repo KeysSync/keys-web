@@ -57,29 +57,6 @@
     align-items: flex-start;
     overflow: visible;
 
-    .box:not(.box-avatar) {
-        padding: 12px;
-        border: 1px solid #E0E0E0;
-        background-color: #FFFFFF;
-        border-radius: 10px;
-        cursor: pointer;
-        color: #000000;
-        transition: all 0.3s ease;
-
-        svg {
-          color: #000000;
-          stroke: #000000;
-        }
-
-        &:hover {
-            background-color: #F2F6FA;
-        }
-
-        &.action-tooltip--active:hover {
-          background-color: #08080C;
-        }
-    }
-
     .action-tooltip {
       display: flex;
       align-items: center;
@@ -89,19 +66,21 @@
       position: relative;
       z-index: 1;
       white-space: nowrap;
-      transition: max-width 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      background-color: #ffffff;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #000000;
+      transition:
+        max-width 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
-      &:hover {
-        width: auto;
-        max-width: 220px;
-        z-index: 10;
-        background-color: #FFFFFF;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      }
-
-      &:hover.action-tooltip--active {
-        background-color: #08080C;
-        box-shadow: 0 2px 8px rgba(8, 8, 12, 0.2);
+      svg {
+        color: #000000;
+        stroke: #000000;
       }
 
       .action-tooltip__icon {
@@ -122,7 +101,18 @@
         font-size: 14px;
         font-weight: 500;
         margin-left: 0;
-        transition: max-width 0.3s ease, opacity 0.3s ease, margin-left 0.3s ease;
+        transition:
+          max-width 0.3s ease,
+          opacity 0.3s ease,
+          margin-left 0.3s ease;
+      }
+
+      &:not(.action-tooltip--active):hover {
+        width: auto;
+        max-width: 220px;
+        z-index: 10;
+        background-color: #f2f6fa;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
 
       &:hover .action-tooltip__label {
@@ -133,31 +123,30 @@
       }
 
       &.action-tooltip--active {
-        background-color: #08080C;
-        border-color: #08080C;
+        background-color: #08080c;
+        border-color: #08080c;
+        color: #ffffff;
 
-        .action-tooltip__icon {
-          background-color: transparent;
-
-          svg {
-            color: #FFFFFF;
-            stroke: #FFFFFF;
-          }
+        svg {
+          color: #ffffff;
+          stroke: #ffffff;
         }
 
         .action-tooltip__label {
-          color: #FFFFFF;
+          color: #ffffff;
         }
 
         &:hover {
-          background-color: #08080C;
-          border-color: #08080C;
+          width: auto;
+          max-width: 220px;
+          z-index: 10;
+          background-color: #08080c;
+          border-color: #08080c;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
 
-          .action-tooltip__label {
-            color: #FFFFFF;
-            background-color: transparent;
-            padding: 0;
-          }
+        &:hover .action-tooltip__label {
+          color: #ffffff;
         }
       }
     }
@@ -182,17 +171,6 @@
     background-color: white;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
-  }
-
-  .col-middle .box.action-tooltip--active,
-  .col-bottom .box.action-tooltip--active {
-    background-color: #08080C;
-    border-color: #08080C;
-  }
-
-  .col-middle .box.action-tooltip--active:hover,
-  .col-bottom .box.action-tooltip--active:hover {
-    background-color: #08080C;
   }
 
   .col-top {
@@ -253,18 +231,24 @@
   flex: 1;
   width: 100%;
   height: 100%;
-  padding: 16px 16px 16px 0px;
+  min-height: 0;
+  padding: 16px 16px 16px 0;
+  box-sizing: border-box;
 
   .internal-box {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    border: 1px solid #E0E0E0;
-    background-color: #FFFFFF;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
     color: #000000;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
+    box-sizing: border-box;
   }
 
   .internal-box__content {
@@ -272,4 +256,77 @@
     overflow: auto;
     padding: 24px;
   }
+
+  .internal-box:has(> .contratos-layout) {
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+html[data-theme='dark'] .internal-layout {
+  background-color: #08080c;
+}
+
+html[data-theme='dark'] .system .internal-box {
+  background-color: #14141c;
+  border-color: rgba(242, 246, 250, 0.1);
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip:not(.action-tooltip--active) {
+  background-color: #14141c;
+  border-color: rgba(242, 246, 250, 0.12);
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip:not(.action-tooltip--active) svg {
+  color: #f2f6fa;
+  stroke: #f2f6fa;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip:not(.action-tooltip--active) .action-tooltip__label {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip:not(.action-tooltip--active):hover {
+  background-color: #1c1c26;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip:not(.action-tooltip--active):hover .action-tooltip__label {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip.action-tooltip--active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #08080c;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip.action-tooltip--active svg {
+  color: #08080c;
+  stroke: #08080c;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip.action-tooltip--active .action-tooltip__label {
+  color: #08080c;
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip.action-tooltip--active:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme='dark'] .col-actions .action-tooltip.action-tooltip--active:hover .action-tooltip__label {
+  color: #08080c;
+}
+
+html[data-theme='dark'] .col-actions .col-top .box {
+  border-color: rgba(242, 246, 250, 0.12);
+}
+
+html[data-theme='dark'] .apresentation h1,
+html[data-theme='dark'] .apresentation p {
+  color: #f2f6fa;
 }

@@ -4,13 +4,23 @@
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+html[data-theme='light'] {
+  --background: #f2f6fa;
+  --foreground: #08080c;
   --scrollbar-width: 10px;
   --scrollbar-track: #f2f6fa;
   --scrollbar-thumb: #d4d9e0;
   --scrollbar-thumb-hover: #b8bec6;
+}
+
+html[data-theme='dark'] {
+  --background: #08080c;
+  --foreground: #f2f6fa;
+  --scrollbar-width: 10px;
+  --scrollbar-track: #2d313a;
+  --scrollbar-thumb: #383b45;
+  --scrollbar-thumb-hover: #474b54;
 }
 
 @theme inline {
@@ -20,17 +30,14 @@
   --font-mono: ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-      --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/**/
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Poppins", sans-serif;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 * {

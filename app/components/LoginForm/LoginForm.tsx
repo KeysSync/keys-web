@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { setSession } from "@/lib/auth/session";
+import { findMockUser } from "@/lib/mocks/users";
 import "./style.css";
 
 function EyeIcon({ open }: { open: boolean }) {
@@ -77,9 +79,15 @@ export function LoginForm() {
       return;
     }
 
-    // mock de autenticação
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    router.push("/");
+    const user = findMockUser(email, password);
+    if (!user) {
+      setError("E-mail ou senha inválidos.");
+      setLoading(false);
+      return;
+    }
+
+    setSession({ id: user.id, nome: user.nome, email: user.email });
+    router.push("/contratos");
   }
 
   return (
