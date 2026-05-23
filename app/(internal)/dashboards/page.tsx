@@ -1,7 +1,6 @@
-export default function Dashboards() {
-  return (
-    <div>
-      <h1>Dashboards</h1>
-    </div>
-  );
+import DashboardView from "./components/DashboardView";
+import "./style.css";
+
+export default function DashboardsPage() {
+  return <DashboardView />;
 }

@@ -247,7 +247,8 @@
     border: 1px solid #E0E0E0;
     background-color: #FFFFFF;
     color: #000000;
-    padding: 12px;
+    padding: 24px;
     border-radius: 10px;
+    overflow: auto; 
   }
 }
