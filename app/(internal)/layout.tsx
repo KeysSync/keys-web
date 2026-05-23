@@ -9,7 +9,9 @@ import {
   SettingsIcon
 } from "lucide-react";
 import Link from "next/link";
+import { ThemeToggle } from "@/app/components/ThemeToggle/ThemeToggle";
 import SidebarActions from "./SidebarActions";
+import SidebarLogout from "./SidebarLogout";
 import "./style.css";
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
@@ -72,9 +74,8 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className="col-bottom">
           <SidebarActions actions={bottomActions} />
-          <Link href="/login">
-            <div className="box box-avatar"></div>
-          </Link>
+          <ThemeToggle variant="sidebar" />
+          <SidebarLogout />
         </div>
       </div>
       <div className="system">

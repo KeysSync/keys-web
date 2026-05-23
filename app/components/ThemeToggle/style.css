@@ -1,0 +1,64 @@
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 0.55rem;
+  border: 1px solid rgba(8, 8, 12, 0.12);
+  background: #fff;
+  color: #08080c;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.theme-toggle:hover:not(:disabled) {
+  border-color: #972dc8;
+  color: #972dc8;
+}
+
+.theme-toggle:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.theme-toggle--sidebar {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.theme-toggle--ghost {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #f2f6fa;
+}
+
+.theme-toggle--ghost:hover:not(:disabled) {
+  background: rgba(151, 45, 200, 0.35);
+  border-color: #972dc8;
+  color: #fff;
+}
+
+html[data-theme='dark'] .theme-toggle--default {
+  border-color: rgba(242, 246, 250, 0.15);
+  background: #14141c;
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .theme-toggle--default:hover:not(:disabled) {
+  border-color: #972dc8;
+  color: #c77deb;
+}
+
+html[data-theme='dark'] .theme-toggle--sidebar {
+  border-color: rgba(242, 246, 250, 0.12);
+  background: #14141c;
+  color: #f2f6fa;
+}

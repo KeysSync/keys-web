@@ -1,4 +1,618 @@
 .contratos-layout {
+  --keys-branco: #f2f6fa;
+  --keys-roxo: #972dc8;
+
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+html[data-theme='dark'] .contratos-layout {
+  --keys-branco: #14141c;
+}
+
+.contratos-page {
+  --keys-preto: #08080c;
+  --keys-roxo: #972dc8;
+  --keys-branco: #f2f6fa;
+  --keys-info: #0962d7;
+  --keys-success: #09d766;
+  --keys-warning: #ffc600;
+  --keys-danger: #fe5448;
+  --keys-surface: #ffffff;
+  --keys-surface-muted: #eef2f6;
+  --keys-border: rgba(8, 8, 12, 0.12);
+  --keys-text-muted: rgba(8, 8, 12, 0.55);
+  --keys-text-faint: rgba(8, 8, 12, 0.45);
+  --keys-roxo-soft: rgba(151, 45, 200, 0.12);
+  --keys-info-soft: rgba(9, 98, 215, 0.1);
+  --keys-success-soft: rgba(9, 215, 102, 0.14);
+  --keys-warning-soft: rgba(255, 198, 0, 0.22);
+  --keys-danger-soft: rgba(254, 84, 72, 0.14);
+
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 1.5rem 1.25rem 1.25rem;
+  color: var(--keys-preto);
+  overflow: auto;
+  background: var(--keys-branco);
+}
+
+.contratos-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contratos-page-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--keys-preto);
+}
+
+.contratos-page-desc {
+  margin: 0.5rem 0 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--keys-text-muted);
+}
+
+.contratos-hero-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.75rem;
+}
+
+.contratos-btn-outline,
+.contratos-btn-primary,
+.contratos-btn-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    filter 0.15s;
+}
+
+.contratos-btn-outline {
+  border: 1px solid var(--keys-border);
+  background: var(--keys-surface);
+  color: var(--keys-preto);
+}
+
+.contratos-btn-outline:hover:not(:disabled) {
+  border-color: var(--keys-roxo);
+  color: var(--keys-roxo);
+}
+
+.contratos-btn-primary {
+  border: none;
+  background: var(--keys-roxo);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(151, 45, 200, 0.35);
+}
+
+.contratos-btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.contratos-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .contratos-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contratos-stat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: 0.85rem;
+  background: var(--keys-surface);
+  border: 1px solid var(--keys-border);
+  box-shadow:
+    0 1px 2px rgba(8, 8, 12, 0.06),
+    0 4px 14px rgba(8, 8, 12, 0.08);
+}
+
+.contratos-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.65rem;
+  flex-shrink: 0;
+}
+
+.contratos-stat-icon--roxo {
+  background: var(--keys-roxo-soft);
+  color: var(--keys-roxo);
+}
+
+.contratos-stat-icon--success {
+  background: var(--keys-success-soft);
+  color: var(--keys-success);
+}
+
+.contratos-stat-icon--warning {
+  background: var(--keys-warning-soft);
+  color: #c9a000;
+}
+
+.contratos-stat-icon--danger {
+  background: var(--keys-danger-soft);
+  color: var(--keys-danger);
+}
+
+.contratos-stat-label {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--keys-text-faint);
+}
+
+.contratos-stat-value {
+  margin: 0.2rem 0 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--keys-preto);
+}
+
+.contratos-stat-value--success {
+  color: #047a3f;
+}
+
+.contratos-stat-value--warning {
+  color: #9a7b00;
+}
+
+.contratos-stat-value--danger {
+  color: #c62828;
+}
+
+.contratos-stat-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--keys-text-faint);
+}
+
+.contratos-panel {
+  border-radius: 0.85rem;
+  background: var(--keys-surface);
+  border: 1px solid var(--keys-border);
+  box-shadow:
+    0 1px 2px rgba(8, 8, 12, 0.06),
+    0 8px 24px rgba(8, 8, 12, 0.08);
+  overflow: hidden;
+}
+
+.contratos-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--keys-border);
+  background: var(--keys-surface);
+}
+
+.contratos-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border-radius: 0.6rem;
+  background: var(--keys-surface-muted);
+  border: 1px solid var(--keys-border);
+}
+
+.contratos-tab {
+  padding: 0.45rem 0.9rem;
+  border: none;
+  border-radius: 0.45rem;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--keys-text-muted);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.contratos-tab:hover {
+  color: var(--keys-preto);
+}
+
+.contratos-tab--active {
+  background: var(--keys-roxo);
+  color: #fff;
+  font-weight: 600;
+}
+
+.contratos-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 200px;
+}
+
+.contratos-search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 20rem;
+}
+
+.contratos-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--keys-text-faint);
+  pointer-events: none;
+}
+
+.contratos-search {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--keys-border);
+  background: var(--keys-surface-muted);
+  font-size: 0.875rem;
+  color: var(--keys-preto);
+  outline: none;
+}
+
+.contratos-search:focus {
+  border-color: var(--keys-roxo);
+  box-shadow: 0 0 0 3px var(--keys-roxo-soft);
+}
+
+.contratos-table-wrap {
+  overflow-x: auto;
+}
+
+.contratos-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.contratos-table th {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--keys-text-faint);
+  background: var(--keys-surface-muted);
+  border-bottom: 1px solid var(--keys-border);
+  white-space: nowrap;
+}
+
+.contratos-table th svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.2rem;
+  opacity: 0.4;
+}
+
+.contratos-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(8, 8, 12, 0.06);
+  vertical-align: middle;
+}
+
+.contratos-table tbody tr:hover {
+  background: rgba(151, 45, 200, 0.04);
+}
+
+.contratos-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.contratos-code {
+  padding: 0;
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: inherit;
+  color: var(--keys-info);
+  cursor: pointer;
+}
+
+.contratos-code:hover {
+  text-decoration: underline;
+}
+
+.contratos-imovel {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.contratos-imovel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.45rem;
+  background: var(--keys-roxo-soft);
+  color: var(--keys-roxo);
+}
+
+.contratos-imovel-titulo {
+  display: block;
+  font-weight: 600;
+  color: var(--keys-preto);
+}
+
+.contratos-imovel-bairro {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--keys-text-faint);
+}
+
+.contratos-valor {
+  font-weight: 700;
+}
+
+.contratos-vigencia {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.contratos-vigencia-sep {
+  font-size: 0.72rem;
+  color: var(--keys-text-faint);
+}
+
+.contratos-table th.contratos-col-status,
+.contratos-table td.contratos-col-status {
+  text-align: center;
+  width: 8.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.contratos-col-status-head {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 7.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.contratos-col-status-head svg {
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.contratos-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 7.5rem;
+  min-width: 7.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.contratos-badge::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.contratos-badge--ativo {
+  background: var(--keys-success-soft);
+  color: #047a3f;
+}
+
+.contratos-badge--ativo::before {
+  background: var(--keys-success);
+}
+
+.contratos-badge--pendente {
+  background: var(--keys-warning-soft);
+  color: #7a5c00;
+}
+
+.contratos-badge--pendente::before {
+  background: var(--keys-warning);
+}
+
+.contratos-badge--rescindido {
+  background: var(--keys-danger-soft);
+  color: #b91c1c;
+}
+
+.contratos-badge--rescindido::before {
+  background: var(--keys-danger);
+}
+
+.contratos-empty {
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--keys-text-faint);
+}
+
+.contratos-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--keys-border);
+  background: var(--keys-surface-muted);
+}
+
+.contratos-footer-count {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--keys-text-muted);
+}
+
+.contratos-footer-icon {
+  color: var(--keys-success);
+}
+
+.contratos-loading {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  width: 100%;
+  color: var(--keys-roxo);
+  font-weight: 500;
+  background: var(--keys-branco);
+}
+
+@media (max-width: 900px) {
+  .contratos-hero {
+    flex-direction: column;
+  }
+
+  .contratos-hero-actions {
     width: 100%;
-    height: 100%;
+  }
+
+  .contratos-btn-outline,
+  .contratos-btn-primary {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .contratos-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contratos-toolbar-right {
+    flex-direction: column;
+    max-width: none;
+  }
+
+  .contratos-search-wrap {
+    max-width: none;
+  }
+}
+
+html[data-theme='dark'] .contratos-page {
+  --keys-preto: #f2f6fa;
+  --keys-branco: #14141c;
+  --keys-surface: #1c1c26;
+  --keys-surface-muted: #0d0d12;
+  --keys-border: rgba(242, 246, 250, 0.1);
+  --keys-text-muted: rgba(242, 246, 250, 0.55);
+  --keys-text-faint: rgba(242, 246, 250, 0.45);
+  --keys-roxo-soft: rgba(151, 45, 200, 0.22);
+  --keys-info-soft: rgba(9, 98, 215, 0.2);
+  --keys-success-soft: rgba(9, 215, 102, 0.18);
+  --keys-warning-soft: rgba(255, 198, 0, 0.18);
+  --keys-danger-soft: rgba(254, 84, 72, 0.2);
+}
+
+html[data-theme='dark'] .contratos-stat-card,
+html[data-theme='dark'] .contratos-panel {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme='dark'] .contratos-btn-outline:hover:not(:disabled) {
+  border-color: var(--keys-roxo);
+  color: #c77deb;
+}
+
+html[data-theme='dark'] .contratos-stat-value--success {
+  color: #3dd68c;
+}
+
+html[data-theme='dark'] .contratos-stat-value--warning {
+  color: #e6c200;
+}
+
+html[data-theme='dark'] .contratos-stat-value--danger {
+  color: #ff7b72;
+}
+
+html[data-theme='dark'] .contratos-stat-icon--warning {
+  color: #e6c200;
+}
+
+html[data-theme='dark'] .contratos-badge--ativo {
+  color: #3dd68c;
+}
+
+html[data-theme='dark'] .contratos-badge--pendente {
+  color: #e6c200;
+}
+
+html[data-theme='dark'] .contratos-badge--rescindido {
+  color: #ff7b72;
+}
+
+html[data-theme='dark'] .contratos-code {
+  color: #6eb5ff;
+}
+
+html[data-theme='dark'] .contratos-search::placeholder {
+  color: rgba(242, 246, 250, 0.35);
+}
+
+html[data-theme='dark'] .contratos-table tbody tr:hover {
+  background: rgba(151, 45, 200, 0.1);
+}
+
+html[data-theme='dark'] .contratos-table th {
+  border-bottom-color: rgba(151, 45, 200, 0.25);
+}
+
+html[data-theme='dark'] .contratos-loading {
+  color: #c77deb;
 }
