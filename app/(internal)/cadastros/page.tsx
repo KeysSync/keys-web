@@ -1,7 +1,5 @@
-export default function Cadastros() {
-    return (
-        <div>
-            <h1>Cadastros</h1>
-        </div>
-    );
+import { redirect } from "next/navigation";
+
+export default function CadastrosPage() {
+  redirect("/cadastros/imoveis");
 }

@@ -257,7 +257,12 @@
     padding: 24px;
   }
 
-  .internal-box:has(> .contratos-layout) {
+  .internal-box__content:has(> .contratos-layout) {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .internal-box__content:has(> .cadastros-layout) {
     padding: 0;
     overflow: hidden;
   }

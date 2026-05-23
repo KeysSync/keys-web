@@ -1,0 +1,545 @@
+.cadastros-layout {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastros-page {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0.25rem 0 1rem;
+  color: #08080c;
+}
+
+.cadastros-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cadastros-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #08080c;
+}
+
+.cadastros-desc {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(8, 8, 12, 0.55);
+}
+
+.cadastros-content {
+  flex: 1;
+  min-height: 0;
+}
+
+/* —— Listagem mock —— */
+.cadastros-list {
+  --cad-border: rgba(8, 8, 12, 0.12);
+  --cad-surface: #fff;
+  --cad-surface-muted: #eef2f6;
+  --cad-text: #08080c;
+  --cad-text-muted: rgba(8, 8, 12, 0.55);
+  --cad-text-faint: rgba(8, 8, 12, 0.45);
+  --cad-roxo: #972dc8;
+  --cad-info: #0962d7;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cadastros-list-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cadastros-list-search {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+  max-width: 24rem;
+}
+
+.cadastros-list-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cad-text-faint);
+  pointer-events: none;
+}
+
+.cadastros-list-search-input {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--cad-border);
+  background: var(--cad-surface-muted);
+  font-size: 0.875rem;
+  color: var(--cad-text);
+  outline: none;
+}
+
+.cadastros-list-search-input:focus {
+  border-color: var(--cad-roxo);
+  box-shadow: 0 0 0 3px rgba(151, 45, 200, 0.12);
+}
+
+.cadastros-list-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-radius: 0.6rem;
+  background: var(--cad-roxo);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(151, 45, 200, 0.35);
+}
+
+.cadastros-list-btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.cadastros-list-panel {
+  border-radius: 0.85rem;
+  border: 1px solid var(--cad-border);
+  background: var(--cad-surface);
+  box-shadow:
+    0 1px 2px rgba(8, 8, 12, 0.06),
+    0 8px 24px rgba(8, 8, 12, 0.08);
+  overflow: hidden;
+}
+
+.cadastros-list-table-wrap {
+  overflow-x: auto;
+}
+
+.cadastros-list-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.cadastros-list-table th,
+.cadastros-list-table td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.cadastros-list-table th {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cad-text-faint);
+  background: var(--cad-surface-muted);
+  border-bottom: 1px solid var(--cad-border);
+  white-space: nowrap;
+}
+
+.cadastros-list-table td {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(8, 8, 12, 0.06);
+  vertical-align: middle;
+  color: var(--cad-text);
+}
+
+.cadastros-list-table tbody tr:hover {
+  background: rgba(151, 45, 200, 0.04);
+}
+
+.cadastros-list-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cadastros-list-table th.cadastros-list-col-center,
+.cadastros-list-table td.cadastros-list-col-center {
+  text-align: center;
+}
+
+.cadastros-list-col-center {
+  vertical-align: middle;
+}
+
+.cadastros-list-col-head {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.cadastros-list-col-head--status {
+  width: 10rem;
+  max-width: 100%;
+}
+
+.cadastros-list-col-head--tipo {
+  width: 3.25rem;
+  max-width: 100%;
+}
+
+.cadastros-list-col-head--imoveis {
+  width: 3.25rem;
+  max-width: 100%;
+}
+
+/* —— Larguras: imóveis —— */
+.cadastros-list-table--imoveis .cadastros-list-col--codigo,
+.cadastros-list-table--imoveis .cadastros-list-col--tipo,
+.cadastros-list-table--imoveis .cadastros-list-col--valor,
+.cadastros-list-table--imoveis .cadastros-list-col--status {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--codigo {
+  width: 6.5rem;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--imovel {
+  width: 34%;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--tipo {
+  width: 7.5rem;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--valor {
+  width: 8.75rem;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--proprietario {
+  width: 22%;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--status {
+  width: 11rem;
+}
+
+/* —— Larguras: pessoas (proprietários / inquilinos) —— */
+.cadastros-list-table--pessoas .cadastros-list-col--nome {
+  width: 26%;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--tipo {
+  width: 5.5rem;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--email {
+  width: 24%;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--telefone {
+  width: 9.5rem;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--imoveis {
+  width: 5.5rem;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--contrato {
+  width: 9.5rem;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--status {
+  width: 11rem;
+}
+
+.cadastros-list-col--status.cadastros-list-col-center {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.cadastros-list-col--status .cadastros-badge {
+  display: inline-flex;
+  width: 10rem;
+  min-width: 10rem;
+  max-width: 10rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.cadastros-list-col--tipo .cadastros-badge {
+  width: 3.25rem;
+  min-width: 3.25rem;
+  max-width: 3.25rem;
+}
+
+.cadastros-list-valor {
+  display: inline-block;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--cad-text);
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--imovel .cadastros-list-entity-title,
+.cadastros-list-table--imoveis .cadastros-list-col--proprietario {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--imovel .cadastros-list-entity-title {
+  white-space: nowrap;
+}
+
+.cadastros-list-table--imoveis .cadastros-list-col--proprietario {
+  white-space: nowrap;
+}
+
+.cadastros-list-table td.cadastros-list-col-center .cadastros-badge,
+.cadastros-list-table td.cadastros-list-col-center .cadastros-list-num {
+  margin-inline: auto;
+}
+
+.cadastros-list-num {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--cad-text);
+}
+
+.cadastros-list-code {
+  padding: 0;
+  border: none;
+  background: none;
+  font-weight: 700;
+  color: var(--cad-info);
+  cursor: pointer;
+}
+
+.cadastros-list-code:hover {
+  text-decoration: underline;
+}
+
+.cadastros-list-strong {
+  display: block;
+  font-weight: 600;
+  color: var(--cad-text);
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--nome .cadastros-list-strong,
+.cadastros-list-table--pessoas .cadastros-list-col--nome .cadastros-list-entity-sub {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cadastros-list-muted {
+  color: var(--cad-text-faint);
+}
+
+.cadastros-list-entity {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cadastros-list-entity-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.45rem;
+  background: rgba(151, 45, 200, 0.12);
+  color: var(--cad-roxo);
+}
+
+.cadastros-list-entity-title {
+  display: block;
+  font-weight: 600;
+}
+
+.cadastros-list-entity-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--cad-text-faint);
+}
+
+.cadastros-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.cadastros-badge--disponivel {
+  background: rgba(9, 215, 102, 0.14);
+  color: #047a3f;
+}
+
+.cadastros-badge--alugado {
+  background: rgba(9, 98, 215, 0.1);
+  color: #0962d7;
+}
+
+.cadastros-badge--manutencao {
+  background: rgba(255, 198, 0, 0.22);
+  color: #7a5c00;
+}
+
+.cadastros-badge--tipo-pf {
+  background: rgba(151, 45, 200, 0.12);
+  color: var(--cad-roxo);
+}
+
+.cadastros-badge--tipo-pj {
+  background: rgba(9, 98, 215, 0.14);
+  color: #0962d7;
+}
+
+.cadastros-badge--contrato-ativo {
+  background: rgba(9, 215, 102, 0.14);
+  color: #047a3f;
+}
+
+.cadastros-badge--contrato-pendente {
+  background: rgba(255, 198, 0, 0.22);
+  color: #7a5c00;
+}
+
+.cadastros-badge--contrato-sem_contrato {
+  background: rgba(8, 8, 12, 0.08);
+  color: var(--cad-text-muted);
+}
+
+.cadastros-list-empty {
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--cad-text-faint);
+}
+
+.cadastros-list-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--cad-border);
+  background: var(--cad-surface-muted);
+}
+
+.cadastros-list-footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--cad-text-muted);
+}
+
+.cadastros-loading {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  color: #972dc8;
+  font-weight: 500;
+}
+
+html[data-theme='dark'] .cadastros-page {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .cadastros-title {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .cadastros-desc {
+  color: rgba(242, 246, 250, 0.55);
+}
+
+html[data-theme='dark'] .cadastros-list {
+  --cad-border: rgba(242, 246, 250, 0.1);
+  --cad-surface: #1c1c26;
+  --cad-surface-muted: #0d0d12;
+  --cad-text: #f2f6fa;
+  --cad-text-muted: rgba(242, 246, 250, 0.55);
+  --cad-text-faint: rgba(242, 246, 250, 0.45);
+}
+
+html[data-theme='dark'] .cadastros-list-panel {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme='dark'] .cadastros-list-table tbody tr:hover {
+  background: rgba(151, 45, 200, 0.1);
+}
+
+html[data-theme='dark'] .cadastros-list-code {
+  color: #6eb5ff;
+}
+
+html[data-theme='dark'] .cadastros-badge--disponivel,
+html[data-theme='dark'] .cadastros-badge--contrato-ativo {
+  color: #3dd68c;
+}
+
+html[data-theme='dark'] .cadastros-badge--manutencao,
+html[data-theme='dark'] .cadastros-badge--contrato-pendente {
+  color: #e6c200;
+}
+
+html[data-theme='dark'] .cadastros-badge--tipo-pf {
+  color: #c77deb;
+  background: rgba(151, 45, 200, 0.22);
+}
+
+html[data-theme='dark'] .cadastros-badge--tipo-pj {
+  color: #6eb5ff;
+  background: rgba(9, 98, 215, 0.25);
+}
+
+html[data-theme='dark'] .cadastros-badge--contrato-sem_contrato {
+  color: rgba(242, 246, 250, 0.65);
+  background: rgba(242, 246, 250, 0.08);
+}
+
+html[data-theme='dark'] .cadastros-tabs [role='tablist'] {
+  border-color: rgba(242, 246, 250, 0.1);
+}
+
+html[data-theme='dark'] .cadastros-tabs [role='tab'] {
+  background: transparent;
+  box-shadow: none;
+  color: rgba(242, 246, 250, 0.55);
+}
+
+html[data-theme='dark'] .cadastros-tabs [role='tab']:not([data-state='active']) {
+  border-bottom: none;
+}
+
+html[data-theme='dark'] .cadastros-tabs [role='tab']:hover {
+  color: #f2f6fa;
+  background: transparent;
+}
+
+html[data-theme='dark'] .cadastros-tabs [role='tab'][data-state='active'] {
+  color: #c77deb;
+  border-bottom-color: #972dc8;
+  background: transparent;
+}
