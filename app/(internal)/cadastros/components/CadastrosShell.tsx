@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
 import { getSession } from "@/lib/auth/session";
+import { useRouter } from "next/navigation";
+import { useEffect, useState, type ReactNode } from "react";
 import { CadastrosTabs } from "./CadastrosTabs";
 
 export default function CadastrosShell({ children }: { children: ReactNode }) {
@@ -29,7 +29,6 @@ export default function CadastrosShell({ children }: { children: ReactNode }) {
     <div className="cadastros-page">
       <header className="cadastros-header">
         <div className="cadastros-header-text">
-          <h1 className="cadastros-title">Cadastros</h1>
           <p className="cadastros-desc">
             Gerencie imóveis, proprietários e inquilinos da sua carteira.
           </p>

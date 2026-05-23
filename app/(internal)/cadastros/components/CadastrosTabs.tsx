@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { usePathname, useRouter } from "next/navigation";
 
 const cadastrosTabs = [
   { value: "imoveis", label: "Imóveis", href: "/cadastros/imoveis" },
@@ -32,7 +32,7 @@ export function CadastrosTabs() {
     >
       <TabsList variant="line" aria-label="Seções de cadastro">
         {cadastrosTabs.map((tab) => (
-          <TabsTrigger key={tab.value} value={tab.value}>
+          <TabsTrigger key={tab.value} value={tab.value} className="cursor-pointer">
             {tab.label}
           </TabsTrigger>
         ))}

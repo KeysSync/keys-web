@@ -1,7 +1,11 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { getSession } from '@/lib/auth/session'
+import {
+  mockContratos,
+  type Contrato,
+  type ContratoStatus,
+} from '@/lib/mocks/contratos'
 import {
   ArrowDownUp,
   Building2,
@@ -15,12 +19,8 @@ import {
   TrendingUp,
   XCircle,
 } from 'lucide-react'
-import { getSession } from '@/lib/auth/session'
-import {
-  mockContratos,
-  type Contrato,
-  type ContratoStatus,
-} from '@/lib/mocks/contratos'
+import { useRouter } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
 import './style.css'
 
 const statusLabel: Record<ContratoStatus, string> = {
@@ -95,7 +95,6 @@ export default function ContratosPage() {
     <div className="contratos-page">
       <header className="contratos-hero">
         <div className="contratos-hero-text">
-          <h1 className="contratos-page-title">Contratos</h1>
           <p className="contratos-page-desc">
             Acompanhe o status, valores e prazos de todos os contratos ativos da
             sua carteira.
