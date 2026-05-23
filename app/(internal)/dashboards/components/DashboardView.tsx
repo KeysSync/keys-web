@@ -9,12 +9,12 @@ const DashboardView = () => {
 
   return (
     <div className="dashboard-page">
-      <header className="dashboard-page__header">
+      {/* <header className="dashboard-page__header">
         <div>
           <h1 className="dashboard-page__title">{page.title}</h1>
           <p className="dashboard-page__subtitle">{page.subtitle}</p>
         </div>
-      </header>
+      </header> */}
 
       <DashboardSection title={sections.kpi}>
         <div className="dashboard-page__kpi-grid">

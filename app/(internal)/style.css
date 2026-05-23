@@ -76,7 +76,7 @@
         }
 
         &.action-tooltip--active:hover {
-          background-color: #0F8A5F;
+          background-color: #08080C;
         }
     }
 
@@ -100,8 +100,8 @@
       }
 
       &:hover.action-tooltip--active {
-        background-color: #0F8A5F;
-        box-shadow: 0 2px 8px rgba(15, 138, 95, 0.25);
+        background-color: #08080C;
+        box-shadow: 0 2px 8px rgba(8, 8, 12, 0.2);
       }
 
       .action-tooltip__icon {
@@ -133,8 +133,8 @@
       }
 
       &.action-tooltip--active {
-        background-color: #0F8A5F;
-        border-color: #0F8A5F;
+        background-color: #08080C;
+        border-color: #08080C;
 
         .action-tooltip__icon {
           background-color: transparent;
@@ -150,8 +150,8 @@
         }
 
         &:hover {
-          background-color: #0F8A5F;
-          border-color: #0F8A5F;
+          background-color: #08080C;
+          border-color: #08080C;
 
           .action-tooltip__label {
             color: #FFFFFF;
@@ -186,13 +186,13 @@
 
   .col-middle .box.action-tooltip--active,
   .col-bottom .box.action-tooltip--active {
-    background-color: #0F8A5F;
-    border-color: #0F8A5F;
+    background-color: #08080C;
+    border-color: #08080C;
   }
 
   .col-middle .box.action-tooltip--active:hover,
   .col-bottom .box.action-tooltip--active:hover {
-    background-color: #0F8A5F;
+    background-color: #08080C;
   }
 
   .col-top {
@@ -203,6 +203,21 @@
 }
 
 .apresentation {
+
+  width: 30%;
+  height: 30%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 
   .box-logo {
     width: 200px;
@@ -241,14 +256,20 @@
   padding: 16px 16px 16px 0px;
 
   .internal-box {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: green;
     border: 1px solid #E0E0E0;
     background-color: #FFFFFF;
     color: #000000;
-    padding: 24px;
     border-radius: 10px;
-    overflow: auto; 
+    overflow: hidden;
+  }
+
+  .internal-box__content {
+    flex: 1;
+    overflow: auto;
+    padding: 24px;
   }
 }

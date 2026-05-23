@@ -7,6 +7,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --scrollbar-width: 10px;
+  --scrollbar-track: #f2f6fa;
+  --scrollbar-thumb: #d4d9e0;
+  --scrollbar-thumb-hover: #b8bec6;
 }
 
 @theme inline {
@@ -18,7 +22,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+      --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
@@ -27,4 +31,38 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Poppins", sans-serif;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* width */
+*::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
 }

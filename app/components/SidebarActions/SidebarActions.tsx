@@ -4,16 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
-type SidebarAction = {
+export type SidebarAction = {
   icon: ReactNode;
   label: string;
   href: string;
 };
 
+type SidebarActionsProps = {
+  actions: SidebarAction[];
+};
+
 const isActiveRoute = (pathname: string, href: string) =>
   pathname === href || pathname.startsWith(`${href}/`);
 
-const SidebarActions = ({ actions }: { actions: SidebarAction[] }) => {
+const SidebarActions = ({ actions }: SidebarActionsProps) => {
   const pathname = usePathname();
 
   return (

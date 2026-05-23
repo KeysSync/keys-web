@@ -1,3 +1,5 @@
+import InternalHeader from "@/app/components/InternalHeader/InternalHeader";
+import SidebarActions from "@/app/components/SidebarActions";
 import {
   BadgePercentIcon,
   CircleDollarSignIcon,
@@ -6,10 +8,9 @@ import {
   FlagIcon,
   HouseIcon,
   LogsIcon,
-  SettingsIcon
+  SettingsIcon,
 } from "lucide-react";
 import Link from "next/link";
-import SidebarActions from "./SidebarActions";
 import "./style.css";
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
@@ -64,7 +65,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="col-actions">
         <div className="col-top">
           <Link href="/">
-            <div className="box"></div>
+            <div className="box" />
           </Link>
         </div>
         <div className="col-middle">
@@ -73,12 +74,15 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="col-bottom">
           <SidebarActions actions={bottomActions} />
           <Link href="/login">
-            <div className="box box-avatar"></div>
+            <div className="box box-avatar" />
           </Link>
         </div>
       </div>
       <div className="system">
-        <div className="internal-box">{children}</div>
+        <div className="internal-box">
+          <InternalHeader />
+          <main className="internal-box__content">{children}</main>
+        </div>
       </div>
     </div>
   );
