@@ -69,13 +69,13 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
           <Link href="/">
             <div className="box" />
           </Link>
+          <ThemeToggle variant="sidebar" />
         </div>
         <div className="col-middle">
           <SidebarActions actions={actions} />
         </div>
         <div className="col-bottom">
           <SidebarActions actions={bottomActions} />
-          <ThemeToggle variant="sidebar" />
           <SidebarLogout />
         </div>
       </div>

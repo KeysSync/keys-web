@@ -36,10 +36,8 @@ html[data-theme='dark'] .contratos-layout {
   width: 100%;
   min-height: 0;
   box-sizing: border-box;
-  padding: 1.5rem 1.25rem 1.25rem;
   color: var(--keys-preto);
   overflow: auto;
-  background: var(--keys-branco);
 }
 
 .contratos-hero {

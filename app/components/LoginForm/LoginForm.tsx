@@ -1,9 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { setSession } from "@/lib/auth/session";
 import { findMockUser } from "@/lib/mocks/users";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import "./style.css";
 
 function EyeIcon({ open }: { open: boolean }) {
@@ -87,7 +87,7 @@ export function LoginForm() {
     }
 
     setSession({ id: user.id, nome: user.nome, email: user.email });
-    router.push("/contratos");
+    router.push("/");
   }
 
   return (
