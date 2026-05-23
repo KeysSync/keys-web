@@ -19,6 +19,7 @@ import {
   TrendingUp,
   XCircle,
 } from 'lucide-react'
+import { markContratoCriarEntry } from '@/lib/contratos/wizard/draft'
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import './style.css'
@@ -105,7 +106,14 @@ export default function ContratosPage() {
             <Download size={18} />
             Exportar
           </button>
-          <button type="button" className="contratos-btn-primary">
+          <button
+            type="button"
+            className="contratos-btn-primary"
+            onClick={() => {
+              markContratoCriarEntry()
+              router.push('/contratos/criar')
+            }}
+          >
             <Plus size={18} />
             Novo contrato
           </button>
