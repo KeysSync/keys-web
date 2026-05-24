@@ -156,13 +156,14 @@
   .col-bottom {
     .box-avatar {
       padding: 12px;
-      background-image: url("https://i.pinimg.com/736x/f5/9b/7b/f59b7b78e754b1b3845e7a08d3555fa0.jpg");
+      background-image: url("https://i.pinimg.com/1200x/21/44/51/2144514e1ac09f365b83ecc05e72309e.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
+      border: 0px;
     }
   }
 
