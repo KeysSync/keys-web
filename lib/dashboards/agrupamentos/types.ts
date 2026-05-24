@@ -71,8 +71,8 @@ export function createGrupoId() {
 export function createEmptyGrupoDraft(): Omit<Grupo, "id"> {
   return {
     nome: "",
-    visualType: "icon",
-    visualValue: DEFAULT_GRUPO_ICON,
+    visualType: "image",
+    visualValue: "",
     corFundo: DEFAULT_GRUPO_COR_FUNDO,
     corIcone: DEFAULT_GRUPO_COR_ICONE,
     corTexto: DEFAULT_GRUPO_COR_TEXTO,

@@ -277,7 +277,6 @@
     flex-direction: column;
     min-height: 0;
     overflow: hidden;
-    padding: 16px 20px;
   }
 
   .internal-box__content:has(.contratos-criar-layout) > .contratos-layout {
