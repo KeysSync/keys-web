@@ -1,7 +1,6 @@
 import { hasContratoCriarEntryServer } from '@/lib/contratos/wizard/entry-server'
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import ContratoCriarAuth from '@/app/components/ContratoCriarAuth/ContratoCriarAuth'
 import './style.css'
 
 export const metadata: Metadata = {
@@ -18,9 +17,5 @@ export default async function ContratoCriarLayout({
     redirect('/contratos')
   }
 
-  return (
-    <div className="contratos-criar-layout">
-      <ContratoCriarAuth>{children}</ContratoCriarAuth>
-    </div>
-  )
+  return <div className="contratos-criar-layout">{children}</div>
 }

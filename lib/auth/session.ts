@@ -1,28 +1,58 @@
-export interface SessionUser {
-  id: string
-  nome: string
-  email: string
-}
+import "server-only";
 
-const STORAGE_KEY = 'keys_mock_session'
+import { cache } from "react";
+import { ApiError } from "@/lib/api/client";
+import { apiGetCurrentUser, apiRefresh } from "@/lib/auth/api";
+import {
+  getAccessToken,
+  getRefreshToken,
+  setAuthCookies,
+} from "@/lib/auth/cookies";
+import type { AuthUser } from "@/lib/auth/types";
 
-export function setSession(user: SessionUser): void {
-  if (typeof window === 'undefined') return
-  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(user))
-}
+/**
+ * Retorna o usuário autenticado no servidor.
+ *
+ * 1. Tenta com o access_token do cookie.
+ * 2. Em 401, tenta refresh com o refresh_token e refaz a chamada.
+ * 3. Retorna `null` se não houver sessão válida.
+ *
+ * Encapsulado em `cache()` para deduplicar chamadas dentro do mesmo render.
+ */
+export const getCurrentUser = cache(async (): Promise<AuthUser | null> => {
+  const accessToken = await getAccessToken();
 
-export function getSession(): SessionUser | null {
-  if (typeof window === 'undefined') return null
-  const raw = sessionStorage.getItem(STORAGE_KEY)
-  if (!raw) return null
-  try {
-    return JSON.parse(raw) as SessionUser
-  } catch {
-    return null
+  if (accessToken) {
+    try {
+      return await apiGetCurrentUser(accessToken);
+    } catch (error) {
+      if (!(error instanceof ApiError) || error.status !== 401) {
+        return null;
+      }
+    }
   }
-}
 
-export function clearSession(): void {
-  if (typeof window === 'undefined') return
-  sessionStorage.removeItem(STORAGE_KEY)
+  const refreshToken = await getRefreshToken();
+  if (!refreshToken) return null;
+
+  try {
+    const tokens = await apiRefresh(refreshToken);
+    await setAuthCookies(tokens);
+    return tokens.user;
+  } catch {
+    return null;
+  }
+});
+
+/** Nome exibível do usuário (parte antes do `@` quando não houver `name`). */
+export function displayName(user: AuthUser | null): string {
+  if (!user) return "Usuário";
+  const [local] = user.email.split("@");
+  if (!local) return "Usuário";
+  return local
+    .replace(/[._-]+/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(" ");
 }

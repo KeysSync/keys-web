@@ -1,12 +1,16 @@
-'use client'
-
-import Link from 'next/link'
-import { clearSession } from '@/lib/auth/session'
+import { logoutAction } from "@/lib/auth/actions";
 
 export default function SidebarLogout() {
   return (
-    <Link href="/login" onClick={() => clearSession()}>
-      <div className="box box-avatar" />
-    </Link>
-  )
+    <form action={logoutAction}>
+      <button
+        type="submit"
+        aria-label="Sair"
+        title="Sair"
+        className="sidebar-logout"
+      >
+        <div className="box box-avatar" />
+      </button>
+    </form>
+  );
 }

@@ -154,6 +154,15 @@
   }
 
   .col-bottom {
+    .sidebar-logout {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      display: inline-flex;
+    }
+
     .box-avatar {
       padding: 12px;
       background-image: url("https://i.pinimg.com/1200x/21/44/51/2144514e1ac09f365b83ecc05e72309e.jpg");

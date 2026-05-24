@@ -16,6 +16,7 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
+import { displayName, getCurrentUser } from "@/lib/auth/session";
 import "./style.css";
 
 const quickMetrics = [
@@ -151,13 +152,16 @@ const activity = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const user = await getCurrentUser();
+  const firstName = displayName(user).split(" ")[0];
+
   return (
     <div className="home-page">
       <header className="home-hero">
         <div className="home-hero__intro">
           <span className="home-hero__badge">
-            <Sparkles size={14} aria-hidden /> Bem-vindo de volta
+            <Sparkles size={14} aria-hidden /> Bem-vindo de volta, {firstName}
           </span>
           <h1 className="home-hero__title">Sua imobiliária em um só lugar</h1>
           <p className="home-hero__subtitle">

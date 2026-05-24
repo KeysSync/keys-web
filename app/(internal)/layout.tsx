@@ -1,6 +1,7 @@
 import InternalHeader from "@/app/components/InternalHeader/InternalHeader";
 import SidebarActions from "@/app/components/SidebarActions";
 import { ThemeToggle } from "@/app/components/ThemeToggle/ThemeToggle";
+import { displayName, getCurrentUser } from "@/lib/auth/session";
 import {
   BadgePercentIcon,
   CircleDollarSignIcon,
@@ -15,7 +16,10 @@ import Link from "next/link";
 import SidebarLogout from "./SidebarLogout";
 import "./style.css";
 
-const InternalLayout = ({ children }: { children: React.ReactNode }) => {
+const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
+  const user = await getCurrentUser();
+  const userName = displayName(user);
+
   const actions = [
     {
       icon: <HouseIcon />,
@@ -81,7 +85,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="system">
         <div className="internal-box">
-          <InternalHeader />
+          <InternalHeader userName={userName} />
           <main className="internal-box__content">{children}</main>
         </div>
       </div>

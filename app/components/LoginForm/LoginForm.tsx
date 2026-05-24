@@ -1,7 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useActionState, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { loginAction, type LoginActionState } from "@/lib/auth/actions";
 import "./style.css";
 
 function EyeIcon({ open }: { open: boolean }) {
@@ -56,22 +57,20 @@ function GoogleIcon() {
   );
 }
 
+const initialState: LoginActionState = { ok: false };
+
 export function LoginForm() {
-  const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [state, formAction, isPending] = useActionState(loginAction, initialState);
   const [showPassword, setShowPassword] = useState(false);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setError(null);
-    setLoading(true);
-    router.push("/home");
-  }
-
   return (
-    <form className="login-form" onSubmit={handleSubmit} noValidate>
-      {error ? <p className="login-error text-center">{error}</p> : null}
+    <form className="login-form" action={formAction} noValidate>
+      {state?.error ? (
+        <p className="login-error" role="alert">
+          {state.error}
+        </p>
+      ) : null}
+
       <div className="login-field">
         <label htmlFor="email">E-mail</label>
         <input
@@ -107,17 +106,18 @@ export function LoginForm() {
       </div>
 
       <div className="login-options-row">
-        <div className="login-remember-me">
+        <label className="login-remember-me" htmlFor="remember-me">
           <input type="checkbox" id="remember-me" name="remember-me" />
-          <label htmlFor="remember-me">Permanecer logado</label>
-        </div>
+          <span className="login-remember-me__label">Permanecer logado</span>
+        </label>
         <a className="login-forgot-password" href="#">
           Esqueceu sua senha?
         </a>
       </div>
 
-      <button type="submit" className="login-submit-btn" disabled={loading}>
-        {loading ? "Entrando…" : "Entrar"}
+      <button type="submit" className="login-submit-btn" disabled={isPending}>
+        {isPending ? "Entrando…" : "Entrar"}
+        {!isPending ? <ArrowRight size={16} aria-hidden /> : null}
       </button>
 
       <div className="login-divider" role="separator">
