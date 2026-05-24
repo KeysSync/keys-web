@@ -1,0 +1,220 @@
+.keys-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(8, 8, 12, 0.42);
+  backdrop-filter: blur(2px);
+}
+
+.keys-dialog-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 51;
+  display: grid;
+  width: min(calc(100% - 2rem), 490px);
+  max-height: min(calc(100vh - 2rem), 720px);
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  border-radius: 14px;
+  border: 1px solid var(--keys-dialog-border);
+  background: var(--keys-dialog-bg);
+  color: var(--keys-dialog-text);
+  box-shadow: var(--keys-dialog-shadow);
+  font-family: inherit;
+}
+
+.keys-dialog-content:focus {
+  outline: none;
+}
+
+.keys-dialog-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--keys-dialog-text-faint);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.keys-dialog-close:hover {
+  background: var(--keys-dialog-muted);
+  color: var(--keys-dialog-text);
+}
+
+.keys-dialog-close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--keys-dialog-ring);
+}
+
+.keys-dialog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 72px 20px 28px;
+  border-bottom: 1px solid var(--keys-dialog-border);
+}
+
+.keys-dialog-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--keys-dialog-text);
+}
+
+.keys-dialog-description {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--keys-dialog-text-muted);
+}
+
+.keys-dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 28px 28px;
+}
+
+.keys-dialog-footer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  padding: 0 28px 28px;
+}
+
+@media (min-width: 640px) {
+  .keys-dialog-footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.keys-dialog-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keys-dialog-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--keys-dialog-text);
+}
+
+.keys-dialog-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 16px;
+  border: 1px solid var(--keys-dialog-input-border);
+  border-radius: 12px;
+  background: var(--keys-dialog-input-bg);
+  color: var(--keys-dialog-text);
+  font-family: inherit;
+  font-size: 0.875rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.keys-dialog-input::placeholder {
+  color: var(--keys-dialog-text-faint);
+}
+
+.keys-dialog-input:focus {
+  border-color: var(--keys-dialog-primary-border);
+  background: var(--keys-dialog-bg);
+  box-shadow: 0 0 0 3px var(--keys-dialog-ring);
+}
+
+.keys-dialog-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 46px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--keys-dialog-success);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(9, 215, 102, 0.35);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.keys-dialog-submit:hover:not(:disabled) {
+  background: var(--keys-dialog-success-hover);
+  box-shadow: 0 6px 18px rgba(9, 215, 102, 0.4);
+}
+
+.keys-dialog-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+:root,
+html[data-theme="light"] {
+  --keys-dialog-bg: #ffffff;
+  --keys-dialog-muted: #f2f6fa;
+  --keys-dialog-border: rgba(8, 8, 12, 0.1);
+  --keys-dialog-text: #08080c;
+  --keys-dialog-text-muted: rgba(8, 8, 12, 0.62);
+  --keys-dialog-text-faint: rgba(8, 8, 12, 0.42);
+  --keys-dialog-input-bg: #f2f6fa;
+  --keys-dialog-input-border: rgba(8, 8, 12, 0.1);
+  --keys-dialog-primary-border: rgba(9, 98, 215, 0.35);
+  --keys-dialog-ring: rgba(9, 98, 215, 0.12);
+  --keys-dialog-success: #26995a;
+  --keys-dialog-success-hover: #08c45c;
+  --keys-dialog-shadow:
+    0 1px 2px rgba(8, 8, 12, 0.06),
+    0 12px 40px rgba(8, 8, 12, 0.14);
+}
+
+html[data-theme="dark"] {
+  --keys-dialog-bg: #14141c;
+  --keys-dialog-muted: #1c1c26;
+  --keys-dialog-border: rgba(242, 246, 250, 0.12);
+  --keys-dialog-text: #f2f6fa;
+  --keys-dialog-text-muted: rgba(242, 246, 250, 0.65);
+  --keys-dialog-text-faint: rgba(242, 246, 250, 0.4);
+  --keys-dialog-input-bg: #0d0d12;
+  --keys-dialog-input-border: rgba(242, 246, 250, 0.12);
+  --keys-dialog-primary-border: rgba(76, 141, 240, 0.45);
+  --keys-dialog-ring: rgba(76, 141, 240, 0.18);
+  --keys-dialog-success: #26995a;
+  --keys-dialog-success-hover: #09d766;
+  --keys-dialog-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .keys-dialog-overlay {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+html[data-theme="dark"] .keys-dialog-input:focus {
+  background: #1c1c26;
+}

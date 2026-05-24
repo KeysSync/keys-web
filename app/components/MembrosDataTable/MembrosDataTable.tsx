@@ -15,6 +15,7 @@ import {
 } from "@/lib/mocks/membros";
 import { MoreVertical } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
+import { InviteMembroDialog } from "@/app/components/InviteMembroDialog";
 
 function filterMembro(row: Membro, query: string) {
   return (
@@ -37,6 +38,7 @@ export function MembrosDataTable({
 }: MembrosDataTableProps) {
   const [membros, setMembros] = useState(initialRows);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [inviteOpen, setInviteOpen] = useState(false);
 
   const allSelected =
     membros.length > 0 && selectedIds.length === membros.length;
@@ -152,18 +154,23 @@ export function MembrosDataTable({
   );
 
   return (
-    <DataTableList
-      entityName="membros"
-      newButtonLabel="Convidar membro"
-      searchPlaceholder="Buscar nome, e-mail ou cargo…"
-      rows={membros}
-      columns={columns}
-      filterRow={filterMembro}
-      getRowKey={(row) => row.id}
-      tableLayout="membros"
-      pageSize={pageSize}
-      isRowSelected={(row) => selectedIds.includes(row.id)}
-      onRowClick={(row) => toggleOne(row.id)}
-    />
+    <>
+      <DataTableList
+        entityName="membros"
+        newButtonLabel="Convidar membro"
+        searchPlaceholder="Buscar nome, e-mail ou cargo…"
+        rows={membros}
+        columns={columns}
+        filterRow={filterMembro}
+        getRowKey={(row) => row.id}
+        tableLayout="membros"
+        pageSize={pageSize}
+        isRowSelected={(row) => selectedIds.includes(row.id)}
+        onRowClick={(row) => toggleOne(row.id)}
+        onNewClick={() => setInviteOpen(true)}
+      />
+
+      <InviteMembroDialog open={inviteOpen} onOpenChange={setInviteOpen} />
+    </>
   );
 }

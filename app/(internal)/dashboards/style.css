@@ -327,7 +327,6 @@
 }
 
 .agrupamentos-input,
-.agrupamentos-select,
 .agrupamentos-textarea {
   width: 100%;
   padding: 0.5rem 0.65rem;
@@ -349,7 +348,6 @@
 }
 
 .agrupamentos-input:focus,
-.agrupamentos-select:focus,
 .agrupamentos-textarea:focus {
   border-color: var(--agr-accent);
   box-shadow: 0 0 0 3px var(--agr-accent-soft);

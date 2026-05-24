@@ -1,6 +1,7 @@
 "use client";
 
 import { Chip } from "@/components/ui/chip";
+import { SelectField } from "@/components/ui/select";
 import type { Grupo, GrupoVisualType } from "@/lib/dashboards/agrupamentos/types";
 import {
   DEFAULT_GRUPO_COR_BORDA,
@@ -285,20 +286,17 @@ export function GrupoForm({
         </fieldset>
 
         {values.visualType === "icon" ? (
-          <label className="agrupamentos-field">
-            <span className="agrupamentos-field__label">Ícone</span>
-            <select
-              className="agrupamentos-input agrupamentos-select"
-              value={values.visualValue}
-              onChange={(e) => patch({ visualValue: e.target.value })}
-            >
-              {GRUPO_ICON_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <SelectField
+            label="Ícone"
+            value={values.visualValue}
+            onChange={(e) => patch({ visualValue: e.target.value })}
+            options={GRUPO_ICON_OPTIONS.map((opt) => ({
+              value: opt.value,
+              label: opt.label,
+            }))}
+            fieldClassName="agrupamentos-field"
+            labelClassName="agrupamentos-field__label"
+          />
         ) : null}
 
         {values.visualType === "image" ? (
