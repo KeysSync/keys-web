@@ -1,4 +1,4 @@
-import type { FinanceMetric } from "../data/dashboard.mock";
+import type { FinanceMetric } from "@/app/(internal)/dashboards/data/dashboard.mock";
 
 type FinanceCardProps = {
   metric: FinanceMetric;

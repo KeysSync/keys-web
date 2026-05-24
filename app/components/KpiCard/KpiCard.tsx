@@ -1,5 +1,5 @@
-import { dashboardColors, getColorAlpha } from "../data/dashboard.mock";
-import type { KpiMetric } from "../data/dashboard.mock";
+import { dashboardColors, getColorAlpha } from "@/app/(internal)/dashboards/data/dashboard.mock";
+import type { KpiMetric } from "@/app/(internal)/dashboards/data/dashboard.mock";
 
 type KpiCardProps = {
   metric: KpiMetric;

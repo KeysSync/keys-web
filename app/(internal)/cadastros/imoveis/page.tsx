@@ -10,7 +10,7 @@ import {
 import {
   CadastrosListView,
   type CadastrosColumn,
-} from '../components/CadastrosListView'
+} from '@/app/components/CadastrosListView/CadastrosListView'
 
 const statusLabel: Record<ImovelStatus, string> = {
   disponivel: 'Disponível',

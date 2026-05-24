@@ -11,9 +11,9 @@ import {
 import { DayInputBr } from '@/components/ui/day-input-br'
 import { MaskedTextInputBr } from '@/components/ui/masked-text-input-br'
 import { PixKeyInputBr } from '@/components/ui/pix-key-input-br'
-import { ContratoSelect } from '../ContratoSelect'
-import { FormField } from './geral/FormField'
-import { FormSection } from './geral/FormSection'
+import { ContratoSelect } from '@/app/components/ContratoSelect/ContratoSelect'
+import { FormField } from '@/app/components/FormField/FormField'
+import { FormSection } from '@/app/components/FormSection/FormSection'
 
 const inputClass = 'contrato-criar-input'
 

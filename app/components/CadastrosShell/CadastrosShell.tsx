@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { CadastrosTabs } from "./CadastrosTabs";
+import { CadastrosTabs } from "@/app/components/CadastrosTabs/CadastrosTabs";
 
 export default function CadastrosShell({ children }: { children: ReactNode }) {
   return (

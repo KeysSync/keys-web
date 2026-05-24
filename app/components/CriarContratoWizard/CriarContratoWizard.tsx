@@ -10,16 +10,16 @@ import {
   saveContratoWizardDraft,
 } from '@/lib/contratos/wizard/draft'
 import type { ContratoWizardStepId } from '@/lib/contratos/wizard/types'
-import { ContratoStepper } from './ContratoStepper'
-import { WizardStepFooter } from './WizardStepFooter'
-import { StepCobranca } from './steps/StepCobranca'
-import { StepGarantia } from './steps/StepGarantia'
-import { StepGeral } from './steps/StepGeral'
-import { StepImovel } from './steps/StepImovel'
-import { StepLancamentos } from './steps/StepLancamentos'
-import { StepLocatarios } from './steps/StepLocatarios'
-import { StepRedacao } from './steps/StepRedacao'
-import { StepSeguro } from './steps/StepSeguro'
+import { ContratoStepper } from '@/app/components/ContratoStepper/ContratoStepper'
+import { WizardStepFooter } from '@/app/components/WizardStepFooter/WizardStepFooter'
+import { StepCobranca } from '@/app/components/StepCobranca/StepCobranca'
+import { StepGarantia } from '@/app/components/StepGarantia/StepGarantia'
+import { StepGeral } from '@/app/components/StepGeral/StepGeral'
+import { StepImovel } from '@/app/components/StepImovel/StepImovel'
+import { StepLancamentos } from '@/app/components/StepLancamentos/StepLancamentos'
+import { StepLocatarios } from '@/app/components/StepLocatarios/StepLocatarios'
+import { StepRedacao } from '@/app/components/StepRedacao/StepRedacao'
+import { StepSeguro } from '@/app/components/StepSeguro/StepSeguro'
 
 const STEP_HINTS: Record<ContratoWizardStepId, string> = {
   imovel: 'Selecione o imóvel vinculado ao contrato.',

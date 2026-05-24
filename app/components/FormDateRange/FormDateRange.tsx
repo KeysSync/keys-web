@@ -1,6 +1,6 @@
 import { DateInputBr } from '@/components/ui/date-input-br'
 import { MonthInputBr } from '@/components/ui/month-input-br'
-import { FormField } from './FormField'
+import { FormField } from '@/app/components/FormField/FormField'
 
 interface FormDateRangeProps {
   startLabel: string

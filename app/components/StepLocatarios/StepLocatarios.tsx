@@ -23,7 +23,7 @@ import {
   type ContratoLocatariosData,
   type LocatarioPapel,
 } from '@/lib/contratos/wizard/locatarios'
-import { ContratoSelect } from '../ContratoSelect'
+import { ContratoSelect } from '@/app/components/ContratoSelect/ContratoSelect'
 
 function filterInquilino(inquilino: Inquilino, query: string) {
   const q = query.trim().toLowerCase()

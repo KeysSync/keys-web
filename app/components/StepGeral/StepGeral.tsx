@@ -21,10 +21,10 @@ import { DateInputBr } from '@/components/ui/date-input-br'
 import { IntegerInputBr } from '@/components/ui/integer-input-br'
 import { MonthInputBr } from '@/components/ui/month-input-br'
 import { PercentInputBr } from '@/components/ui/percent-input-br'
-import { ContratoSelect } from '../ContratoSelect'
-import { FormDateRange } from './geral/FormDateRange'
-import { FormField } from './geral/FormField'
-import { FormSection } from './geral/FormSection'
+import { ContratoSelect } from '@/app/components/ContratoSelect/ContratoSelect'
+import { FormDateRange } from '@/app/components/FormDateRange/FormDateRange'
+import { FormField } from '@/app/components/FormField/FormField'
+import { FormSection } from '@/app/components/FormSection/FormSection'
 
 const DESCONTO_MODO_OPTIONS = [
   { value: 'percentual', label: 'Percentual (%)' },

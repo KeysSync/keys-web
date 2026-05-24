@@ -14,8 +14,8 @@ import {
   type LancamentoTipo,
 } from '@/lib/contratos/wizard/lancamentos'
 import { CurrencyInputBr } from '@/components/ui/currency-input-br'
-import { ContratoSelect } from '../ContratoSelect'
-import { FormSection } from './geral/FormSection'
+import { ContratoSelect } from '@/app/components/ContratoSelect/ContratoSelect'
+import { FormSection } from '@/app/components/FormSection/FormSection'
 
 const inputClass = 'contrato-criar-input'
 

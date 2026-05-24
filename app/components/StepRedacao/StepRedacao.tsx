@@ -10,9 +10,9 @@ import {
 } from '@/lib/contratos/wizard/redacao'
 import { mockImoveis } from '@/lib/mocks/imoveis'
 import { mockInquilinos } from '@/lib/mocks/inquilinos'
-import { ContratoSelect } from '../ContratoSelect'
-import { FormField } from './geral/FormField'
-import { FormSection } from './geral/FormSection'
+import { ContratoSelect } from '@/app/components/ContratoSelect/ContratoSelect'
+import { FormField } from '@/app/components/FormField/FormField'
+import { FormSection } from '@/app/components/FormSection/FormSection'
 
 const MODELO_OPTIONS = CONTRATO_MODELO_OPTIONS.map((opt) => ({
   value: opt.id,

@@ -1,4 +1,4 @@
-import DashboardShell from "./components/DashboardShell";
+import DashboardShell from "@/app/components/DashboardShell/DashboardShell";
 import "./style.css";
 
 export default function DashboardLayout({

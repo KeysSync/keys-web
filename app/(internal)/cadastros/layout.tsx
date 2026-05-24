@@ -1,4 +1,4 @@
-import CadastrosShell from "./components/CadastrosShell";
+import CadastrosShell from "@/app/components/CadastrosShell/CadastrosShell";
 import "./style.css";
 
 export default function CadastrosLayout({

@@ -4,7 +4,7 @@ import { mockProprietarios, type Proprietario } from '@/lib/mocks/proprietarios'
 import {
   CadastrosListView,
   type CadastrosColumn,
-} from '../components/CadastrosListView'
+} from '@/app/components/CadastrosListView/CadastrosListView'
 
 function filterProprietario(row: Proprietario, q: string) {
   return (

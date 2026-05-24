@@ -10,10 +10,10 @@ import {
 } from '@/lib/contratos/wizard/garantia'
 import { CurrencyInputBr } from '@/components/ui/currency-input-br'
 import { DocumentInputBr } from '@/components/ui/document-input-br'
-import { ContratoSelect } from '../ContratoSelect'
-import { FormDateRange } from './geral/FormDateRange'
-import { FormField } from './geral/FormField'
-import { FormSection } from './geral/FormSection'
+import { ContratoSelect } from '@/app/components/ContratoSelect/ContratoSelect'
+import { FormDateRange } from '@/app/components/FormDateRange/FormDateRange'
+import { FormField } from '@/app/components/FormField/FormField'
+import { FormSection } from '@/app/components/FormSection/FormSection'
 
 const inputClass = 'contrato-criar-input'
 

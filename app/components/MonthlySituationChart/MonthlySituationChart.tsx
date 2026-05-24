@@ -23,7 +23,7 @@ import {
   monthlyFlowChartConfig,
   monthlyFlowChartData,
   monthlyProjectionsWithProgress,
-} from "../data/dashboard.mock";
+} from "@/app/(internal)/dashboards/data/dashboard.mock";
 
 const formatCurrency = (value: number) =>
   value.toLocaleString("pt-BR", {

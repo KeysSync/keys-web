@@ -8,7 +8,7 @@ import {
 import {
   CadastrosListView,
   type CadastrosColumn,
-} from '../components/CadastrosListView'
+} from '@/app/components/CadastrosListView/CadastrosListView'
 
 const contratoStatusLabel: Record<InquilinoContratoStatus, string> = {
   ativo: 'Contrato ativo',

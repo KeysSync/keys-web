@@ -1,8 +1,8 @@
-import { dashboardMock } from "../data/dashboard.mock";
-import DashboardSection from "./DashboardSection";
-import FinanceCard from "./FinanceCard";
-import KpiCard from "./KpiCard";
-import MonthlySituationChart from "./MonthlySituationChart";
+import { dashboardMock } from "@/app/(internal)/dashboards/data/dashboard.mock";
+import DashboardSection from "@/app/components/DashboardSection/DashboardSection";
+import FinanceCard from "@/app/components/FinanceCard/FinanceCard";
+import KpiCard from "@/app/components/KpiCard/KpiCard";
+import MonthlySituationChart from "@/app/components/MonthlySituationChart/MonthlySituationChart";
 
 const DashboardView = () => {
   const { page, sections, kpiMetrics, financeMetrics } = dashboardMock;

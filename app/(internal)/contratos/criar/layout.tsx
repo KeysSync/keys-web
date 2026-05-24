@@ -1,7 +1,7 @@
 import { hasContratoCriarEntryServer } from '@/lib/contratos/wizard/entry-server'
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import ContratoCriarAuth from './components/ContratoCriarAuth'
+import ContratoCriarAuth from '@/app/components/ContratoCriarAuth/ContratoCriarAuth'
 import './style.css'
 
 export const metadata: Metadata = {
