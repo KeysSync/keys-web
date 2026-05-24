@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 
-.cadastros-page {
+.cadastros-shell {
   flex: 1;
   width: 100%;
   min-height: 0;
@@ -15,6 +15,11 @@
   gap: 1.25rem;
   padding: 0.25rem 0 1rem;
   color: #08080c;
+}
+
+.cadastros-shell__content {
+  flex: 1;
+  min-height: 0;
 }
 
 .cadastros-header-text {
@@ -37,11 +42,6 @@
   font-size: 0.95rem;
   line-height: 1.5;
   color: rgba(8, 8, 12, 0.55);
-}
-
-.cadastros-content {
-  flex: 1;
-  min-height: 0;
 }
 
 /* —— Listagem mock —— */
@@ -465,12 +465,7 @@
   font-weight: 500;
 }
 
-.cadastros-tabs [role='tab'][data-state='active'] {
-  color: #0962d7;
-  border-bottom-color: #0962d7;
-}
-
-html[data-theme='dark'] .cadastros-page {
+html[data-theme='dark'] .cadastros-shell {
   color: #f2f6fa;
 }
 
@@ -529,31 +524,6 @@ html[data-theme='dark'] .cadastros-badge--tipo-pj {
 html[data-theme='dark'] .cadastros-badge--contrato-sem_contrato {
   color: rgba(242, 246, 250, 0.65);
   background: rgba(242, 246, 250, 0.08);
-}
-
-html[data-theme='dark'] .cadastros-tabs [role='tablist'] {
-  border-color: rgba(242, 246, 250, 0.1);
-}
-
-html[data-theme='dark'] .cadastros-tabs [role='tab'] {
-  background: transparent;
-  box-shadow: none;
-  color: rgba(242, 246, 250, 0.55);
-}
-
-html[data-theme='dark'] .cadastros-tabs [role='tab']:not([data-state='active']) {
-  border-bottom: none;
-}
-
-html[data-theme='dark'] .cadastros-tabs [role='tab']:hover {
-  color: #f2f6fa;
-  background: transparent;
-}
-
-html[data-theme='dark'] .cadastros-tabs [role='tab'][data-state='active'] {
-  color: #6eb5ff;
-  border-bottom-color: #0962d7;
-  background: transparent;
 }
 
 html[data-theme='dark'] .cadastros-loading {

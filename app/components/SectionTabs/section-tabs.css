@@ -1,0 +1,33 @@
+.section-tabs [role='tab'] {
+  padding-bottom: 10px;
+}
+
+.section-tabs [role='tab'][data-state='active'] {
+  color: #0962d7;
+  border-bottom-color: #0962d7;
+}
+
+html[data-theme='dark'] .section-tabs [role='tablist'] {
+  border-color: rgba(242, 246, 250, 0.1);
+}
+
+html[data-theme='dark'] .section-tabs [role='tab'] {
+  background: transparent;
+  box-shadow: none;
+  color: rgba(242, 246, 250, 0.55);
+}
+
+html[data-theme='dark'] .section-tabs [role='tab']:not([data-state='active']) {
+  border-bottom: none;
+}
+
+html[data-theme='dark'] .section-tabs [role='tab']:hover {
+  color: #f2f6fa;
+  background: transparent;
+}
+
+html[data-theme='dark'] .section-tabs [role='tab'][data-state='active'] {
+  color: #6eb5ff;
+  border-bottom-color: #0962d7;
+  background: transparent;
+}

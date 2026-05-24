@@ -28,15 +28,6 @@
   min-height: 0;
 }
 
-.dashboard-tabs [role='tab'] {
-  padding-bottom: 10px;
-}
-
-.dashboard-tabs [role='tab'][data-state='active'] {
-  color: #0962d7;
-  border-bottom-color: #0962d7;
-}
-
 .dashboard-shell__content:has(.agrupamentos-page) {
   display: flex;
   flex-direction: column;
@@ -1457,31 +1448,6 @@ html[data-theme='dark'] .dashboard-monthly-card__balance-tag {
   color: #3dd68c;
   background: #1c1c26;
   border-color: rgba(9, 215, 102, 0.28);
-}
-
-html[data-theme='dark'] .dashboard-tabs [role='tablist'] {
-  border-color: rgba(242, 246, 250, 0.1);
-}
-
-html[data-theme='dark'] .dashboard-tabs [role='tab'] {
-  background: transparent;
-  box-shadow: none;
-  color: rgba(242, 246, 250, 0.55);
-}
-
-html[data-theme='dark'] .dashboard-tabs [role='tab']:not([data-state='active']) {
-  border-bottom: none;
-}
-
-html[data-theme='dark'] .dashboard-tabs [role='tab']:hover {
-  color: #f2f6fa;
-  background: transparent;
-}
-
-html[data-theme='dark'] .dashboard-tabs [role='tab'][data-state='active'] {
-  color: #6eb5ff;
-  border-bottom-color: #0962d7;
-  background: transparent;
 }
 
 html[data-theme='dark'] .agrupamentos-page {
