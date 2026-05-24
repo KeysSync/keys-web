@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { loginAction, type LoginActionState } from "@/lib/auth/actions";
+import { Checkbox } from "@/app/components/Checkbox/Checkbox";
 import "./style.css";
 
 function EyeIcon({ open }: { open: boolean }) {
@@ -106,10 +107,12 @@ export function LoginForm() {
       </div>
 
       <div className="login-options-row">
-        <label className="login-remember-me" htmlFor="remember-me">
-          <input type="checkbox" id="remember-me" name="remember-me" />
-          <span className="login-remember-me__label">Permanecer logado</span>
-        </label>
+        <Checkbox
+          id="remember-me"
+          name="remember-me"
+          label="Permanecer logado"
+          className="login-remember-me"
+        />
         <a className="login-forgot-password" href="#">
           Esqueceu sua senha?
         </a>

@@ -1,7 +1,5 @@
-export default function Configuracoes() {
-    return (
-        <div>
-            <h1>Configuracoes</h1>
-        </div>
-    );
+import { redirect } from "next/navigation";
+
+export default function ConfiguracoesPage() {
+  redirect("/configuracoes/membros");
 }

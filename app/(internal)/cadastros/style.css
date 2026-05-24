@@ -172,8 +172,28 @@
   color: var(--cad-text);
 }
 
+.cadastros-list-table tbody tr:nth-child(odd) {
+  background: var(--cad-stripe-light, #ffffff);
+}
+
+.cadastros-list-table tbody tr:nth-child(even) {
+  background: var(--cad-stripe-dark, #eef2f6);
+}
+
 .cadastros-list-table tbody tr:hover {
   background: rgba(9, 98, 215, 0.06);
+}
+
+.cadastros-list-table tbody tr.cadastros-list-row--selectable {
+  cursor: pointer;
+}
+
+.cadastros-list-table tbody tr.cadastros-list-row--selected {
+  background: rgba(9, 98, 215, 0.12) !important;
+}
+
+.cadastros-list-table tbody tr.cadastros-list-row--selected:hover {
+  background: rgba(9, 98, 215, 0.16) !important;
 }
 
 .cadastros-list-table tbody tr:last-child td {
@@ -455,6 +475,14 @@
   color: var(--cad-text-muted);
 }
 
+.cadastros-list-table--cargos .cadastros-list-col--nome {
+  width: 70%;
+}
+
+.cadastros-list-table--cargos .cadastros-list-col--membros {
+  width: 8rem;
+}
+
 .cadastros-loading {
   display: flex;
   flex: 1;
@@ -481,6 +509,8 @@ html[data-theme='dark'] .cadastros-list {
   --cad-border: rgba(242, 246, 250, 0.1);
   --cad-surface: #1c1c26;
   --cad-surface-muted: #0d0d12;
+  --cad-stripe-light: #1c1c26;
+  --cad-stripe-dark: #14141c;
   --cad-text: #f2f6fa;
   --cad-text-muted: rgba(242, 246, 250, 0.55);
   --cad-text-faint: rgba(242, 246, 250, 0.45);
@@ -495,6 +525,14 @@ html[data-theme='dark'] .cadastros-list-panel {
 
 html[data-theme='dark'] .cadastros-list-table tbody tr:hover {
   background: rgba(9, 98, 215, 0.14);
+}
+
+html[data-theme='dark'] .cadastros-list-table tbody tr.cadastros-list-row--selected {
+  background: rgba(61, 142, 240, 0.18) !important;
+}
+
+html[data-theme='dark'] .cadastros-list-table tbody tr.cadastros-list-row--selected:hover {
+  background: rgba(61, 142, 240, 0.24) !important;
 }
 
 html[data-theme='dark'] .cadastros-list-code {

@@ -1,0 +1,1 @@
+export { MembrosDataTable } from "./MembrosDataTable";

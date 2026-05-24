@@ -1,97 +1,16 @@
-import Link from "next/link";
+import { displayName, getCurrentUser } from "@/lib/auth/session";
 import {
   ArrowRight,
-  BadgePercent,
-  Building2,
   CalendarClock,
-  CircleDollarSign,
-  CopyPlus,
   FileSpreadsheet,
-  Flag,
-  HandCoins,
-  House,
   Logs,
   ShieldCheck,
   Sparkles,
-  TrendingUp,
-  Users,
+  Users
 } from "lucide-react";
-import { displayName, getCurrentUser } from "@/lib/auth/session";
+import Link from "next/link";
 import "./style.css";
 
-const quickMetrics = [
-  {
-    id: "contratos-ativos",
-    label: "Contratos ativos",
-    value: "1.284",
-    delta: "+4,2%",
-    icon: FileSpreadsheet,
-    tone: "info" as const,
-  },
-  {
-    id: "recebido-mes",
-    label: "Recebido este mês",
-    value: "R$ 2,84 mi",
-    delta: "+12,7%",
-    icon: HandCoins,
-    tone: "success" as const,
-  },
-  {
-    id: "inadimplencia",
-    label: "Inadimplência",
-    value: "3,1%",
-    delta: "-0,6 pp",
-    icon: TrendingUp,
-    tone: "warning" as const,
-  },
-  {
-    id: "imoveis",
-    label: "Imóveis sob gestão",
-    value: "2.412",
-    delta: "+38",
-    icon: Building2,
-    tone: "purple" as const,
-  },
-];
-
-const shortcuts = [
-  {
-    href: "/dashboards",
-    title: "Dashboards",
-    description: "Acompanhe indicadores em tempo real",
-    icon: House,
-  },
-  {
-    href: "/contratos/criar",
-    title: "Novo contrato",
-    description: "Crie um contrato em minutos",
-    icon: FileSpreadsheet,
-  },
-  {
-    href: "/lancamentos",
-    title: "Lançamentos",
-    description: "Receba, gere boletos e concilie",
-    icon: BadgePercent,
-  },
-  {
-    href: "/financeiro",
-    title: "Financeiro",
-    description: "Repasses, comissões e acertos",
-    icon: CircleDollarSign,
-  },
-  {
-    href: "/cadastros",
-    title: "Cadastros",
-    description: "Imóveis, locatários e proprietários",
-    icon: CopyPlus,
-  },
-  {
-    href: "/relatorios",
-    title: "Relatórios",
-    description: "Exporte e analise sua carteira",
-    icon: Flag,
-  },
-];
 
 const agenda = [
   {
@@ -181,59 +100,6 @@ export default async function HomePage() {
         </div>
       </header>
 
-      <section className="home-section">
-        <div className="home-metrics">
-          {quickMetrics.map((m) => {
-            const Icon = m.icon;
-            return (
-              <article
-                key={m.id}
-                className={`home-metric home-metric--${m.tone}`}
-              >
-                <div className="home-metric__icon">
-                  <Icon size={18} aria-hidden />
-                </div>
-                <div className="home-metric__body">
-                  <span className="home-metric__label">{m.label}</span>
-                  <strong className="home-metric__value">{m.value}</strong>
-                  <span className="home-metric__delta">{m.delta}</span>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="home-section">
-        <header className="home-section__head">
-          <h2 className="home-section__title">Atalhos rápidos</h2>
-          <p className="home-section__hint">
-            Comece pelo que você usa todo dia.
-          </p>
-        </header>
-
-        <div className="home-shortcuts">
-          {shortcuts.map((s) => {
-            const Icon = s.icon;
-            return (
-              <Link key={s.href} href={s.href} className="home-shortcut">
-                <span className="home-shortcut__icon">
-                  <Icon size={20} aria-hidden />
-                </span>
-                <span className="home-shortcut__body">
-                  <strong>{s.title}</strong>
-                  <span>{s.description}</span>
-                </span>
-                <ArrowRight
-                  size={16}
-                  aria-hidden
-                  className="home-shortcut__arrow"
-                />
-              </Link>
-            );
-          })}
-        </div>
-      </section>
 
       <section className="home-grid">
         <article className="home-card">
@@ -264,7 +130,7 @@ export default async function HomePage() {
 
         <article className="home-card">
           <header className="home-card__head">
-            <h2 className="home-card__title">Atividade recente</h2>
+            <h2 className="home-card__title">Histórico de atividades</h2>
             <Link href="/logs" className="home-card__link">
               ver tudo <Logs size={14} aria-hidden />
             </Link>
@@ -274,7 +140,7 @@ export default async function HomePage() {
               <li key={a.id} className="home-activity__item">
                 <span className="home-activity__dot" />
                 <div className="home-activity__text">
-                  <span>{a.text}</span>
+                  <span>Você acessou {a.text}</span>
                   <small>{a.when}</small>
                 </div>
               </li>

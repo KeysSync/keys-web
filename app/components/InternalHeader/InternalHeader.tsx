@@ -3,21 +3,55 @@
 import {
   Bell,
   Command,
-  HelpCircle,
   Search
 } from "lucide-react";
-import { useMemo } from "react";
+import { TenantSelector } from "@/app/components/TenantSelector/TenantSelector";
+import { mockTenants, type Tenant } from "@/lib/mocks/tenants";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./style.css";
+
+type NotificationItem = {
+  id: string;
+  title: string;
+  message: string;
+  time: string;
+  read: boolean;
+};
+
+const MOCK_NOTIFICATIONS: NotificationItem[] = [
+  {
+    id: "1",
+    title: "Contrato atualizado",
+    message: "O contrato #1042 teve o status alterado para ativo.",
+    time: "Há 2 horas",
+    read: false,
+  },
+  {
+    id: "2",
+    title: "Pagamento confirmado",
+    message: "Recebimento de aluguel registrado para a unidade 302.",
+    time: "Ontem",
+    read: false,
+  },
+  {
+    id: "3",
+    title: "Lembrete de vencimento",
+    message: "3 boletos vencem nos próximos 5 dias.",
+    time: "Há 3 dias",
+    read: true,
+  },
+];
 
 export type InternalHeaderProps = {
   userName?: string;
   searchPlaceholder?: string;
-  helpLabel?: string;
   settingsHref?: string;
+  notifications?: NotificationItem[];
+  tenants?: Tenant[];
   showNotificationDot?: boolean;
   onSearch?: (value: string) => void;
-  onHelpClick?: () => void;
   onNotificationsClick?: () => void;
+  onTenantChange?: (tenant: Tenant) => void;
 };
 
 const formatCurrentDate = () => {
@@ -32,14 +66,51 @@ const formatCurrentDate = () => {
 const InternalHeader = ({
   userName = "Usuario",
   searchPlaceholder = "Buscar algo",
-  helpLabel = "Ajuda",
   settingsHref = "/configuracoes",
-  showNotificationDot = true,
+  notifications = MOCK_NOTIFICATIONS,
+  tenants = mockTenants,
+  showNotificationDot,
   onSearch,
-  onHelpClick,
   onNotificationsClick,
+  onTenantChange,
 }: InternalHeaderProps) => {
   const formattedDate = useMemo(() => formatCurrentDate(), []);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const notificationsRef = useRef<HTMLDivElement>(null);
+  const hasUnread = notifications.some((item) => !item.read);
+  const unreadCount = notifications.filter((item) => !item.read).length;
+  const showBadge = showNotificationDot ?? unreadCount > 0;
+  const badgeLabel =
+    unreadCount > 99 ? "99+" : unreadCount > 0 ? String(unreadCount) : "";
+
+  useEffect(() => {
+    if (!notificationsOpen) return;
+
+    const onPointerDown = (event: MouseEvent) => {
+      if (!notificationsRef.current?.contains(event.target as Node)) {
+        setNotificationsOpen(false);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setNotificationsOpen(false);
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [notificationsOpen]);
+
+  const toggleNotifications = () => {
+    setNotificationsOpen((prev) => {
+      const next = !prev;
+      if (next) onNotificationsClick?.();
+      return next;
+    });
+  };
 
   return (
     <header className="internal-header">
@@ -68,34 +139,66 @@ const InternalHeader = ({
       </div>
 
       <div className="internal-header__actions">
-        {/* <Link
-          href={settingsHref}
-          className="internal-header__icon-button"
-          aria-label="Configurações"
-        >
-          <Settings size={20} strokeWidth={1.85} />
-        </Link> */}
+        <TenantSelector tenants={tenants} onTenantChange={onTenantChange} />
 
-        <button
-          type="button"
-          className="internal-header__icon-button internal-header__icon-button--notifications"
-          aria-label="Notificações"
-          onClick={onNotificationsClick}
+        <div
+          ref={notificationsRef}
+          className={`internal-header__notifications${notificationsOpen ? " internal-header__notifications--open" : ""}`}
         >
-          <Bell size={20} strokeWidth={1.85} />
-          {showNotificationDot ? (
-            <span className="internal-header__notification-dot" aria-hidden />
+          <button
+            type="button"
+            className="internal-header__icon-button internal-header__icon-button--notifications"
+            aria-label={
+              unreadCount > 0
+                ? `Notificações, ${unreadCount} não lidas`
+                : "Notificações"
+            }
+            aria-haspopup="true"
+            aria-expanded={notificationsOpen}
+            onClick={toggleNotifications}
+          >
+            <Bell size={20} strokeWidth={1.85} />
+            {showBadge && badgeLabel ? (
+              <span className="internal-header__notification-badge" aria-hidden>
+                {badgeLabel}
+              </span>
+            ) : null}
+          </button>
+
+          {notificationsOpen ? (
+            <div className="internal-header__notifications-panel" role="region" aria-label="Notificações">
+              <div className="internal-header__notifications-header">
+                <h2>Notificações</h2>
+                {hasUnread ? (
+                  <span className="internal-header__notifications-badge">
+                    {notifications.filter((item) => !item.read).length} novas
+                  </span>
+                ) : null}
+              </div>
+
+              <ul className="internal-header__notifications-list">
+                {notifications.map((item) => (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      className={`internal-header__notification-item${item.read ? "" : " internal-header__notification-item--unread"}`}
+                    >
+                      <span className="internal-header__notification-item-title">
+                        {item.title}
+                      </span>
+                      <span className="internal-header__notification-item-message">
+                        {item.message}
+                      </span>
+                      <span className="internal-header__notification-item-time">
+                        {item.time}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : null}
-        </button>
-
-        <button
-          type="button"
-          className="internal-header__help-button"
-          onClick={onHelpClick}
-        >
-          <HelpCircle size={18} strokeWidth={2} />
-          {/* <span>{helpLabel}</span> */}
-        </button>
+        </div>
       </div>
     </header>
   );

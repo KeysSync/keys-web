@@ -1,0 +1,82 @@
+.data-table-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.data-table-pagination__summary {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--cad-text-muted, rgba(8, 8, 12, 0.55));
+}
+
+.data-table-pagination__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.data-table-pagination__control,
+.data-table-pagination__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--cad-border, rgba(8, 8, 12, 0.12));
+  border-radius: 0.5rem;
+  background: var(--cad-surface, #ffffff);
+  color: var(--cad-text, #08080c);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.data-table-pagination__control:hover:not(:disabled),
+.data-table-pagination__page:hover {
+  background: var(--cad-surface-muted, #eef2f6);
+  border-color: rgba(9, 98, 215, 0.25);
+}
+
+.data-table-pagination__control:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.data-table-pagination__page--active {
+  background: rgba(9, 98, 215, 0.12);
+  border-color: rgba(9, 98, 215, 0.35);
+  color: #0962d7;
+}
+
+html[data-theme="dark"] .data-table-pagination__control,
+html[data-theme="dark"] .data-table-pagination__page {
+  background: #14141c;
+  border-color: rgba(242, 246, 250, 0.12);
+  color: #f2f6fa;
+}
+
+html[data-theme="dark"] .data-table-pagination__control:hover:not(:disabled),
+html[data-theme="dark"] .data-table-pagination__page:hover {
+  background: #1c1c26;
+  border-color: rgba(61, 142, 240, 0.35);
+}
+
+html[data-theme="dark"] .data-table-pagination__page--active {
+  background: rgba(61, 142, 240, 0.18);
+  border-color: rgba(61, 142, 240, 0.35);
+  color: #3d8ef0;
+}
+
+html[data-theme="dark"] .data-table-pagination__summary {
+  color: rgba(242, 246, 250, 0.55);
+}

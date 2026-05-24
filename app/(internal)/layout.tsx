@@ -9,11 +9,10 @@ import {
   FileSpreadsheetIcon,
   FlagIcon,
   HouseIcon,
-  LogsIcon,
-  SettingsIcon,
+  LogsIcon
 } from "lucide-react";
 import Link from "next/link";
-import SidebarLogout from "./SidebarLogout";
+import SidebarUserMenu from "./SidebarUserMenu";
 import "./style.css";
 
 const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
@@ -58,14 +57,6 @@ const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
     },
   ];
 
-  const bottomActions = [
-    {
-      icon: <SettingsIcon />,
-      label: "Configurações",
-      href: "/configuracoes",
-    },
-  ];
-
   return (
     <div className="internal-layout">
       <div className="col-actions">
@@ -79,8 +70,7 @@ const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
           <SidebarActions actions={actions} />
         </div>
         <div className="col-bottom">
-          <SidebarActions actions={bottomActions} />
-          <SidebarLogout />
+          <SidebarUserMenu />
         </div>
       </div>
       <div className="system">

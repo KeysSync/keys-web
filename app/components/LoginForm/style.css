@@ -101,68 +101,9 @@ html[data-theme='dark'] .login-error {
 .login-remember-me {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  cursor: pointer;
-  user-select: none;
 }
 
-.login-remember-me input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0;
-  flex-shrink: 0;
-  border: 1px solid var(--lp-border);
-  border-radius: 6px;
-  background: var(--lp-bg);
-  cursor: pointer;
-  display: grid;
-  place-content: center;
-  transition:
-    border-color 0.15s ease,
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.login-remember-me input[type="checkbox"]::before {
-  content: "";
-  width: 0.5rem;
-  height: 0.28rem;
-  border-left: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  transform: rotate(-45deg) scale(0);
-  transition: transform 0.15s ease;
-  margin-top: -1px;
-}
-
-.login-remember-me input[type="checkbox"]:hover {
-  border-color: var(--lp-border-strong);
-}
-
-.login-remember-me input[type="checkbox"]:checked {
-  background: var(--lp-primary);
-  border-color: var(--lp-primary);
-}
-
-.login-remember-me input[type="checkbox"]:checked::before {
-  transform: rotate(-45deg) scale(1);
-}
-
-.login-remember-me input[type="checkbox"]:focus-visible {
-  outline: none;
-  border-color: var(--lp-primary);
-  box-shadow: 0 0 0 3px var(--lp-primary-soft);
-}
-
-.login-remember-me__label {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--lp-text-muted);
-  line-height: 1.2;
-}
-
-.login-remember-me:hover .login-remember-me__label {
+.login-remember-me:hover .keys-checkbox__label {
   color: var(--lp-text);
 }
 
