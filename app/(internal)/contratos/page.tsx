@@ -18,10 +18,11 @@ import {
   Search,
   TrendingUp,
   XCircle,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
-import "./style.css";
+} from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
+import './style.css';
 
 const statusLabel: Record<ContratoStatus, string> = {
   ativo: "Ativo",
@@ -88,17 +89,14 @@ export default function ContratosPage() {
             <Download size={18} />
             Exportar
           </button>
-          <button
-            type="button"
+          <Link
+            href="/contratos/criar"
             className="contratos-btn-primary"
-            onClick={() => {
-              markContratoCriarEntry();
-              router.push("/contratos/criar");
-            }}
+            onClick={() => markContratoCriarEntry()}
           >
             <Plus size={18} />
             Novo contrato
-          </button>
+          </Link>
         </div>
       </header>
 
