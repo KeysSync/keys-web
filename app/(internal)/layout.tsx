@@ -66,7 +66,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="internal-layout">
       <div className="col-actions">
         <div className="col-top">
-          <Link href="/">
+          <Link href="/home">
             <div className="box" />
           </Link>
           <ThemeToggle variant="sidebar" />

@@ -66,7 +66,7 @@ export function LoginForm() {
     event.preventDefault();
     setError(null);
     setLoading(true);
-    router.push("/");
+    router.push("/home");
   }
 
   return (
