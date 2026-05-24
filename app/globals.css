@@ -82,3 +82,216 @@ html[data-theme='dark'] [role='tab'] {
 html[data-theme='dark'] [role='tab']:not([data-state='active']) {
   border-bottom: none !important;
 }
+
+/* Date inputs — formato brasileiro (dd/mm/aaaa, mm/aaaa) */
+.date-input-br {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(8, 8, 12, 0.14);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  transition: border-color 0.15s ease;
+}
+
+.date-input-br:focus-within {
+  border-color: #0962d7;
+}
+
+.date-input-br__field {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 0.35rem 0 0.75rem;
+  border: none;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  color: #08080c;
+}
+
+.date-input-br__trigger {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-left: 1px solid rgba(8, 8, 12, 0.1);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: transparent;
+  color: rgba(8, 8, 12, 0.45);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.date-input-br__trigger:hover:not(:disabled) {
+  background: rgba(9, 98, 215, 0.08);
+  color: #0962d7;
+}
+
+.date-input-br__trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.date-input-br__picker {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.date-input-br__field::placeholder {
+  color: rgba(8, 8, 12, 0.4);
+}
+
+.date-input-br__field:focus {
+  outline: none;
+}
+
+.date-input-br--disabled,
+.date-input-br:has(.date-input-br__field:disabled) {
+  background: #eef2f6;
+  border-color: rgba(8, 8, 12, 0.14);
+}
+
+.date-input-br--disabled .date-input-br__field,
+.date-input-br__field:disabled {
+  color: rgba(8, 8, 12, 0.55);
+  cursor: not-allowed;
+}
+
+html[data-theme='dark'] .date-input-br {
+  border-color: rgba(242, 246, 250, 0.14);
+  background: #14141c;
+}
+
+html[data-theme='dark'] .date-input-br:focus-within {
+  border-color: #0962d7;
+}
+
+html[data-theme='dark'] .date-input-br__trigger {
+  border-left-color: rgba(242, 246, 250, 0.1);
+  color: rgba(242, 246, 250, 0.45);
+}
+
+html[data-theme='dark'] .date-input-br__trigger:hover:not(:disabled) {
+  background: rgba(9, 98, 215, 0.2);
+  color: #6eb3ff;
+}
+
+html[data-theme='dark'] .date-input-br__field {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .date-input-br__field::placeholder {
+  color: rgba(242, 246, 250, 0.42);
+}
+
+html[data-theme='dark'] .date-input-br--disabled,
+html[data-theme='dark'] .date-input-br:has(.date-input-br__field:disabled) {
+  background: #1f1f2a;
+}
+
+/* Inputs com máscara (moeda, etc.) */
+.masked-input-br {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(8, 8, 12, 0.14);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  transition: border-color 0.15s ease;
+}
+
+.masked-input-br:focus-within {
+  border-color: #0962d7;
+}
+
+.masked-input-br__prefix {
+  flex-shrink: 0;
+  padding-left: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(8, 8, 12, 0.45);
+  user-select: none;
+}
+
+.masked-input-br__field {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 0.75rem 0 0.35rem;
+  border: none;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  color: #08080c;
+}
+
+.masked-input-br__field::placeholder {
+  color: rgba(8, 8, 12, 0.4);
+}
+
+.masked-input-br__field:focus {
+  outline: none;
+}
+
+.masked-input-br--disabled,
+.masked-input-br:has(.masked-input-br__field:disabled) {
+  background: #eef2f6;
+  border-color: rgba(8, 8, 12, 0.14);
+}
+
+.masked-input-br__field:disabled {
+  cursor: not-allowed;
+  color: rgba(8, 8, 12, 0.45);
+}
+
+html[data-theme='dark'] .masked-input-br {
+  border-color: rgba(242, 246, 250, 0.14);
+  background: #14141c;
+}
+
+html[data-theme='dark'] .masked-input-br:focus-within {
+  border-color: #3d8ef0;
+}
+
+html[data-theme='dark'] .masked-input-br__prefix {
+  color: rgba(242, 246, 250, 0.45);
+}
+
+html[data-theme='dark'] .masked-input-br__field {
+  color: #f2f6fa;
+}
+
+html[data-theme='dark'] .masked-input-br__field::placeholder {
+  color: rgba(242, 246, 250, 0.42);
+}
+
+html[data-theme='dark'] .masked-input-br--disabled,
+html[data-theme='dark'] .masked-input-br:has(.masked-input-br__field:disabled) {
+  background: #1f1f2a;
+}

@@ -20,6 +20,7 @@ import {
   XCircle,
 } from 'lucide-react'
 import { markContratoCriarEntry } from '@/lib/contratos/wizard/draft'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import './style.css'
@@ -106,17 +107,14 @@ export default function ContratosPage() {
             <Download size={18} />
             Exportar
           </button>
-          <button
-            type="button"
+          <Link
+            href="/contratos/criar"
             className="contratos-btn-primary"
-            onClick={() => {
-              markContratoCriarEntry()
-              router.push('/contratos/criar')
-            }}
+            onClick={() => markContratoCriarEntry()}
           >
             <Plus size={18} />
             Novo contrato
-          </button>
+          </Link>
         </div>
       </header>
 

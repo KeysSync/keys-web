@@ -10,7 +10,7 @@ export const CONTRATO_WIZARD_STEPS: {
   { id: 'geral', label: 'Geral' },
   { id: 'locatarios', label: 'Locatários' },
   { id: 'garantia', label: 'Garantia' },
-  { id: 'seguro', label: 'Seguro incêndio' },
+  { id: 'seguro', label: 'Seguros' },
   { id: 'lancamentos', label: 'Lançamentos' },
   { id: 'cobranca', label: 'Cobrança' },
   { id: 'redacao', label: 'Redação' },

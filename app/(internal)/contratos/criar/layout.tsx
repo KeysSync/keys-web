@@ -1,14 +1,26 @@
-import CriarContratoShell from './components/CriarContratoShell'
+import { hasContratoCriarEntryServer } from '@/lib/contratos/wizard/entry-server'
+import type { Metadata } from 'next'
+import { redirect } from 'next/navigation'
+import ContratoCriarAuth from './components/ContratoCriarAuth'
 import './style.css'
 
-export default function ContratoCriarLayout({
+export const metadata: Metadata = {
+  title: 'Novo contrato',
+  description: 'Assistente de cadastro de contrato de locação',
+}
+
+export default async function ContratoCriarLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  if (!(await hasContratoCriarEntryServer())) {
+    redirect('/contratos')
+  }
+
   return (
     <div className="contratos-criar-layout">
-      <CriarContratoShell>{children}</CriarContratoShell>
+      <ContratoCriarAuth>{children}</ContratoCriarAuth>
     </div>
   )
 }
