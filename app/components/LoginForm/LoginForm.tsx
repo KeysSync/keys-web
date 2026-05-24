@@ -1,7 +1,5 @@
 "use client";
 
-import { setSession } from "@/lib/auth/session";
-import { findMockUser } from "@/lib/mocks/users";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import "./style.css";
@@ -68,25 +66,6 @@ export function LoginForm() {
     event.preventDefault();
     setError(null);
     setLoading(true);
-
-    const formData = new FormData(event.currentTarget);
-    const email = String(formData.get("email") ?? "").trim();
-    const password = String(formData.get("password") ?? "");
-
-    if (!email || !password) {
-      setError("Preencha e-mail e senha.");
-      setLoading(false);
-      return;
-    }
-
-    const user = findMockUser(email, password);
-    if (!user) {
-      setError("E-mail ou senha inválidos.");
-      setLoading(false);
-      return;
-    }
-
-    setSession({ id: user.id, nome: user.nome, email: user.email });
     router.push("/");
   }
 

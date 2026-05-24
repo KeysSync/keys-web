@@ -1,30 +1,7 @@
-"use client";
-
-import { getSession } from "@/lib/auth/session";
-import { useRouter } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { CadastrosTabs } from "./CadastrosTabs";
 
 export default function CadastrosShell({ children }: { children: ReactNode }) {
-  const router = useRouter();
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    if (!getSession()) {
-      router.replace("/login");
-      return;
-    }
-    setReady(true);
-  }, [router]);
-
-  if (!ready) {
-    return (
-      <div className="cadastros-loading">
-        <p>Carregando…</p>
-      </div>
-    );
-  }
-
   return (
     <div className="cadastros-page">
       <header className="cadastros-header">

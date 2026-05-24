@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { getSession } from '@/lib/auth/session'
+import { markContratoCriarEntry } from "@/lib/contratos/wizard/draft";
 import {
   mockContratos,
   type Contrato,
   type ContratoStatus,
-} from '@/lib/mocks/contratos'
+} from "@/lib/mocks/contratos";
 import {
   ArrowDownUp,
   Building2,
@@ -18,53 +18,51 @@ import {
   Search,
   TrendingUp,
   XCircle,
-} from 'lucide-react'
-import { markContratoCriarEntry } from '@/lib/contratos/wizard/draft'
-import { useRouter } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
-import './style.css'
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
+import "./style.css";
 
 const statusLabel: Record<ContratoStatus, string> = {
-  ativo: 'Ativo',
-  rescindido: 'Rescindido',
-  pendente: 'Pendente',
-}
+  ativo: "Ativo",
+  rescindido: "Rescindido",
+  pendente: "Pendente",
+};
 
-type StatusFilter = 'todos' | ContratoStatus
+type StatusFilter = "todos" | ContratoStatus;
 
 function formatCurrency(value: number) {
-  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 function formatDate(iso: string) {
-  return new Date(iso + 'T12:00:00').toLocaleDateString('pt-BR')
+  return new Date(iso + "T12:00:00").toLocaleDateString("pt-BR");
 }
 
 export default function ContratosPage() {
-  const router = useRouter()
-  const [ready, setReady] = useState(false)
-  const [search, setSearch] = useState('')
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('todos')
+  const router = useRouter();
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("todos");
 
   const stats = useMemo(() => {
-    const ativos = mockContratos.filter((c) => c.status === 'ativo')
-    const receitaAtiva = ativos.reduce((sum, c) => sum + c.valorMensal, 0)
+    const ativos = mockContratos.filter((c) => c.status === "ativo");
+    const receitaAtiva = ativos.reduce((sum, c) => sum + c.valorMensal, 0);
 
     return {
       total: mockContratos.length,
       ativo: ativos.length,
-      pendente: mockContratos.filter((c) => c.status === 'pendente').length,
-      rescindido: mockContratos.filter((c) => c.status === 'rescindido').length,
+      pendente: mockContratos.filter((c) => c.status === "pendente").length,
+      rescindido: mockContratos.filter((c) => c.status === "rescindido").length,
       receitaAtiva,
-    }
-  }, [])
+    };
+  }, []);
 
   const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase()
+    const q = search.trim().toLowerCase();
 
     return mockContratos.filter((c) => {
-      if (statusFilter !== 'todos' && c.status !== statusFilter) return false
-      if (!q) return true
+      if (statusFilter !== "todos" && c.status !== statusFilter) return false;
+      if (!q) return true;
 
       return (
         c.codigo.toLowerCase().includes(q) ||
@@ -72,25 +70,9 @@ export default function ContratosPage() {
         c.imovelBairro.toLowerCase().includes(q) ||
         c.inquilino.toLowerCase().includes(q) ||
         c.proprietario.toLowerCase().includes(q)
-      )
-    })
-  }, [search, statusFilter])
-
-  useEffect(() => {
-    if (!getSession()) {
-      router.replace('/login')
-      return
-    }
-    setReady(true)
-  }, [router])
-
-  if (!ready) {
-    return (
-      <div className="contratos-loading">
-        <p>Carregando…</p>
-      </div>
-    )
-  }
+      );
+    });
+  }, [search, statusFilter]);
 
   return (
     <div className="contratos-page">
@@ -110,8 +92,8 @@ export default function ContratosPage() {
             type="button"
             className="contratos-btn-primary"
             onClick={() => {
-              markContratoCriarEntry()
-              router.push('/contratos/criar')
+              markContratoCriarEntry();
+              router.push("/contratos/criar");
             }}
           >
             <Plus size={18} />
@@ -176,10 +158,10 @@ export default function ContratosPage() {
           <div className="contratos-tabs" role="tablist" aria-label="Status">
             {(
               [
-                ['todos', 'Todos'],
-                ['ativo', 'Ativos'],
-                ['pendente', 'Pendentes'],
-                ['rescindido', 'Rescindidos'],
+                ["todos", "Todos"],
+                ["ativo", "Ativos"],
+                ["pendente", "Pendentes"],
+                ["rescindido", "Rescindidos"],
               ] as const
             ).map(([key, label]) => (
               <button
@@ -187,7 +169,7 @@ export default function ContratosPage() {
                 type="button"
                 role="tab"
                 aria-selected={statusFilter === key}
-                className={`contratos-tab${statusFilter === key ? ' contratos-tab--active' : ''}`}
+                className={`contratos-tab${statusFilter === key ? " contratos-tab--active" : ""}`}
                 onClick={() => setStatusFilter(key)}
               >
                 {label}
@@ -285,7 +267,7 @@ export default function ContratosPage() {
                         <span>{formatDate(contrato.inicio)}</span>
                         <span className="contratos-vigencia-sep">até</span>
                         <span>
-                          {contrato.fim ? formatDate(contrato.fim) : '—'}
+                          {contrato.fim ? formatDate(contrato.fim) : "—"}
                         </span>
                       </div>
                     </td>
@@ -313,5 +295,5 @@ export default function ContratosPage() {
         </footer>
       </section>
     </div>
-  )
+  );
 }

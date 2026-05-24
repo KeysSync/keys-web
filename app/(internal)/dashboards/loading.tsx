@@ -1,5 +1,5 @@
 import PageSpinner from "@/app/components/PageSpinner/PageSpinner";
 
-export default function DashboardsLoading() {
+export default function DashboardLoading() {
   return <PageSpinner />;
-}
+} 
