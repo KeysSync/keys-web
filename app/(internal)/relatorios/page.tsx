@@ -1,7 +1,5 @@
-export default function Relatorios() {
-    return (
-        <div>
-            <h1>Relatorios</h1>
-        </div>
-    );
+import { redirect } from "next/navigation";
+
+export default function RelatoriosPage() {
+  redirect("/relatorios/financeiro");
 }

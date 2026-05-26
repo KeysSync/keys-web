@@ -3,13 +3,14 @@ import SidebarActions from "@/app/components/SidebarActions";
 import { ThemeToggle } from "@/app/components/ThemeToggle/ThemeToggle";
 import { displayName, getCurrentUser } from "@/lib/auth/session";
 import {
-  BadgePercentIcon,
+  Building2Icon,
   CircleDollarSignIcon,
-  CopyPlusIcon,
   FileSpreadsheetIcon,
-  FlagIcon,
-  HouseIcon,
-  LogsIcon
+  LayoutDashboardIcon,
+  LogsIcon,
+  ScrollTextIcon,
+  Settings2Icon,
+  UsersRoundIcon,
 } from "lucide-react";
 import Link from "next/link";
 import SidebarUserMenu from "./SidebarUserMenu";
@@ -21,19 +22,19 @@ const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
 
   const actions = [
     {
-      icon: <HouseIcon />,
+      icon: <LayoutDashboardIcon />,
       label: "Dashboard",
       href: "/dashboards",
     },
     {
-      icon: <FileSpreadsheetIcon />,
-      label: "Contratos",
-      href: "/contratos",
+      icon: <Building2Icon />,
+      label: "Imóveis",
+      href: "/imoveis",
     },
     {
-      icon: <BadgePercentIcon />,
-      label: "Lançamentos",
-      href: "/lancamentos",
+      icon: <ScrollTextIcon />,
+      label: "Locação",
+      href: "/locacao",
     },
     {
       icon: <CircleDollarSignIcon />,
@@ -41,14 +42,19 @@ const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
       href: "/financeiro",
     },
     {
-      icon: <FlagIcon />,
+      icon: <UsersRoundIcon />,
+      label: "CRM",
+      href: "/crm",
+    },
+    {
+      icon: <FileSpreadsheetIcon />,
       label: "Relatórios",
       href: "/relatorios",
     },
     {
-      icon: <CopyPlusIcon />,
-      label: "Cadastros",
-      href: "/cadastros",
+      icon: <Settings2Icon />,
+      label: "Configurações",
+      href: "/configuracoes",
     },
     {
       icon: <LogsIcon />,

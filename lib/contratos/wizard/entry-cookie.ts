@@ -1,6 +1,6 @@
 import { CONTRATO_CRIAR_ENTRY_KEY } from './constants'
 
-/** Cookie lido no layout server de /contratos/criar (fluxo vindo da lista). */
+/** Cookie lido no layout server de /locacao/contratos/criar (fluxo vindo da lista). */
 export const CONTRATO_CRIAR_ENTRY_COOKIE = CONTRATO_CRIAR_ENTRY_KEY
 
 const ENTRY_COOKIE_MAX_AGE_SEC = 60 * 60 * 8

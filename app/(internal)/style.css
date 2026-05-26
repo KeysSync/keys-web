@@ -365,7 +365,7 @@
     overflow: hidden;
   }
 
-  .internal-box__content:has(.contratos-criar-layout) > .contratos-layout {
+  .internal-box__content:has(.contratos-criar-layout) > .locacao-layout {
     flex: 1;
     min-height: 0;
     height: 100%;

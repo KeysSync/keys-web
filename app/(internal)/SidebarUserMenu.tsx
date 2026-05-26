@@ -1,7 +1,7 @@
 "use client";
 
 import { logoutAction } from "@/lib/auth/actions";
-import { LogOut, Settings } from "lucide-react";
+import { LogOut, Smile } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -49,13 +49,13 @@ export default function SidebarUserMenu() {
       {open ? (
         <div className="sidebar-user-menu__dropdown" role="menu">
           <Link
-            href="/configuracoes"
+            href="/perfil"
             className="sidebar-user-menu__item"
             role="menuitem"
             onClick={() => setOpen(false)}
           >
-            <Settings size={16} aria-hidden />
-            <span>Configurações</span>
+            <Smile size={16} aria-hidden />
+            <span>Meu Perfil</span>
           </Link>
 
           <form action={logoutAction} className="sidebar-user-menu__form">

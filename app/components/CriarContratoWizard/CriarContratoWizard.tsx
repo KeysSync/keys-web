@@ -50,12 +50,12 @@ export function CriarContratoWizard() {
 
   function handleCancel() {
     clearContratoCriarEntry()
-    router.push('/contratos')
+    router.push('/locacao/contratos')
   }
 
   function handleFinish() {
     clearContratoCriarEntry()
-    router.push('/contratos')
+    router.push('/locacao/contratos')
   }
 
   const footerConfig = useMemo(() => {

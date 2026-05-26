@@ -94,7 +94,7 @@ export default async function HomePage() {
             Abrir dashboards
             <ArrowRight size={16} aria-hidden />
           </Link>
-          <Link className="home-btn home-btn--ghost" href="/contratos/criar">
+          <Link className="home-btn home-btn--ghost" href="/locacao/contratos/criar">
             Novo contrato
           </Link>
         </div>

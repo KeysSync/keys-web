@@ -1,7 +1,5 @@
-export default function Financeiro() {
-    return (
-        <div>
-            <h1>Financeiro</h1>
-        </div>
-    );
+import { redirect } from "next/navigation";
+
+export default function FinanceiroPage() {
+  redirect("/financeiro/lancamentos");
 }

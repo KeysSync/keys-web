@@ -1,0 +1,73 @@
+/* Layout compartilhado para os superapps com abas no topo */
+.imoveis-layout,
+.locacao-layout,
+.financeiro-layout,
+.crm-layout,
+.relatorios-layout {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.imoveis-shell,
+.locacao-shell,
+.financeiro-shell,
+.crm-shell,
+.relatorios-shell {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0.25rem 0 1rem;
+  color: #08080c;
+}
+
+.imoveis-shell__content,
+.locacao-shell__content,
+.financeiro-shell__content,
+.crm-shell__content,
+.relatorios-shell__content {
+  flex: 1;
+  min-height: 0;
+}
+
+.section-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-placeholder__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #08080c;
+}
+
+html[data-theme="dark"] .imoveis-shell,
+html[data-theme="dark"] .locacao-shell,
+html[data-theme="dark"] .financeiro-shell,
+html[data-theme="dark"] .crm-shell,
+html[data-theme="dark"] .relatorios-shell,
+html[data-theme="dark"] .section-placeholder__title {
+  color: #f2f6fa;
+}
+
+/* Wizard de criação de contrato ocupa tela inteira: esconde tabs e zera paddings */
+.locacao-layout:has(.contratos-criar-layout),
+.locacao-shell:has(.contratos-criar-layout),
+.locacao-shell__content:has(.contratos-criar-layout) {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.locacao-shell:has(.contratos-criar-layout) > .section-tabs {
+  display: none;
+}
