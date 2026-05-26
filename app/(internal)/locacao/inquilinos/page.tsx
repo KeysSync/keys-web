@@ -9,6 +9,7 @@ import {
   CadastrosListView,
   type CadastrosColumn,
 } from '@/app/components/CadastrosListView/CadastrosListView'
+import { useRouter } from 'next/navigation'
 
 const contratoStatusLabel: Record<InquilinoContratoStatus, string> = {
   ativo: 'Contrato ativo',
@@ -85,6 +86,8 @@ const columns: CadastrosColumn<Inquilino>[] = [
 ]
 
 export default function LocacaoInquilinosPage() {
+  const router = useRouter()
+
   return (
     <CadastrosListView
       entityName="inquilinos"
@@ -95,6 +98,7 @@ export default function LocacaoInquilinosPage() {
       filterRow={filterInquilino}
       getRowKey={(row) => row.id}
       tableLayout="pessoas"
+      onNewClick={() => router.push('/locacao/inquilinos/novo')}
     />
   )
 }

@@ -1,31 +1,29 @@
 'use client'
 
 import {
-  createBankAccount,
   createTelefone,
   defaultProprietarioFormData,
   hasFormErrors,
   validateProprietarioForm,
 } from '@/lib/proprietarios/form'
 import type {
-  ProprietarioBankAccount,
   ProprietarioFormData,
   ProprietarioFormErrors,
   ProprietarioTelefone,
 } from '@/lib/proprietarios/types'
 import {
-  PROPRIETARIO_STEP_HINTS,
-  PROPRIETARIO_WIZARD_DEFAULT_STEP,
-  PROPRIETARIO_WIZARD_STEPS,
-  firstStepWithErrors,
-  stepHasErrors,
-} from '@/lib/proprietarios/wizard/constants'
+  INQUILINO_STEP_HINTS,
+  INQUILINO_WIZARD_DEFAULT_STEP,
+  INQUILINO_WIZARD_STEPS,
+  firstInquilinoStepWithErrors,
+  inquilinoStepHasErrors,
+} from '@/lib/inquilinos/wizard/constants'
 import {
-  clearProprietarioWizardDraft,
-  getProprietarioWizardDraft,
-  saveProprietarioWizardDraft,
-} from '@/lib/proprietarios/wizard/draft'
-import type { ProprietarioWizardStepId } from '@/lib/proprietarios/wizard/types'
+  clearInquilinoWizardDraft,
+  getInquilinoWizardDraft,
+  saveInquilinoWizardDraft,
+} from '@/lib/inquilinos/wizard/draft'
+import type { InquilinoWizardStepId } from '@/lib/inquilinos/wizard/types'
 import { fetchAddressByCep } from '@/lib/utils/cep/fetch-viacep'
 import { onlyDigits } from '@/lib/utils/validation'
 import { ArrowLeft } from 'lucide-react'
@@ -34,55 +32,53 @@ import { useCallback, useMemo, useState } from 'react'
 
 import { WizardStepper } from '@/app/components/WizardStepper/WizardStepper'
 import { WizardStepFooter } from '@/app/components/WizardStepFooter/WizardStepFooter'
-import { StepBancario } from './StepBancario'
-import { StepContato } from './StepContato'
-import { StepEndereco } from './StepEndereco'
-import { StepIdentificacao } from './StepIdentificacao'
-import { StepPessoal } from './StepPessoal'
+import { StepIdentificacao } from '@/app/components/CriarProprietarioWizard/StepIdentificacao'
+import { StepPessoal } from '@/app/components/CriarProprietarioWizard/StepPessoal'
+import { StepContato } from '@/app/components/CriarProprietarioWizard/StepContato'
+import { StepEndereco } from '@/app/components/CriarProprietarioWizard/StepEndereco'
 
-export function CriarProprietarioWizard() {
+export function CriarInquilinoWizard() {
   const router = useRouter()
 
-  const [step, setStep] = useState<ProprietarioWizardStepId>(() => {
-    const draft = getProprietarioWizardDraft()
-    return draft.step ?? PROPRIETARIO_WIZARD_DEFAULT_STEP
+  const [step, setStep] = useState<InquilinoWizardStepId>(() => {
+    const draft = getInquilinoWizardDraft()
+    return draft.step ?? INQUILINO_WIZARD_DEFAULT_STEP
   })
 
   const [data, setData] = useState<ProprietarioFormData>(() => {
-    const draft = getProprietarioWizardDraft()
+    const draft = getInquilinoWizardDraft()
     return draft.data ?? defaultProprietarioFormData()
   })
 
   const [errors, setErrors] = useState<ProprietarioFormErrors>({})
-  const [warnedSteps, setWarnedSteps] = useState<Set<ProprietarioWizardStepId>>(
+  const [warnedSteps, setWarnedSteps] = useState<Set<InquilinoWizardStepId>>(
     new Set(),
   )
   const [submitting, setSubmitting] = useState(false)
   const [cepLoading, setCepLoading] = useState(false)
 
-  const stepIndex = PROPRIETARIO_WIZARD_STEPS.findIndex((s) => s.id === step)
+  const stepIndex = INQUILINO_WIZARD_STEPS.findIndex((s) => s.id === step)
 
   const stepsWithErrors = useMemo(() => {
-    const set = new Set<ProprietarioWizardStepId>()
-    for (const s of PROPRIETARIO_WIZARD_STEPS) {
-      if (stepHasErrors(s.id, errors)) set.add(s.id)
+    const set = new Set<InquilinoWizardStepId>()
+    for (const s of INQUILINO_WIZARD_STEPS) {
+      if (inquilinoStepHasErrors(s.id, errors)) set.add(s.id)
     }
     return set
   }, [errors])
 
   function goToStep(next: string) {
-    const id = next as ProprietarioWizardStepId
-    setStep(id)
-    saveProprietarioWizardDraft({ step: id })
+    setStep(next as InquilinoWizardStepId)
+    saveInquilinoWizardDraft({ step: next as InquilinoWizardStepId })
   }
 
   function handleCancel() {
-    clearProprietarioWizardDraft()
-    router.push('/imoveis/proprietarios')
+    clearInquilinoWizardDraft()
+    router.push('/locacao/inquilinos')
   }
 
   const clearCurrentStepWarning = useCallback(
-    (currentStep: ProprietarioWizardStepId) => {
+    (currentStep: InquilinoWizardStepId) => {
       setWarnedSteps((prev) => {
         if (!prev.has(currentStep)) return prev
         const next = new Set(prev)
@@ -96,14 +92,7 @@ export function CriarProprietarioWizard() {
   function patch(partial: Partial<ProprietarioFormData>) {
     setData((prev) => {
       const next = { ...prev, ...partial }
-      if (partial.name !== undefined) {
-        next.bank_account = next.bank_account.map((acc) =>
-          !acc.favored || acc.favored === prev.name
-            ? { ...acc, favored: partial.name ?? '' }
-            : acc,
-        )
-      }
-      saveProprietarioWizardDraft({ data: next })
+      saveInquilinoWizardDraft({ data: next })
       return next
     })
     setErrors({})
@@ -136,7 +125,7 @@ export function CriarProprietarioWizard() {
           t.id === id ? { ...t, ...partial } : t,
         ),
       }
-      saveProprietarioWizardDraft({ data: next })
+      saveInquilinoWizardDraft({ data: next })
       return next
     })
     setErrors((prev) => {
@@ -158,7 +147,7 @@ export function CriarProprietarioWizard() {
         ...prev,
         telefones: [...prev.telefones, createTelefone()],
       }
-      saveProprietarioWizardDraft({ data: next })
+      saveInquilinoWizardDraft({ data: next })
       return next
     })
   }
@@ -172,65 +161,14 @@ export function CriarProprietarioWizard() {
             ? prev.telefones
             : prev.telefones.filter((t) => t.id !== id),
       }
-      saveProprietarioWizardDraft({ data: next })
+      saveInquilinoWizardDraft({ data: next })
       return next
     })
   }
 
-  function updateBankAccount(
-    id: string,
-    partial: Partial<ProprietarioBankAccount>,
-  ) {
-    setData((prev) => {
-      const next = {
-        ...prev,
-        bank_account: prev.bank_account.map((acc) => {
-          if (acc.id === id) return { ...acc, ...partial }
-          if (partial.main === true) return { ...acc, main: false }
-          return acc
-        }),
-      }
-      saveProprietarioWizardDraft({ data: next })
-      return next
-    })
-    setErrors((prev) => {
-      const current = prev.bank_account
-      if (!current?.[id]) return prev
-      const next = { ...current }
-      delete next[id]
-      return {
-        ...prev,
-        bank_account: Object.keys(next).length > 0 ? next : undefined,
-      }
-    })
-    clearCurrentStepWarning(step)
-  }
-
-  function addBankAccount() {
-    setData((prev) => {
-      const next = {
-        ...prev,
-        bank_account: [...prev.bank_account, createBankAccount(prev.name)],
-      }
-      saveProprietarioWizardDraft({ data: next })
-      return next
-    })
-  }
-
-  function removeBankAccount(id: string) {
-    setData((prev) => {
-      const next = {
-        ...prev,
-        bank_account: prev.bank_account.filter((acc) => acc.id !== id),
-      }
-      saveProprietarioWizardDraft({ data: next })
-      return next
-    })
-  }
-
-  function handleContinue(nextStepId: ProprietarioWizardStepId) {
+  function handleContinue(nextStepId: InquilinoWizardStepId) {
     const allErrors = validateProprietarioForm(data)
-    if (stepHasErrors(step, allErrors)) {
+    if (inquilinoStepHasErrors(step, allErrors)) {
       setWarnedSteps((prev) => new Set(prev).add(step))
     }
     goToStep(nextStepId)
@@ -238,11 +176,12 @@ export function CriarProprietarioWizard() {
 
   async function handleFinish() {
     const nextErrors = validateProprietarioForm(data)
+    delete nextErrors.bank_account
     setErrors(nextErrors)
     setWarnedSteps(new Set())
 
     if (hasFormErrors(nextErrors)) {
-      const target = firstStepWithErrors(nextErrors)
+      const target = firstInquilinoStepWithErrors(nextErrors)
       if (target) goToStep(target)
       return
     }
@@ -250,21 +189,21 @@ export function CriarProprietarioWizard() {
     setSubmitting(true)
     await new Promise((r) => setTimeout(r, 400))
     setSubmitting(false)
-    clearProprietarioWizardDraft()
-    router.push('/imoveis/proprietarios')
+    clearInquilinoWizardDraft()
+    router.push('/locacao/inquilinos')
   }
 
   const footerConfig = useMemo(() => {
     const prev =
-      stepIndex > 0 ? PROPRIETARIO_WIZARD_STEPS[stepIndex - 1].id : null
+      stepIndex > 0 ? INQUILINO_WIZARD_STEPS[stepIndex - 1].id : null
     const next =
-      stepIndex < PROPRIETARIO_WIZARD_STEPS.length - 1
-        ? PROPRIETARIO_WIZARD_STEPS[stepIndex + 1].id
+      stepIndex < INQUILINO_WIZARD_STEPS.length - 1
+        ? INQUILINO_WIZARD_STEPS[stepIndex + 1].id
         : null
 
-    if (step === 'bancario') {
+    if (step === 'endereco') {
       return {
-        hint: PROPRIETARIO_STEP_HINTS.bancario,
+        hint: INQUILINO_STEP_HINTS.endereco,
         onBack: prev ? () => goToStep(prev) : undefined,
         onNext: handleFinish,
         nextLabel: submitting ? 'Salvando…' : 'Concluir cadastro',
@@ -273,7 +212,7 @@ export function CriarProprietarioWizard() {
     }
 
     return {
-      hint: PROPRIETARIO_STEP_HINTS[step],
+      hint: INQUILINO_STEP_HINTS[step],
       onBack: prev ? () => goToStep(prev) : undefined,
       onNext: next ? () => handleContinue(next) : undefined,
       nextLabel: 'Continuar',
@@ -310,16 +249,6 @@ export function CriarProprietarioWizard() {
             cepLoading={cepLoading}
           />
         )
-      case 'bancario':
-        return (
-          <StepBancario
-            data={data}
-            errors={errors}
-            addBankAccount={addBankAccount}
-            removeBankAccount={removeBankAccount}
-            updateBankAccount={updateBankAccount}
-          />
-        )
       default:
         return (
           <StepIdentificacao data={data} errors={errors} patch={patch} />
@@ -336,16 +265,16 @@ export function CriarProprietarioWizard() {
           onClick={handleCancel}
         >
           <ArrowLeft size={16} />
-          Proprietários
+          Inquilinos
         </button>
 
         <WizardStepper
-          steps={PROPRIETARIO_WIZARD_STEPS}
+          steps={INQUILINO_WIZARD_STEPS}
           currentStep={step}
           onStepClick={goToStep}
           stepsWithWarnings={warnedSteps}
           stepsWithErrors={stepsWithErrors}
-          ariaLabel="Etapas do proprietário"
+          ariaLabel="Etapas do inquilino"
         />
       </aside>
 
