@@ -13,6 +13,10 @@
   --keys-text-faint: rgba(8, 8, 12, 0.4);
   --keys-info-soft: rgba(9, 98, 215, 0.1);
   --keys-success-soft: rgba(38, 153, 90, 0.12);
+  --keys-danger: #c62828;
+  --keys-danger-soft: rgba(198, 40, 40, 0.1);
+  --keys-warning: #e6a817;
+  --keys-warning-soft: rgba(230, 168, 23, 0.12);
   --keys-shadow: 0 1px 2px rgba(8, 8, 12, 0.04), 0 8px 24px rgba(8, 8, 12, 0.06);
 
   flex: 1;
@@ -1729,6 +1733,10 @@ html[data-theme='dark'] .contratos-criar-layout {
   --keys-text-faint: rgba(242, 246, 250, 0.42);
   --keys-info-soft: rgba(9, 98, 215, 0.22);
   --keys-success-soft: rgba(38, 153, 90, 0.18);
+  --keys-danger: #ef5350;
+  --keys-danger-soft: rgba(239, 83, 80, 0.15);
+  --keys-warning: #f0b429;
+  --keys-warning-soft: rgba(240, 180, 41, 0.18);
   --keys-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.25);
 
   background: #14141c;

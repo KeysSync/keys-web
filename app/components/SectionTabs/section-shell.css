@@ -58,16 +58,20 @@ html[data-theme="dark"] .section-placeholder__title {
   color: #f2f6fa;
 }
 
-/* Wizard de criação de contrato ocupa tela inteira: esconde tabs e zera paddings */
+/* Wizards de criação ocupam tela inteira: escondem tabs e zeram paddings */
 .locacao-layout:has(.contratos-criar-layout),
 .locacao-shell:has(.contratos-criar-layout),
-.locacao-shell__content:has(.contratos-criar-layout) {
+.locacao-shell__content:has(.contratos-criar-layout),
+.imoveis-layout:has(.contratos-criar-layout),
+.imoveis-shell:has(.contratos-criar-layout),
+.imoveis-shell__content:has(.contratos-criar-layout) {
   flex: 1;
   min-height: 0;
   padding: 0;
   gap: 0;
 }
 
-.locacao-shell:has(.contratos-criar-layout) > .section-tabs {
+.locacao-shell:has(.contratos-criar-layout) > .section-tabs,
+.imoveis-shell:has(.contratos-criar-layout) > .section-tabs {
   display: none;
 }

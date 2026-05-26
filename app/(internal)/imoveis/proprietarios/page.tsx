@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { mockProprietarios, type Proprietario } from '@/lib/mocks/proprietarios'
 import {
   CadastrosListView,
@@ -57,6 +58,8 @@ const columns: CadastrosColumn<Proprietario>[] = [
 ]
 
 export default function ImoveisProprietariosPage() {
+  const router = useRouter()
+
   return (
     <CadastrosListView
       entityName="proprietários"
@@ -67,6 +70,7 @@ export default function ImoveisProprietariosPage() {
       filterRow={filterProprietario}
       getRowKey={(row) => row.id}
       tableLayout="pessoas"
+      onNewClick={() => router.push('/imoveis/proprietarios/novo')}
     />
   )
 }

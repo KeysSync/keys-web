@@ -25,6 +25,7 @@ export type CadastrosListViewProps<T> = {
   pagination?: boolean;
   isRowSelected?: (row: T) => boolean;
   onRowClick?: (row: T) => void;
+  onNewClick?: () => void;
 };
 
 export function CadastrosListView<T>(props: CadastrosListViewProps<T>) {
