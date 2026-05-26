@@ -16,11 +16,11 @@ export default function LandingCTA() {
         </div>
 
         <div className="landing-cta__actions">
-          <Link href="/login" className="landing-btn landing-btn--primary">
+          <Link href="/home" className="landing-btn landing-btn--primary">
             Acessar o sistema
             <ArrowRight size={16} aria-hidden />
           </Link>
-          <Link href="/login" className="landing-btn landing-btn--ghost-light">
+          <Link href="/home" className="landing-btn landing-btn--ghost-light">
             <Calendar size={16} aria-hidden /> Agendar uma demonstração
           </Link>
         </div>

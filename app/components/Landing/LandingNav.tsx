@@ -54,10 +54,10 @@ export default function LandingNav() {
 
         <div className="landing-nav__actions">
           <ThemeToggle variant="ghost" className="landing-nav__theme" />
-          <Link href="/login" className="landing-nav__login">
+          <Link href="/home" className="landing-nav__login">
             <LogIn size={15} aria-hidden /> Entrar
           </Link>
-          <Link href="/login" className="landing-nav__cta">
+          <Link href="/home" className="landing-nav__cta">
             Acessar sistema
           </Link>
           <button
@@ -92,14 +92,14 @@ export default function LandingNav() {
         </nav>
         <div className="landing-nav__sheet-actions">
           <Link
-            href="/login"
+            href="/home"
             className="landing-nav__sheet-login"
             onClick={() => setOpen(false)}
           >
             Entrar
           </Link>
           <Link
-            href="/login"
+            href="/home"
             className="landing-nav__sheet-cta"
             onClick={() => setOpen(false)}
           >

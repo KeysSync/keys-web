@@ -53,7 +53,7 @@ export default function LandingFooter() {
             cobrança, repasses e relatórios em um só lugar.
           </p>
           <div className="landing-footer__cta">
-            <Link href="/login" className="landing-footer__cta-btn">
+            <Link href="/home" className="landing-footer__cta-btn">
               Acessar o sistema
             </Link>
           </div>

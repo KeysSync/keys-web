@@ -1,9 +1,33 @@
 import { LoginForm } from "@/app/components/LoginForm/LoginForm";
 import { ThemeToggle } from "@/app/components/ThemeToggle/ThemeToggle";
+import { AFTER_LOGIN_PATH, LOGIN_PATH } from "@/lib/auth/constants";
+import { getCurrentUser } from "@/lib/auth/session";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import "./page.css";
 
-export default function Login() {
+type LoginPageProps = {
+  searchParams?: Promise<{ from?: string }>;
+};
+
+function resolveRedirectTarget(from?: string): string {
+  if (!from) return AFTER_LOGIN_PATH;
+  if (!from.startsWith("/")) return AFTER_LOGIN_PATH;
+  if (from.startsWith("//")) return AFTER_LOGIN_PATH;
+  if (from === LOGIN_PATH || from.startsWith(`${LOGIN_PATH}/`)) {
+    return AFTER_LOGIN_PATH;
+  }
+  return from;
+}
+
+export default async function Login({ searchParams }: LoginPageProps) {
+  const user = await getCurrentUser();
+
+  if (user) {
+    const params = (await searchParams) ?? {};
+    redirect(resolveRedirectTarget(params.from));
+  }
+
   return (
     <div className="login-root">
       <div className="login-root__bg" aria-hidden />

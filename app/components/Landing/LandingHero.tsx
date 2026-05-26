@@ -30,7 +30,7 @@ export default function LandingHero() {
           </p>
 
           <div className="landing-hero__cta">
-            <Link href="/login" className="landing-btn landing-btn--primary">
+            <Link href="/home" className="landing-btn landing-btn--primary">
               Acessar o sistema
               <ArrowRight size={16} aria-hidden />
             </Link>

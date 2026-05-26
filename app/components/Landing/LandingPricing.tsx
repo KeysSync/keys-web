@@ -8,7 +8,7 @@ const plans = [
     period: "/mês",
     description: "Para quem está começando ou quer testar todo o sistema.",
     cta: "Começar grátis",
-    href: "/login",
+    href: "/home",
     highlight: false,
     features: [
       "Até 50 contratos ativos",
@@ -23,7 +23,7 @@ const plans = [
     period: "/mês",
     description: "Para administradoras em crescimento que querem escalar.",
     cta: "Quero o plano Pro",
-    href: "/login",
+    href: "/home",
     highlight: true,
     badge: "Mais escolhido",
     features: [
@@ -41,7 +41,7 @@ const plans = [
     period: "",
     description: "Para grupos, holdings e administradoras com alto volume.",
     cta: "Falar com vendas",
-    href: "/login",
+    href: "/home",
     highlight: false,
     features: [
       "Contratos ilimitados",
