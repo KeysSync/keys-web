@@ -39,8 +39,12 @@ export function StepCobranca() {
         title="Cobrança"
         description="Como o locatário será cobrado e para onde o repasse será direcionado."
       >
-        <div className="contrato-criar-form-grid">
-          <FormField label="Dia de vencimento" htmlFor="dia-vencimento">
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Dia de vencimento"
+            htmlFor="dia-vencimento"
+            className="contrato-criar-field--day"
+          >
             <DayInputBr
               id="dia-vencimento"
               value={data.diaVencimento}
@@ -48,7 +52,11 @@ export function StepCobranca() {
             />
           </FormField>
 
-          <FormField label="Forma de recebimento" htmlFor="forma-recebimento">
+          <FormField
+            label="Forma de recebimento"
+            htmlFor="forma-recebimento"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="forma-recebimento"
               value={data.formaRecebimento}
@@ -87,8 +95,12 @@ export function StepCobranca() {
       </FormSection>
 
       <FormSection title="Dados bancários / repasse">
-        <div className="contrato-criar-form-grid">
-          <FormField label="Banco" htmlFor="banco">
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Banco"
+            htmlFor="banco"
+            className="contrato-criar-field--grow"
+          >
             <input
               id="banco"
               type="text"
@@ -115,17 +127,23 @@ export function StepCobranca() {
               onChange={(v) => patch({ conta: v })}
             />
           </FormField>
+        </div>
 
-          {showPix ? (
-            <FormField label="Chave PIX" htmlFor="pix" className="contrato-criar-field--wide">
+        {showPix ? (
+          <div className="contrato-criar-form-row">
+            <FormField
+              label="Chave PIX"
+              htmlFor="pix"
+              className="contrato-criar-field--full"
+            >
               <PixKeyInputBr
                 id="pix"
                 value={data.pixChave}
                 onChange={(v) => patch({ pixChave: v })}
               />
             </FormField>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
       </FormSection>
 
       <FormSection title="Observações">

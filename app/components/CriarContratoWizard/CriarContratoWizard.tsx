@@ -6,6 +6,7 @@ import { ArrowLeft } from 'lucide-react'
 import { CONTRATO_WIZARD_DEFAULT_STEP, CONTRATO_WIZARD_STEPS } from '@/lib/contratos/wizard/constants'
 import {
   clearContratoCriarEntry,
+  getContratoDraftPendingSteps,
   getContratoWizardDraft,
   saveContratoWizardDraft,
 } from '@/lib/contratos/wizard/draft'
@@ -54,6 +55,11 @@ export function CriarContratoWizard() {
   }
 
   function handleFinish() {
+    const pending = getContratoDraftPendingSteps(getContratoWizardDraft())
+    if (pending.length > 0) {
+      goToStep(pending[0].id)
+      return
+    }
     clearContratoCriarEntry()
     router.push('/locacao/contratos')
   }
@@ -82,6 +88,7 @@ export function CriarContratoWizard() {
       nextLabel: 'Continuar',
       nextDisabled: false,
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, stepIndex])
 
   function renderStep() {

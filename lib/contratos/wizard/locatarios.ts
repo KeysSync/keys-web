@@ -27,3 +27,7 @@ export function getPrincipalLocatarioId(
 ): string | null {
   return data.vinculos.find((v) => v.papel === 'principal')?.inquilinoId ?? null
 }
+
+export function isContratoLocatariosValid(data: ContratoLocatariosData): boolean {
+  return getPrincipalLocatarioId(data) !== null
+}

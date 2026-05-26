@@ -41,8 +41,12 @@ export function StepGarantia() {
         title="Garantia locatícia"
         description="Defina o tipo de garantia exigida neste contrato."
       >
-        <div className="contrato-criar-form-grid">
-          <FormField label="Tipo de garantia" htmlFor="tipo-garantia" className="contrato-criar-field--wide">
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Tipo de garantia"
+            htmlFor="tipo-garantia"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="tipo-garantia"
               value={data.tipo}
@@ -51,39 +55,41 @@ export function StepGarantia() {
             />
           </FormField>
 
-          <div className="contrato-criar-form-row-split">
-            {showValor ? (
-              <FormField
-                label="Valor da garantia (R$)"
-                htmlFor="valor-garantia"
-                className="contrato-criar-field--currency"
-              >
-                <CurrencyInputBr
-                  id="valor-garantia"
-                  value={data.valor}
-                  onChange={(v) => patch({ valor: v })}
-                />
-              </FormField>
-            ) : null}
+          {showValor ? (
+            <FormField
+              label="Valor da garantia (R$)"
+              htmlFor="valor-garantia"
+              className="contrato-criar-field--currency"
+            >
+              <CurrencyInputBr
+                id="valor-garantia"
+                value={data.valor}
+                onChange={(v) => patch({ valor: v })}
+              />
+            </FormField>
+          ) : null}
 
-            <FormDateRange
-              startLabel="Vigência — início"
-              endLabel="Vigência — fim"
-              startId="garantia-inicio"
-              endId="garantia-fim"
-              startValue={data.vigenciaInicio}
-              endValue={data.vigenciaFim}
-              onStartChange={(iso) => patch({ vigenciaInicio: iso })}
-              onEndChange={(iso) => patch({ vigenciaFim: iso })}
-            />
-          </div>
+          <FormDateRange
+            startLabel="Vigência — início"
+            endLabel="Vigência — fim"
+            startId="garantia-inicio"
+            endId="garantia-fim"
+            startValue={data.vigenciaInicio}
+            endValue={data.vigenciaFim}
+            onStartChange={(iso) => patch({ vigenciaInicio: iso })}
+            onEndChange={(iso) => patch({ vigenciaFim: iso })}
+          />
         </div>
       </FormSection>
 
       {showFiador ? (
         <FormSection title="Dados do fiador">
-          <div className="contrato-criar-form-grid">
-            <FormField label="Nome do fiador" htmlFor="fiador-nome">
+          <div className="contrato-criar-form-row">
+            <FormField
+              label="Nome do fiador"
+              htmlFor="fiador-nome"
+              className="contrato-criar-field--half"
+            >
               <input
                 id="fiador-nome"
                 type="text"
@@ -92,7 +98,11 @@ export function StepGarantia() {
                 onChange={(e) => patch({ fiadorNome: e.target.value })}
               />
             </FormField>
-            <FormField label="CPF/CNPJ" htmlFor="fiador-doc">
+            <FormField
+              label="CPF/CNPJ"
+              htmlFor="fiador-doc"
+              className="contrato-criar-field--half"
+            >
               <DocumentInputBr
                 id="fiador-doc"
                 value={data.fiadorDocumento}

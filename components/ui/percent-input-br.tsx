@@ -42,18 +42,26 @@ export function PercentInputBr({
   }
 
   return (
-    <input
-      {...rest}
-      id={id}
-      type="text"
-      inputMode="decimal"
-      autoComplete="off"
-      disabled={disabled}
-      className={cn('contrato-criar-input', className)}
-      placeholder={placeholder}
-      value={display}
-      onChange={(e) => handleChange(e.target.value)}
-      onBlur={handleBlur}
-    />
+    <div
+      className={cn(
+        'masked-input-br masked-input-br--percent',
+        disabled && 'masked-input-br--disabled',
+        className,
+      )}
+    >
+      <input
+        {...rest}
+        id={id}
+        type="text"
+        inputMode="decimal"
+        autoComplete="off"
+        disabled={disabled}
+        className="masked-input-br__field"
+        placeholder={placeholder}
+        value={display}
+        onChange={(e) => handleChange(e.target.value)}
+        onBlur={handleBlur}
+      />
+    </div>
   )
 }

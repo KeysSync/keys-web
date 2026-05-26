@@ -4,19 +4,25 @@ import {
 } from './constants'
 import {
   defaultContratoCobrancaData,
+  isContratoCobrancaValid,
   type ContratoCobrancaData,
 } from './cobranca'
 import {
   defaultContratoGarantiaData,
   type ContratoGarantiaData,
 } from './garantia'
-import { defaultContratoGeralData, type ContratoGeralData } from './geral'
+import {
+  defaultContratoGeralData,
+  isContratoGeralValid,
+  type ContratoGeralData,
+} from './geral'
 import {
   defaultContratoLancamentosData,
   type ContratoLancamentosData,
 } from './lancamentos'
 import {
   defaultContratoLocatariosData,
+  isContratoLocatariosValid,
   type ContratoLocatariosData,
 } from './locatarios'
 import {
@@ -101,6 +107,25 @@ export function saveContratoWizardDraft(patch: Partial<ContratoWizardDraft>) {
   if (typeof window === 'undefined') return
   const next = { ...getContratoWizardDraft(), ...patch }
   sessionStorage.setItem(DRAFT_KEY, JSON.stringify(next))
+}
+
+export interface ContratoDraftPendingStep {
+  id: ContratoWizardDraft['step']
+  label: string
+}
+
+export function getContratoDraftPendingSteps(
+  draft: ContratoWizardDraft,
+): ContratoDraftPendingStep[] {
+  const pending: ContratoDraftPendingStep[] = []
+  if (!draft.imovelId) pending.push({ id: 'imovel', label: 'Imóvel' })
+  if (!isContratoGeralValid(draft.geral))
+    pending.push({ id: 'geral', label: 'Geral' })
+  if (!isContratoLocatariosValid(draft.locatarios))
+    pending.push({ id: 'locatarios', label: 'Locatários' })
+  if (!isContratoCobrancaValid(draft.cobranca))
+    pending.push({ id: 'cobranca', label: 'Cobrança' })
+  return pending
 }
 
 export function patchContratoGeralData(data: ContratoGeralData) {

@@ -86,8 +86,12 @@ export function StepSeguro() {
           <p className="contrato-criar-seguros-submenu__hint">{tipoAtivo.descricao}</p>
         ) : null}
 
-        <div className="contrato-criar-form-grid">
-          <FormField label="Seguradora" htmlFor="seguradora">
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Seguradora"
+            htmlFor="seguradora"
+            className="contrato-criar-field--grow"
+          >
             <input
               id="seguradora"
               type="text"
@@ -107,7 +111,30 @@ export function StepSeguro() {
             />
           </FormField>
 
-          <FormField label="Valor de cobertura (R$)" htmlFor="cobertura">
+          <FormField
+            label="Quem paga o prêmio"
+            htmlFor="seguro-responsavel"
+            className="contrato-criar-field--grow"
+          >
+            <ContratoSelect
+              id="seguro-responsavel"
+              value={data.rascunho.responsavelPagamento}
+              options={SEGURO_RESPONSAVEL_OPTIONS}
+              onChange={(v) =>
+                patchRascunho({
+                  responsavelPagamento: v as SeguroResponsavelPagamento,
+                })
+              }
+            />
+          </FormField>
+        </div>
+
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Valor de cobertura (R$)"
+            htmlFor="cobertura"
+            className="contrato-criar-field--currency"
+          >
             <CurrencyInputBr
               id="cobertura"
               value={data.rascunho.coberturaValor}
@@ -115,7 +142,11 @@ export function StepSeguro() {
             />
           </FormField>
 
-          <FormField label="Prêmio mensal (R$)" htmlFor="premio">
+          <FormField
+            label="Prêmio mensal (R$)"
+            htmlFor="premio"
+            className="contrato-criar-field--currency"
+          >
             <CurrencyInputBr
               id="premio"
               value={data.rascunho.premioMensal}
@@ -133,19 +164,6 @@ export function StepSeguro() {
             onStartChange={(iso) => patchRascunho({ vigenciaInicio: iso })}
             onEndChange={(iso) => patchRascunho({ vigenciaFim: iso })}
           />
-
-          <FormField label="Quem paga o prêmio" htmlFor="seguro-responsavel">
-            <ContratoSelect
-              id="seguro-responsavel"
-              value={data.rascunho.responsavelPagamento}
-              options={SEGURO_RESPONSAVEL_OPTIONS}
-              onChange={(v) =>
-                patchRascunho({
-                  responsavelPagamento: v as SeguroResponsavelPagamento,
-                })
-              }
-            />
-          </FormField>
         </div>
 
         <FormField label="Observações" htmlFor="seguro-obs">

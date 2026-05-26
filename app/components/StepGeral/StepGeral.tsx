@@ -134,8 +134,12 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
         title="Dados do contrato"
         description="Vigência, cobrança e identificação interna."
       >
-        <div className="contrato-criar-form-grid">
-          <FormField label="Tipo de contrato" htmlFor="tipo-contrato">
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Tipo de contrato"
+            htmlFor="tipo-contrato"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="tipo-contrato"
               value={data.tipoContrato}
@@ -150,61 +154,45 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
           </FormField>
 
           <FormField
-            label="Início do contrato"
-            htmlFor="inicio-contrato"
-            className="contrato-criar-field--date"
+            label="Código interno"
+            htmlFor="codigo-interno"
+            className="contrato-criar-field--grow"
           >
-            <DateInputBr
-              id="inicio-contrato"
-              value={data.inicioContrato}
-              onChange={(iso) => patch({ inicioContrato: iso })}
+            <input
+              id="codigo-interno"
+              type="text"
+              className={inputClass}
+              placeholder="Ex.: CTR-2026-0042"
+              value={data.codigoInterno}
+              onChange={(e) => patch({ codigoInterno: e.target.value })}
             />
           </FormField>
+        </div>
 
-          <FormField label="Duração (meses)" htmlFor="duracao-meses">
+        <span className="contrato-criar-form-subhead">Vigência</span>
+
+        <div className="contrato-criar-form-row">
+          <FormDateRange
+            startLabel="Início do contrato"
+            endLabel="Fim do contrato (auto)"
+            startId="inicio-contrato"
+            endId="fim-contrato"
+            startValue={data.inicioContrato}
+            endValue={data.fimContrato}
+            onStartChange={(iso) => patch({ inicioContrato: iso })}
+            endDisabled
+          />
+
+          <FormField
+            label="Duração (meses)"
+            htmlFor="duracao-meses"
+            className="contrato-criar-field--num"
+          >
             <IntegerInputBr
               id="duracao-meses"
               maxDigits={3}
               value={data.duracaoMeses}
               onChange={(v) => patch({ duracaoMeses: v === '' ? '' : v })}
-            />
-          </FormField>
-
-          <FormField
-            label="Fim do contrato"
-            htmlFor="fim-contrato"
-            hint="Calculado automaticamente"
-            className="contrato-criar-field--date"
-          >
-            <DateInputBr
-              id="fim-contrato"
-              className="date-input-br--disabled"
-              value={data.fimContrato}
-              disabled
-            />
-          </FormField>
-
-          <FormField label="Renovação automática" htmlFor="renovacao-automatica">
-            <label className="contrato-criar-toggle">
-              <input
-                id="renovacao-automatica"
-                type="checkbox"
-                checked={data.renovacaoAutomatica}
-                onChange={(e) => patch({ renovacaoAutomatica: e.target.checked })}
-              />
-              <span className="contrato-criar-toggle__track" aria-hidden />
-              <span className="contrato-criar-toggle__text">
-                {data.renovacaoAutomatica ? 'Ativada' : 'Desativada'}
-              </span>
-            </label>
-          </FormField>
-
-          <FormField label="Duração base (meses)" htmlFor="duracao-base">
-            <IntegerInputBr
-              id="duracao-base"
-              maxDigits={3}
-              value={data.duracaoBaseMeses}
-              onChange={(v) => patch({ duracaoBaseMeses: v === '' ? '' : v })}
             />
           </FormField>
 
@@ -220,18 +208,46 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
           />
 
           <FormField
-            label="1º vencimento a partir de"
-            htmlFor="primeiro-vencimento"
-            className="contrato-criar-field--date"
+            label="Duração base (meses)"
+            htmlFor="duracao-base"
+            className="contrato-criar-field--num"
           >
-            <DateInputBr
-              id="primeiro-vencimento"
-              value={data.primeiroVencimentoDe}
-              onChange={(iso) => patch({ primeiroVencimentoDe: iso })}
+            <IntegerInputBr
+              id="duracao-base"
+              maxDigits={3}
+              value={data.duracaoBaseMeses}
+              onChange={(v) => patch({ duracaoBaseMeses: v === '' ? '' : v })}
             />
           </FormField>
 
-          <FormField label="Forma de cobrança" htmlFor="forma-cobranca">
+          <FormField
+            label="Renovação automática"
+            htmlFor="renovacao-automatica"
+            className="contrato-criar-field--toggle"
+          >
+            <label className="contrato-criar-toggle">
+              <input
+                id="renovacao-automatica"
+                type="checkbox"
+                checked={data.renovacaoAutomatica}
+                onChange={(e) => patch({ renovacaoAutomatica: e.target.checked })}
+              />
+              <span className="contrato-criar-toggle__track" aria-hidden />
+              <span className="contrato-criar-toggle__text">
+                {data.renovacaoAutomatica ? 'Ativada' : 'Desativada'}
+              </span>
+            </label>
+          </FormField>
+        </div>
+
+        <span className="contrato-criar-form-subhead">Cobrança</span>
+
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Forma de cobrança"
+            htmlFor="forma-cobranca"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="forma-cobranca"
               value={data.formaCobranca}
@@ -244,7 +260,23 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             />
           </FormField>
 
-          <FormField label="Multa (%)" htmlFor="multa">
+          <FormField
+            label="1º vencimento a partir de"
+            htmlFor="primeiro-vencimento"
+            className="contrato-criar-field--date"
+          >
+            <DateInputBr
+              id="primeiro-vencimento"
+              value={data.primeiroVencimentoDe}
+              onChange={(iso) => patch({ primeiroVencimentoDe: iso })}
+            />
+          </FormField>
+
+          <FormField
+            label="Multa (%)"
+            htmlFor="multa"
+            className="contrato-criar-field--percent"
+          >
             <PercentInputBr
               id="multa"
               value={data.multaPercentual}
@@ -252,7 +284,11 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             />
           </FormField>
 
-          <FormField label="Juros (% ao mês)" htmlFor="juros">
+          <FormField
+            label="Juros (% ao mês)"
+            htmlFor="juros"
+            className="contrato-criar-field--percent"
+          >
             <PercentInputBr
               id="juros"
               value={data.jurosPercentualMensal}
@@ -260,47 +296,74 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             />
           </FormField>
 
-          <FormField label="Código interno" htmlFor="codigo-interno" className="contrato-criar-field--wide">
-            <input
-              id="codigo-interno"
-              type="text"
-              className={inputClass}
-              placeholder="Ex.: CTR-2026-0042"
-              value={data.codigoInterno}
-              onChange={(e) => patch({ codigoInterno: e.target.value })}
-            />
-          </FormField>
+          <fieldset className="contrato-criar-radio-group contrato-criar-radio-group--inline">
+            <legend>Calcular multa e juros automaticamente?</legend>
+            <label className="contrato-criar-radio">
+              <input
+                type="radio"
+                name="multa-juros-auto"
+                checked={data.calcularMultaJurosAutomatico}
+                onChange={() => patch({ calcularMultaJurosAutomatico: true })}
+              />
+              Sim
+            </label>
+            <label className="contrato-criar-radio">
+              <input
+                type="radio"
+                name="multa-juros-auto"
+                checked={!data.calcularMultaJurosAutomatico}
+                onChange={() => patch({ calcularMultaJurosAutomatico: false })}
+              />
+              Não
+            </label>
+          </fieldset>
         </div>
-
-        <fieldset className="contrato-criar-radio-group">
-          <legend>Calcular multa e juros automaticamente?</legend>
-          <label className="contrato-criar-radio">
-            <input
-              type="radio"
-              name="multa-juros-auto"
-              checked={data.calcularMultaJurosAutomatico}
-              onChange={() => patch({ calcularMultaJurosAutomatico: true })}
-            />
-            Sim
-          </label>
-          <label className="contrato-criar-radio">
-            <input
-              type="radio"
-              name="multa-juros-auto"
-              checked={!data.calcularMultaJurosAutomatico}
-              onChange={() => patch({ calcularMultaJurosAutomatico: false })}
-            />
-            Não
-          </label>
-        </fieldset>
       </FormSection>
 
       <FormSection
         title="Reajuste e taxa de administração"
         description="Valores financeiros e índices de correção."
       >
-        <div className="contrato-criar-form-grid">
-          <FormField label="Mês-base para reajuste" htmlFor="mes-base">
+        <span className="contrato-criar-form-subhead">Aluguel e reajuste</span>
+
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Valor do aluguel (R$)"
+            htmlFor="valor-aluguel"
+            className="contrato-criar-field--currency"
+          >
+            <CurrencyInputBr
+              id="valor-aluguel"
+              value={data.valorAluguel}
+              onChange={(v) => patch({ valorAluguel: v })}
+            />
+          </FormField>
+
+          <FormField
+            label="Aluguel proporcional (R$)"
+            className="contrato-criar-field--currency"
+          >
+            <div className="contrato-criar-inline-modes">
+              <CurrencyInputBr
+                value={data.aluguelProporcional}
+                onChange={(v) => patch({ aluguelProporcional: v })}
+              />
+              <button
+                type="button"
+                className="contrato-criar-btn-secondary"
+                onClick={handleRecalcularProporcional}
+                aria-label="Recalcular aluguel proporcional"
+              >
+                <RefreshCw size={16} />
+              </button>
+            </div>
+          </FormField>
+
+          <FormField
+            label="Mês-base para reajuste"
+            htmlFor="mes-base"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="mes-base"
               value={data.mesBaseReajuste}
@@ -309,7 +372,11 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             />
           </FormField>
 
-          <FormField label="Índice de reajuste anual" htmlFor="indice-reajuste">
+          <FormField
+            label="Índice de reajuste anual"
+            htmlFor="indice-reajuste"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="indice-reajuste"
               value={data.indiceReajusteAnual}
@@ -325,7 +392,7 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
           <FormDateRange
             variant="month"
             startLabel="Próximo reajuste"
-            endLabel="Gerar financeiro a partir de"
+            endLabel="Gerar financeiro"
             startId="proximo-reajuste"
             endId="gerar-financeiro"
             startValue={data.proximoReajuste}
@@ -333,16 +400,38 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             onStartChange={(iso) => patch({ proximoReajuste: iso })}
             onEndChange={(iso) => patch({ gerarFinanceiroDe: iso })}
           />
+        </div>
 
-          <FormField label="Valor do aluguel (R$)" htmlFor="valor-aluguel">
-            <CurrencyInputBr
-              id="valor-aluguel"
-              value={data.valorAluguel}
-              onChange={(v) => patch({ valorAluguel: v })}
-            />
-          </FormField>
+        <span className="contrato-criar-form-subhead">Aluguel garantido</span>
 
-          <FormField label="Duração garantida (meses)" htmlFor="garantido-duracao">
+        <div className="contrato-criar-form-row">
+          <fieldset className="contrato-criar-radio-group contrato-criar-radio-group--inline">
+            <legend>Aluguel garantido?</legend>
+            <label className="contrato-criar-radio">
+              <input
+                type="radio"
+                name="aluguel-garantido"
+                checked={data.aluguelGarantido}
+                onChange={() => patch({ aluguelGarantido: true })}
+              />
+              Sim
+            </label>
+            <label className="contrato-criar-radio">
+              <input
+                type="radio"
+                name="aluguel-garantido"
+                checked={!data.aluguelGarantido}
+                onChange={() => patch({ aluguelGarantido: false })}
+              />
+              Não
+            </label>
+          </fieldset>
+
+          <FormField
+            label="Duração garantida (meses)"
+            htmlFor="garantido-duracao"
+            className="contrato-criar-field--num"
+          >
             <IntegerInputBr
               id="garantido-duracao"
               maxDigits={3}
@@ -355,30 +444,10 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
           </FormField>
         </div>
 
-        <fieldset className="contrato-criar-radio-group">
-          <legend>Aluguel garantido?</legend>
-          <label className="contrato-criar-radio">
-            <input
-              type="radio"
-              name="aluguel-garantido"
-              checked={data.aluguelGarantido}
-              onChange={() => patch({ aluguelGarantido: true })}
-            />
-            Sim
-          </label>
-          <label className="contrato-criar-radio">
-            <input
-              type="radio"
-              name="aluguel-garantido"
-              checked={!data.aluguelGarantido}
-              onChange={() => patch({ aluguelGarantido: false })}
-            />
-            Não
-          </label>
-        </fieldset>
+        <span className="contrato-criar-form-subhead">Repasses</span>
 
-        <div className="contrato-criar-form-grid">
-          <FormField label="Taxa de administração">
+        <div className="contrato-criar-form-row">
+          <FormField label="Taxa de administração" className="contrato-criar-field--grow">
             <div className="contrato-criar-inline-modes">
               <div className="contrato-criar-segmented contrato-criar-segmented--compact">
                 <button
@@ -410,7 +479,7 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             </div>
           </FormField>
 
-          <FormField label="Desconto de pontualidade">
+          <FormField label="Desconto de pontualidade" className="contrato-criar-field--grow">
             <div className="contrato-criar-inline-modes contrato-criar-inline-modes--stack">
               <ContratoSelect
                 value={data.descontoPontualidadeModo}
@@ -435,29 +504,16 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
               )}
             </div>
           </FormField>
-
-          <FormField label="Aluguel proporcional (R$)" className="contrato-criar-field--wide">
-            <div className="contrato-criar-inline-modes">
-              <CurrencyInputBr
-                value={data.aluguelProporcional}
-                onChange={(v) => patch({ aluguelProporcional: v })}
-              />
-              <button
-                type="button"
-                className="contrato-criar-btn-secondary"
-                onClick={handleRecalcularProporcional}
-              >
-                <RefreshCw size={16} />
-                Recalcular
-              </button>
-            </div>
-          </FormField>
         </div>
       </FormSection>
 
       <FormSection title="Comissão do 1º aluguel">
-        <div className="contrato-criar-form-grid">
-          <FormField label="Comissão" htmlFor="comissao-tipo">
+        <div className="contrato-criar-form-row">
+          <FormField
+            label="Comissão"
+            htmlFor="comissao-tipo"
+            className="contrato-criar-field--grow"
+          >
             <ContratoSelect
               id="comissao-tipo"
               value={data.comissaoPrimeiroAluguel}
@@ -472,7 +528,11 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
           </FormField>
 
           {showComissaoValor ? (
-            <FormField label="Valor" htmlFor="comissao-valor">
+            <FormField
+              label="Valor"
+              htmlFor="comissao-valor"
+              className="contrato-criar-field--currency"
+            >
               <CurrencyInputBr
                 id="comissao-valor"
                 value={data.comissaoValor}
@@ -496,7 +556,7 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
             <FormField
               label="Lançar no mês"
               htmlFor="comissao-mes"
-              className="contrato-criar-field--date"
+              className="contrato-criar-field--month"
             >
               <MonthInputBr
                 id="comissao-mes"
@@ -532,8 +592,12 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
         </fieldset>
 
         {showRescisaoMulta ? (
-          <div className="contrato-criar-form-grid">
-            <FormField label="Valor da multa (R$)" htmlFor="multa-rescisao-valor">
+          <div className="contrato-criar-form-row">
+            <FormField
+              label="Valor da multa (R$)"
+              htmlFor="multa-rescisao-valor"
+              className="contrato-criar-field--currency"
+            >
               <CurrencyInputBr
                 id="multa-rescisao-valor"
                 value={data.valorMultaRescisao}
@@ -541,7 +605,11 @@ export function StepGeral({ imovelId, onValidityChange }: StepGeralProps) {
               />
             </FormField>
 
-            <FormField label="Isentar após (meses)" htmlFor="isentar-meses">
+            <FormField
+              label="Isentar após (meses)"
+              htmlFor="isentar-meses"
+              className="contrato-criar-field--num"
+            >
               <IntegerInputBr
                 id="isentar-meses"
                 maxDigits={3}

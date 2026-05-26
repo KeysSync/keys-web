@@ -679,10 +679,42 @@
   padding: 1rem 1.15rem 1.15rem;
 }
 
+.contrato-criar-form-subhead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.35rem 0 -0.15rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--keys-text-faint);
+}
+
+.contrato-criar-form-subhead::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--keys-border);
+}
+
+.contrato-criar-form-subhead:first-child {
+  margin-top: 0;
+}
+
 .contrato-criar-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 0.85rem 1rem;
+}
+
+.contrato-criar-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.85rem 1rem;
+  width: 100%;
 }
 
 .contrato-criar-field {
@@ -692,19 +724,57 @@
   min-width: 0;
 }
 
+.contrato-criar-form-row > .contrato-criar-field {
+  flex: 1 1 14rem;
+  min-width: 0;
+  max-width: none;
+}
+
+.contrato-criar-form-row > .contrato-criar-date-row {
+  flex: 0 0 auto;
+}
+
 .contrato-criar-field--wide {
   grid-column: 1 / -1;
 }
 
-/* Campos de data/mês — largura proporcional ao conteúdo (dd/mm/aaaa) */
-.contrato-criar-field--date {
-  max-width: 12.5rem;
+.contrato-criar-form-row > .contrato-criar-field--wide,
+.contrato-criar-form-row > .contrato-criar-field--full {
+  flex: 1 1 100%;
+}
+
+.contrato-criar-field--date,
+.contrato-criar-field--month {
+  width: 100%;
+  max-width: 11rem;
+  min-width: 0;
 }
 
 .contrato-criar-field--date .date-input-br,
-.contrato-criar-field--date .month-input-br {
+.contrato-criar-field--date .month-input-br,
+.contrato-criar-field--month .date-input-br {
   width: 100%;
-  max-width: 12.5rem;
+}
+
+.contrato-criar-form-row > .contrato-criar-field--date,
+.contrato-criar-form-row > .contrato-criar-field--month {
+  flex: 0 0 11rem;
+  max-width: 11rem;
+}
+
+.contrato-criar-form-row > .contrato-criar-field--day {
+  flex: 0 0 6.5rem;
+  max-width: 6.5rem;
+}
+
+.contrato-criar-form-row > .contrato-criar-field--num {
+  flex: 0 0 9.5rem;
+  max-width: 9.5rem;
+}
+
+.contrato-criar-form-row > .contrato-criar-field--percent {
+  flex: 0 0 9.5rem;
+  max-width: 9.5rem;
 }
 
 .contrato-criar-field--currency {
@@ -715,27 +785,48 @@
   max-width: 14rem;
 }
 
-.contrato-criar-date-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 12.5rem));
-  gap: 0.85rem 1rem;
-  align-items: end;
+.contrato-criar-form-row > .contrato-criar-field--currency {
+  flex: 0 0 13rem;
+  max-width: 13rem;
 }
 
-.contrato-criar-form-row-split {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 0.85rem 1.25rem;
-  grid-column: 1 / -1;
+.contrato-criar-form-row > .contrato-criar-field--grow {
+  flex: 1 1 16rem;
+  max-width: 22rem;
 }
 
-.contrato-criar-form-row-split .contrato-criar-date-row {
+.contrato-criar-form-row > .contrato-criar-field--half {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
+}
+
+.contrato-criar-form-row > .contrato-criar-field--toggle {
   flex: 0 0 auto;
+  max-width: none;
 }
 
-.contrato-criar-form-grid > .contrato-criar-date-row,
-.contrato-criar-form-grid > .contrato-criar-form-row-split {
+.contrato-criar-field--toggle .contrato-criar-toggle {
+  height: 2.5rem;
+  padding: 0 0.15rem;
+}
+
+.contrato-criar-date-row {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  max-width: 100%;
+}
+
+.contrato-criar-date-row > .contrato-criar-field--date,
+.contrato-criar-date-row > .contrato-criar-field--month {
+  flex: 0 0 11rem;
+  width: 11rem;
+  max-width: 11rem;
+}
+
+.contrato-criar-form-grid > .contrato-criar-date-row {
   grid-column: 1 / -1;
 }
 
@@ -984,6 +1075,17 @@
   color: var(--keys-preto);
 }
 
+.contrato-criar-radio-group--inline {
+  flex: 0 0 auto;
+  align-content: flex-end;
+  min-width: 0;
+}
+
+.contrato-criar-radio-group--inline legend {
+  font-size: 0.75rem;
+  color: var(--keys-text-muted);
+}
+
 .contrato-criar-radio {
   display: inline-flex;
   align-items: center;
@@ -1008,6 +1110,23 @@
 .contrato-criar-inline-modes .contrato-criar-input {
   flex: 1;
   min-width: 6rem;
+}
+
+.contrato-criar-inline-modes:not(.contrato-criar-inline-modes--stack) {
+  flex-wrap: nowrap;
+}
+
+.contrato-criar-inline-modes .masked-input-br {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.contrato-criar-inline-modes .contrato-criar-btn-secondary {
+  flex: 0 0 auto;
+  padding: 0;
+  width: 2.5rem;
+  justify-content: center;
 }
 
 .contrato-criar-segmented--compact .contrato-criar-segmented__btn {
@@ -1159,12 +1278,36 @@
   }
 
   .contrato-criar-date-row {
-    grid-template-columns: minmax(0, 12.5rem);
+    flex-wrap: wrap;
+    width: 100%;
   }
 
-  .contrato-criar-form-row-split {
+  .contrato-criar-date-row > .contrato-criar-field--date,
+  .contrato-criar-date-row > .contrato-criar-field--month {
+    flex: 1 1 9rem;
+    max-width: none;
+    width: auto;
+  }
+
+  .contrato-criar-form-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .contrato-criar-form-row > .contrato-criar-field,
+  .contrato-criar-form-row > .contrato-criar-date-row,
+  .contrato-criar-form-row > .contrato-criar-field--date,
+  .contrato-criar-form-row > .contrato-criar-field--month,
+  .contrato-criar-form-row > .contrato-criar-field--day,
+  .contrato-criar-form-row > .contrato-criar-field--num,
+  .contrato-criar-form-row > .contrato-criar-field--percent,
+  .contrato-criar-form-row > .contrato-criar-field--currency,
+  .contrato-criar-form-row > .contrato-criar-field--grow,
+  .contrato-criar-form-row > .contrato-criar-field--half,
+  .contrato-criar-form-row > .contrato-criar-field--toggle {
+    flex: 1 1 100%;
+    max-width: none;
+    width: 100%;
   }
 
   .contrato-criar-footer {
