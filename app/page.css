@@ -3,6 +3,10 @@
    Sistema para administradoras de imóveis
    ============================================================ */
 
+html:has(.landing-root) {
+  scroll-behavior: smooth;
+}
+
 .landing-root {
   --lp-bg: #f6f8fc;
   --lp-bg-elev: #ffffff;

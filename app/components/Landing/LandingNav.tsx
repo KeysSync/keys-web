@@ -3,7 +3,7 @@
 import { ThemeToggle } from "@/app/components/ThemeToggle/ThemeToggle";
 import { LogIn, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { type MouseEvent, useCallback, useEffect, useState } from "react";
 
 const links = [
   { label: "Recursos", href: "#recursos" },
@@ -13,6 +13,18 @@ const links = [
   { label: "Planos", href: "#planos" },
   { label: "Perguntas", href: "#faq" },
 ];
+
+function smoothScrollTo(e: MouseEvent<HTMLAnchorElement>) {
+  const href = e.currentTarget.getAttribute("href");
+  if (!href?.startsWith("#")) return;
+
+  const target = document.getElementById(href.slice(1));
+  if (!target) return;
+
+  e.preventDefault();
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", href);
+}
 
 export default function LandingNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,6 +46,14 @@ export default function LandingNav() {
     };
   }, [open]);
 
+  const handleSheetLink = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>) => {
+      smoothScrollTo(e);
+      setOpen(false);
+    },
+    [],
+  );
+
   return (
     <header
       className={`landing-nav ${scrolled ? "landing-nav--scrolled" : ""}`}
@@ -46,7 +66,7 @@ export default function LandingNav() {
 
         <nav className="landing-nav__links" aria-label="Navegação principal">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="landing-nav__link">
+            <a key={l.href} href={l.href} className="landing-nav__link" onClick={smoothScrollTo}>
               {l.label}
             </a>
           ))}
@@ -84,7 +104,7 @@ export default function LandingNav() {
               key={l.href}
               href={l.href}
               className="landing-nav__sheet-link"
-              onClick={() => setOpen(false)}
+              onClick={handleSheetLink}
             >
               {l.label}
             </a>
