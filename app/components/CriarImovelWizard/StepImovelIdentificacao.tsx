@@ -5,7 +5,7 @@ import { FormSection } from '@/app/components/FormSection/FormSection'
 import { SelectField } from '@/components/ui/select'
 import type { Category, Subcategory } from '@/lib/imoveis/api'
 import type { ImovelFormData, ImovelFormErrors } from '@/lib/imoveis/types'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 
 interface StepImovelIdentificacaoProps {
   data: ImovelFormData
@@ -47,6 +47,33 @@ export function StepImovelIdentificacao({
     patch({ category_id: categoryId, subcategory_id: 0 })
   }
 
+  const formatCurrencyInput = useCallback((raw: string): string => {
+    const digits = raw.replace(/\D/g, '')
+    if (!digits) return ''
+    const cents = Number(digits) / 100
+    return cents.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+  }, [])
+
+  const displayRentPrice = useMemo(() => {
+    if (!data.rent_price) return ''
+    return data.rent_price.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+  }, [data.rent_price])
+
+  function handleRentPriceChange(raw: string) {
+    const digits = raw.replace(/\D/g, '')
+    if (!digits) {
+      patch({ rent_price: 0 })
+      return
+    }
+    patch({ rent_price: Number(digits) / 100 })
+  }
+
   return (
     <div className="contrato-criar-step-form">
       <FormSection
@@ -70,6 +97,22 @@ export function StepImovelIdentificacao({
             />
           </EntityFormField>
 
+          <EntityFormField
+            label="Valor do aluguel"
+            htmlFor="imovel-rent-price"
+            error={errors.rent_price}
+          >
+            <input
+              id="imovel-rent-price"
+              type="text"
+              inputMode="numeric"
+              className={inputClass(Boolean(errors.rent_price))}
+              value={displayRentPrice}
+              onChange={(e) => handleRentPriceChange(e.target.value)}
+              placeholder="0,00"
+            />
+          </EntityFormField>
+
           <SelectField
             label="Status"
             value={data.status}
@@ -79,23 +122,6 @@ export function StepImovelIdentificacao({
             fieldClassName="contrato-criar-field"
             labelClassName="contrato-criar-field__label"
           />
-
-          <EntityFormField
-            label="Valor do aluguel"
-            htmlFor="imovel-rent-price"
-            error={errors.rent_price}
-          >
-            <input
-              id="imovel-rent-price"
-              type="number"
-              min={0}
-              step="0.01"
-              className={inputClass(Boolean(errors.rent_price))}
-              value={data.rent_price || ''}
-              onChange={(e) => patch({ rent_price: Number(e.target.value) || 0 })}
-              placeholder="0,00"
-            />
-          </EntityFormField>
         </div>
       </FormSection>
 

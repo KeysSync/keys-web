@@ -23,6 +23,7 @@ export type DataTableListProps<T> = {
   onRowClick?: (row: T) => void;
   onRowDoubleClick?: (row: T) => void;
   onNewClick?: () => void;
+  toolbarExtra?: React.ReactNode;
 };
 
 export function DataTableList<T>({
@@ -41,6 +42,7 @@ export function DataTableList<T>({
   onRowClick,
   onRowDoubleClick,
   onNewClick,
+  toolbarExtra,
 }: DataTableListProps<T>) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -81,14 +83,17 @@ export function DataTableList<T>({
             className="cadastros-list-search-input"
           />
         </label>
-        <button
-          type="button"
-          className="cadastros-list-btn-primary"
-          onClick={onNewClick}
-        >
-          <Plus size={18} />
-          {newButtonLabel}
-        </button>
+        <div className="cadastros-list-toolbar-actions">
+          {toolbarExtra}
+          <button
+            type="button"
+            className="cadastros-list-btn-primary"
+            onClick={onNewClick}
+          >
+            <Plus size={18} />
+            {newButtonLabel}
+          </button>
+        </div>
       </div>
 
       <div className="cadastros-list-panel">

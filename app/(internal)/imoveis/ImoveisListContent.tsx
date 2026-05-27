@@ -6,15 +6,18 @@ import {
 } from '@/app/components/CadastrosListView/CadastrosListView'
 import '@/app/components/DeleteConfirmDialog/delete-confirm.css'
 import { DeleteConfirmDialog } from '@/app/components/DeleteConfirmDialog/DeleteConfirmDialog'
+import { ImoveisFilterDialog } from '@/app/components/ImoveisFilterDialog/ImoveisFilterDialog'
 import '@/app/components/RowActionsMenu/row-actions.css'
 import {
   RowActionsMenu,
   type RowAction,
 } from '@/app/components/RowActionsMenu/RowActionsMenu'
-import type { Imovel, ImovelStatus } from '@/lib/imoveis/api'
-import { Building2, Pencil, Trash2 } from 'lucide-react'
+import type { Category, Imovel, ImovelFilters, ImovelStatus, Subcategory } from '@/lib/imoveis/api'
+import { deleteImovelAction, fetchImoveisAction } from '@/lib/imoveis/actions'
+import { useToast } from '@/lib/toast/use-toast'
+import { Building2, Filter, Pencil, Trash2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useCallback, useState, useTransition } from 'react'
 
 const statusLabel: Record<ImovelStatus, string> = {
   available: 'Disponível',
@@ -47,13 +50,52 @@ function filterImovel(row: Imovel, q: string) {
   )
 }
 
-export default function ImoveisListContent({ imoveis }: { imoveis: Imovel[] }) {
-  const router = useRouter()
-  const [deleteTarget, setDeleteTarget] = useState<Imovel | null>(null)
+interface ImoveisListContentProps {
+  imoveis: Imovel[]
+  categories: Category[]
+  subcategories: Subcategory[]
+}
 
-  function handleDelete() {
+export default function ImoveisListContent({
+  imoveis: initialImoveis,
+  categories,
+  subcategories,
+}: ImoveisListContentProps) {
+  const router = useRouter()
+  const { toast } = useToast()
+  const [imoveis, setImoveis] = useState(initialImoveis)
+  const [deleteTarget, setDeleteTarget] = useState<Imovel | null>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [filters, setFilters] = useState<ImovelFilters>({})
+  const [isPending, startTransition] = useTransition()
+
+  const hasActiveFilters = Object.keys(filters).length > 0
+
+  const handleApplyFilters = useCallback((newFilters: ImovelFilters) => {
+    setFilters(newFilters)
+    startTransition(async () => {
+      const hasFilters = Object.keys(newFilters).length > 0
+      const result = hasFilters
+        ? await fetchImoveisAction(newFilters)
+        : await fetchImoveisAction()
+      setImoveis(result)
+    })
+  }, [])
+
+  async function handleDelete() {
     if (!deleteTarget) return
+    setIsDeleting(true)
+    const result = await deleteImovelAction(deleteTarget.id)
+    setIsDeleting(false)
     setDeleteTarget(null)
+
+    if (result.success) {
+      setImoveis((prev) => prev.filter((i) => i.id !== deleteTarget.id))
+      toast({ variant: 'success', title: 'Imóvel excluído com sucesso.' })
+    } else {
+      toast({ variant: 'error', title: 'Erro ao excluir imóvel', description: result.error })
+    }
   }
 
   const columns: CadastrosColumn<Imovel>[] = [
@@ -141,6 +183,31 @@ export default function ImoveisListContent({ imoveis }: { imoveis: Imovel[] }) {
         emptyMessage="Sem registros"
         onRowDoubleClick={(row) => router.push(`/imoveis/editar/${row.id}`)}
         onNewClick={() => router.push('/imoveis/novo')}
+        toolbarExtra={
+          <button
+            type="button"
+            className={`cadastros-list-btn-outline${hasActiveFilters ? ' cadastros-list-btn-outline--active' : ''}`}
+            onClick={() => setFilterOpen(true)}
+            disabled={isPending}
+          >
+            <Filter size={18} />
+            {isPending ? 'Filtrando…' : 'Filtros'}
+            {hasActiveFilters && (
+              <span className="cadastros-list-filter-badge">
+                {Object.keys(filters).length}
+              </span>
+            )}
+          </button>
+        }
+      />
+
+      <ImoveisFilterDialog
+        open={filterOpen}
+        onOpenChange={setFilterOpen}
+        categories={categories}
+        subcategories={subcategories}
+        currentFilters={filters}
+        onApply={handleApplyFilters}
       />
 
       <DeleteConfirmDialog

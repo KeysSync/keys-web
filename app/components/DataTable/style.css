@@ -140,6 +140,62 @@ html[data-theme="dark"] .data-table-pagination__summary {
   box-shadow: 0 0 0 3px var(--cad-info-soft);
 }
 
+.cadastros-list-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cadastros-list-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--cad-border);
+  border-radius: 0.6rem;
+  background: var(--cad-surface);
+  color: var(--cad-text);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.cadastros-list-btn-outline:hover:not(:disabled) {
+  border-color: var(--cad-info);
+  color: var(--cad-info);
+}
+
+.cadastros-list-btn-outline:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cadastros-list-btn-outline--active {
+  border-color: var(--cad-info);
+  color: var(--cad-info);
+  background: var(--cad-info-soft);
+}
+
+.cadastros-list-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  padding: 0 0.3rem;
+  border-radius: 9999px;
+  background: var(--cad-info);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .cadastros-list-btn-primary {
   display: inline-flex;
   align-items: center;
@@ -506,10 +562,12 @@ html[data-theme="dark"] .data-table-pagination__summary {
   color: var(--cad-text-muted);
 }
 
-.cadastros-list-empty {
+.cadastros-list-table td.cadastros-list-empty {
   text-align: center;
   padding: 2.5rem;
-  color: var(--cad-text-faint);
+  color: var(--cad-text-muted);
+  font-size: 0.85rem;
+  font-weight: 400;
 }
 
 .cadastros-list-footer {

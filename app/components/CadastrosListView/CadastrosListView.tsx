@@ -28,6 +28,7 @@ export type CadastrosListViewProps<T> = {
   onRowClick?: (row: T) => void;
   onRowDoubleClick?: (row: T) => void;
   onNewClick?: () => void;
+  toolbarExtra?: React.ReactNode;
 };
 
 export function CadastrosListView<T>(props: CadastrosListViewProps<T>) {

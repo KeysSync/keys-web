@@ -39,8 +39,34 @@ export interface Subcategory {
   name: string;
 }
 
-export function apiGetImoveis(accessToken: string): Promise<ImovelListResponse> {
-  return apiFetch<ImovelListResponse>("/properties/v1/", {
+export interface ImovelFilters {
+  status?: ImovelStatus;
+  category_id?: number;
+  subcategory_id?: number;
+  city?: string;
+  state?: string;
+  code?: string;
+  rent_price_min?: number;
+  rent_price_max?: number;
+}
+
+function buildFilterQuery(filters?: ImovelFilters): string {
+  if (!filters) return "";
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(filters)) {
+    if (value !== undefined && value !== null && value !== "" && value !== 0) {
+      params.set(key, String(value));
+    }
+  }
+  const qs = params.toString();
+  return qs ? `?${qs}` : "";
+}
+
+export function apiGetImoveis(
+  accessToken: string,
+  filters?: ImovelFilters,
+): Promise<ImovelListResponse> {
+  return apiFetch<ImovelListResponse>(`/properties/v1/${buildFilterQuery(filters)}`, {
     method: "GET",
     bearer: accessToken,
   });
@@ -73,6 +99,13 @@ export function apiUpdateImovel(
     method: "PUT",
     bearer: accessToken,
     json: data,
+  });
+}
+
+export function apiDeleteImovel(accessToken: string, propertyId: string): Promise<void> {
+  return apiFetch<void>(`/properties/v1/${propertyId}`, {
+    method: "DELETE",
+    bearer: accessToken,
   });
 }
 
