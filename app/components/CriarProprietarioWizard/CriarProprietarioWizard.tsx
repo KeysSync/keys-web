@@ -11,6 +11,7 @@ import {
   createProprietarioAction,
   updateProprietarioAction,
 } from '@/lib/proprietarios/actions'
+import { buildPersonPayload } from '@/lib/proprietarios/api'
 import type {
   ProprietarioBankAccount,
   ProprietarioFormData,
@@ -277,6 +278,9 @@ export function CriarProprietarioWizard({
     }
 
     setSubmitting(true)
+    if (!isEdit) {
+      console.log('[cadastro proprietário] payload:', buildPersonPayload(data))
+    }
     const result =
       isEdit && proprietarioId
         ? await updateProprietarioAction(proprietarioId, data)

@@ -16,12 +16,18 @@ interface StepIdentificacaoProps {
   data: ProprietarioFormData
   errors: ProprietarioFormErrors
   patch: (partial: Partial<ProprietarioFormData>) => void
+  hideIsRenterToggle?: boolean
 }
 
 const inputClass = (hasError?: boolean) =>
   `contrato-criar-input${hasError ? ' contrato-criar-input--error' : ''}`
 
-export function StepIdentificacao({ data, errors, patch }: StepIdentificacaoProps) {
+export function StepIdentificacao({
+  data,
+  errors,
+  patch,
+  hideIsRenterToggle = false,
+}: StepIdentificacaoProps) {
   const isPerson = data.type === 'person'
 
   return (
@@ -103,13 +109,15 @@ export function StepIdentificacao({ data, errors, patch }: StepIdentificacaoProp
             />
           </EntityFormField>
 
-          <EntityFormField label="Perfil" className="contrato-criar-field--wide">
-            <Checkbox
-              label="É inquilino?"
-              checked={data.is_renter}
-              onChange={(e) => patch({ is_renter: e.target.checked })}
-            />
-          </EntityFormField>
+          {!hideIsRenterToggle && (
+            <EntityFormField label="Perfil" className="contrato-criar-field--wide">
+              <Checkbox
+                label="É inquilino?"
+                checked={data.is_renter}
+                onChange={(e) => patch({ is_renter: e.target.checked })}
+              />
+            </EntityFormField>
+          )}
         </div>
       </FormSection>
     </div>

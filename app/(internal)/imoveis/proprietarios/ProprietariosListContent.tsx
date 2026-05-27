@@ -37,6 +37,7 @@ export default function ProprietariosListContent({
   const router = useRouter()
   const { toast } = useToast()
   const [proprietarios, setProprietarios] = useState(initialRows)
+  console.log('[ProprietariosList] rows:', proprietarios)
   const [deleteTarget, setDeleteTarget] = useState<ProprietarioListRow | null>(
     null,
   )

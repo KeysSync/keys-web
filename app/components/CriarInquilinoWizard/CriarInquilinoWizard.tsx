@@ -12,6 +12,11 @@ import type {
   ProprietarioTelefone,
 } from '@/lib/proprietarios/types'
 import {
+  createInquilinoAction,
+  updateInquilinoAction,
+} from '@/lib/inquilinos/actions'
+import { buildInquilinoPayload } from '@/lib/inquilinos/api'
+import {
   INQUILINO_STEP_HINTS,
   INQUILINO_WIZARD_DEFAULT_STEP,
   INQUILINO_WIZARD_STEPS,
@@ -26,6 +31,7 @@ import {
 import type { InquilinoWizardStepId } from '@/lib/inquilinos/wizard/types'
 import { fetchAddressByCep } from '@/lib/utils/cep/fetch-viacep'
 import { onlyDigits } from '@/lib/utils/validation'
+import { useToast } from '@/lib/toast/use-toast'
 import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useMemo, useState } from 'react'
@@ -37,17 +43,35 @@ import { StepPessoal } from '@/app/components/CriarProprietarioWizard/StepPessoa
 import { StepContato } from '@/app/components/CriarProprietarioWizard/StepContato'
 import { StepEndereco } from '@/app/components/CriarProprietarioWizard/StepEndereco'
 
-export function CriarInquilinoWizard() {
+function defaultInquilinoFormData(): ProprietarioFormData {
+  return { ...defaultProprietarioFormData(), is_renter: true }
+}
+
+export interface InquilinoWizardProps {
+  mode?: 'create' | 'edit'
+  initialData?: ProprietarioFormData
+  inquilinoId?: string
+}
+
+export function CriarInquilinoWizard({
+  mode = 'create',
+  initialData,
+  inquilinoId,
+}: InquilinoWizardProps = {}) {
   const router = useRouter()
+  const { toast } = useToast()
+  const isEdit = mode === 'edit'
 
   const [step, setStep] = useState<InquilinoWizardStepId>(() => {
+    if (isEdit) return INQUILINO_WIZARD_DEFAULT_STEP
     const draft = getInquilinoWizardDraft()
     return draft.step ?? INQUILINO_WIZARD_DEFAULT_STEP
   })
 
   const [data, setData] = useState<ProprietarioFormData>(() => {
+    if (isEdit && initialData) return initialData
     const draft = getInquilinoWizardDraft()
-    return draft.data ?? defaultProprietarioFormData()
+    return draft.data ?? defaultInquilinoFormData()
   })
 
   const [errors, setErrors] = useState<ProprietarioFormErrors>({})
@@ -68,12 +92,13 @@ export function CriarInquilinoWizard() {
   }, [errors])
 
   function goToStep(next: string) {
-    setStep(next as InquilinoWizardStepId)
-    saveInquilinoWizardDraft({ step: next as InquilinoWizardStepId })
+    const id = next as InquilinoWizardStepId
+    setStep(id)
+    if (!isEdit) saveInquilinoWizardDraft({ step: id })
   }
 
   function handleCancel() {
-    clearInquilinoWizardDraft()
+    if (!isEdit) clearInquilinoWizardDraft()
     router.push('/locacao/inquilinos')
   }
 
@@ -92,7 +117,7 @@ export function CriarInquilinoWizard() {
   function patch(partial: Partial<ProprietarioFormData>) {
     setData((prev) => {
       const next = { ...prev, ...partial }
-      saveInquilinoWizardDraft({ data: next })
+      if (!isEdit) saveInquilinoWizardDraft({ data: next })
       return next
     })
     setErrors({})
@@ -125,7 +150,7 @@ export function CriarInquilinoWizard() {
           t.id === id ? { ...t, ...partial } : t,
         ),
       }
-      saveInquilinoWizardDraft({ data: next })
+      if (!isEdit) saveInquilinoWizardDraft({ data: next })
       return next
     })
     setErrors((prev) => {
@@ -147,7 +172,7 @@ export function CriarInquilinoWizard() {
         ...prev,
         telefones: [...prev.telefones, createTelefone()],
       }
-      saveInquilinoWizardDraft({ data: next })
+      if (!isEdit) saveInquilinoWizardDraft({ data: next })
       return next
     })
   }
@@ -161,7 +186,7 @@ export function CriarInquilinoWizard() {
             ? prev.telefones
             : prev.telefones.filter((t) => t.id !== id),
       }
-      saveInquilinoWizardDraft({ data: next })
+      if (!isEdit) saveInquilinoWizardDraft({ data: next })
       return next
     })
   }
@@ -186,10 +211,44 @@ export function CriarInquilinoWizard() {
       return
     }
 
+    if (isEdit && !inquilinoId) {
+      toast({
+        title: 'Erro ao salvar',
+        description:
+          'Identificador do inquilino não encontrado. Volte à lista e tente novamente.',
+        variant: 'error',
+      })
+      return
+    }
+
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 400))
+    if (!isEdit) {
+      console.log('[cadastro inquilino] payload:', buildInquilinoPayload(data))
+    }
+    const result =
+      isEdit && inquilinoId
+        ? await updateInquilinoAction(inquilinoId, data)
+        : await createInquilinoAction(data)
     setSubmitting(false)
-    clearInquilinoWizardDraft()
+
+    if (!result.success) {
+      toast({
+        title: isEdit ? 'Erro ao atualizar inquilino' : 'Erro ao cadastrar inquilino',
+        description: result.error ?? 'Ocorreu um erro inesperado.',
+        variant: 'error',
+      })
+      return
+    }
+
+    toast({
+      title: isEdit ? 'Inquilino atualizado' : 'Inquilino cadastrado',
+      description: isEdit
+        ? 'As alterações foram salvas com sucesso.'
+        : 'O inquilino foi criado com sucesso.',
+      variant: 'success',
+    })
+
+    if (!isEdit) clearInquilinoWizardDraft()
     router.push('/locacao/inquilinos')
   }
 
@@ -206,7 +265,11 @@ export function CriarInquilinoWizard() {
         hint: INQUILINO_STEP_HINTS.endereco,
         onBack: prev ? () => goToStep(prev) : undefined,
         onNext: handleFinish,
-        nextLabel: submitting ? 'Salvando…' : 'Concluir cadastro',
+        nextLabel: submitting
+          ? 'Salvando…'
+          : isEdit
+            ? 'Salvar alterações'
+            : 'Concluir cadastro',
         nextDisabled: submitting,
       }
     }
@@ -219,13 +282,18 @@ export function CriarInquilinoWizard() {
       nextDisabled: false,
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step, stepIndex, submitting, data])
+  }, [step, stepIndex, submitting, data, isEdit])
 
   function renderStep() {
     switch (step) {
       case 'identificacao':
         return (
-          <StepIdentificacao data={data} errors={errors} patch={patch} />
+          <StepIdentificacao
+            data={data}
+            errors={errors}
+            patch={patch}
+            hideIsRenterToggle
+          />
         )
       case 'pessoal':
         return <StepPessoal data={data} errors={errors} patch={patch} />
@@ -251,7 +319,12 @@ export function CriarInquilinoWizard() {
         )
       default:
         return (
-          <StepIdentificacao data={data} errors={errors} patch={patch} />
+          <StepIdentificacao
+            data={data}
+            errors={errors}
+            patch={patch}
+            hideIsRenterToggle
+          />
         )
     }
   }

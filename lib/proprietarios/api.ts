@@ -60,7 +60,8 @@ export interface PersonDto {
   qtd_imoveis?: number;
 }
 
-interface ProprietarioWritePayload {
+/** Corpo enviado em POST/PUT `/persons/v1/`. Exportado para debug no fluxo de cadastro. */
+export interface ProprietarioWritePayload {
   name: string;
   email: string;
   document: string;
@@ -174,7 +175,7 @@ function parseMarriageRegimeFromApi(
   return "";
 }
 
-function buildPersonPayload(data: ProprietarioFormData): ProprietarioWritePayload {
+export function buildPersonPayload(data: ProprietarioFormData): ProprietarioWritePayload {
   const bankAccounts = data.bank_account
     .filter((acc) => acc.type && acc.bank_id)
     .map((acc) => ({

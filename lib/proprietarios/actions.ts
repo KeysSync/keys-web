@@ -37,6 +37,7 @@ export async function updateProprietarioAction(
   personId: string,
   data: ProprietarioFormData,
 ): Promise<ProprietarioActionState> {
+  console.log('[updateProprietarioAction] personId:', personId, 'data:', data)
   const accessToken = await getAccessToken()
   if (!accessToken) {
     return { success: false, error: 'Sessão expirada. Faça login novamente.' }
