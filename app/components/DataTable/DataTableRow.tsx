@@ -9,6 +9,7 @@ type DataTableRowProps<T> = {
   selected?: boolean;
   selectable?: boolean;
   onRowClick?: (row: T) => void;
+  onRowDoubleClick?: (row: T) => void;
 };
 
 export function DataTableRow<T>({
@@ -17,25 +18,33 @@ export function DataTableRow<T>({
   selected = false,
   selectable = false,
   onRowClick,
+  onRowDoubleClick,
 }: DataTableRowProps<T>) {
-  const handleClick = (event: MouseEvent<HTMLTableRowElement>) => {
-    if (!onRowClick) return;
-
+  const isInteractive = (event: MouseEvent<HTMLTableRowElement>) => {
     const target = event.target as HTMLElement;
-    if (target.closest("button, label, input, a")) return;
+    return target.closest("button, label, input, a");
+  };
 
+  const handleClick = (event: MouseEvent<HTMLTableRowElement>) => {
+    if (!onRowClick || isInteractive(event)) return;
     onRowClick(row);
+  };
+
+  const handleDoubleClick = (event: MouseEvent<HTMLTableRowElement>) => {
+    if (!onRowDoubleClick || isInteractive(event)) return;
+    onRowDoubleClick(row);
   };
 
   return (
     <tr
       className={[
-        selectable ? "cadastros-list-row--selectable" : "",
+        selectable || onRowDoubleClick ? "cadastros-list-row--selectable" : "",
         selected ? "cadastros-list-row--selected" : "",
       ]
         .filter(Boolean)
         .join(" ")}
       onClick={onRowClick ? handleClick : undefined}
+      onDoubleClick={onRowDoubleClick ? handleDoubleClick : undefined}
     >
       {columns.map((col) => (
         <td

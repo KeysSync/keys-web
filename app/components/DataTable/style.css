@@ -302,6 +302,12 @@ html[data-theme="dark"] .data-table-pagination__summary {
   width: 11rem;
 }
 
+.cadastros-list-table--imoveis .cadastros-list-col--acoes {
+  width: 3.5rem;
+  padding-left: 0;
+  padding-right: 0.75rem;
+}
+
 /* —— Larguras: pessoas (proprietários / inquilinos) —— */
 .cadastros-list-table--pessoas .cadastros-list-col--nome {
   width: 26%;
@@ -329,6 +335,12 @@ html[data-theme="dark"] .data-table-pagination__summary {
 
 .cadastros-list-table--pessoas .cadastros-list-col--status {
   width: 11rem;
+}
+
+.cadastros-list-table--pessoas .cadastros-list-col--acoes {
+  width: 3.5rem;
+  padding-left: 0;
+  padding-right: 0.75rem;
 }
 
 .cadastros-list-col--status.cadastros-list-col-center {

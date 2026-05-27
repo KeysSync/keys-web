@@ -11,6 +11,7 @@ type DataTableProps<T> = {
   emptyMessage?: string;
   isRowSelected?: (row: T) => boolean;
   onRowClick?: (row: T) => void;
+  onRowDoubleClick?: (row: T) => void;
 };
 
 export function DataTable<T>({
@@ -21,6 +22,7 @@ export function DataTable<T>({
   emptyMessage = "Nenhum registro encontrado.",
   isRowSelected,
   onRowClick,
+  onRowDoubleClick,
 }: DataTableProps<T>) {
   return (
     <div className="cadastros-list-table-wrap">
@@ -75,6 +77,7 @@ export function DataTable<T>({
                 selected={isRowSelected?.(row) ?? false}
                 selectable={Boolean(onRowClick)}
                 onRowClick={onRowClick}
+                onRowDoubleClick={onRowDoubleClick}
               />
             ))
           )}

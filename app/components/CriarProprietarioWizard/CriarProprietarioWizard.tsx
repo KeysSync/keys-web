@@ -40,15 +40,28 @@ import { StepEndereco } from './StepEndereco'
 import { StepIdentificacao } from './StepIdentificacao'
 import { StepPessoal } from './StepPessoal'
 
-export function CriarProprietarioWizard() {
+export interface ProprietarioWizardProps {
+  mode?: 'create' | 'edit'
+  initialData?: ProprietarioFormData
+  proprietarioId?: string
+}
+
+export function CriarProprietarioWizard({
+  mode = 'create',
+  initialData,
+  proprietarioId,
+}: ProprietarioWizardProps = {}) {
   const router = useRouter()
+  const isEdit = mode === 'edit'
 
   const [step, setStep] = useState<ProprietarioWizardStepId>(() => {
+    if (isEdit) return PROPRIETARIO_WIZARD_DEFAULT_STEP
     const draft = getProprietarioWizardDraft()
     return draft.step ?? PROPRIETARIO_WIZARD_DEFAULT_STEP
   })
 
   const [data, setData] = useState<ProprietarioFormData>(() => {
+    if (isEdit && initialData) return initialData
     const draft = getProprietarioWizardDraft()
     return draft.data ?? defaultProprietarioFormData()
   })
@@ -73,11 +86,11 @@ export function CriarProprietarioWizard() {
   function goToStep(next: string) {
     const id = next as ProprietarioWizardStepId
     setStep(id)
-    saveProprietarioWizardDraft({ step: id })
+    if (!isEdit) saveProprietarioWizardDraft({ step: id })
   }
 
   function handleCancel() {
-    clearProprietarioWizardDraft()
+    if (!isEdit) clearProprietarioWizardDraft()
     router.push('/imoveis/proprietarios')
   }
 
@@ -103,7 +116,7 @@ export function CriarProprietarioWizard() {
             : acc,
         )
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
     setErrors({})
@@ -136,7 +149,7 @@ export function CriarProprietarioWizard() {
           t.id === id ? { ...t, ...partial } : t,
         ),
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
     setErrors((prev) => {
@@ -158,7 +171,7 @@ export function CriarProprietarioWizard() {
         ...prev,
         telefones: [...prev.telefones, createTelefone()],
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
   }
@@ -172,7 +185,7 @@ export function CriarProprietarioWizard() {
             ? prev.telefones
             : prev.telefones.filter((t) => t.id !== id),
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
   }
@@ -190,7 +203,7 @@ export function CriarProprietarioWizard() {
           return acc
         }),
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
     setErrors((prev) => {
@@ -212,7 +225,7 @@ export function CriarProprietarioWizard() {
         ...prev,
         bank_account: [...prev.bank_account, createBankAccount(prev.name)],
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
   }
@@ -223,7 +236,7 @@ export function CriarProprietarioWizard() {
         ...prev,
         bank_account: prev.bank_account.filter((acc) => acc.id !== id),
       }
-      saveProprietarioWizardDraft({ data: next })
+      if (!isEdit) saveProprietarioWizardDraft({ data: next })
       return next
     })
   }
@@ -250,7 +263,7 @@ export function CriarProprietarioWizard() {
     setSubmitting(true)
     await new Promise((r) => setTimeout(r, 400))
     setSubmitting(false)
-    clearProprietarioWizardDraft()
+    if (!isEdit) clearProprietarioWizardDraft()
     router.push('/imoveis/proprietarios')
   }
 
@@ -267,7 +280,11 @@ export function CriarProprietarioWizard() {
         hint: PROPRIETARIO_STEP_HINTS.bancario,
         onBack: prev ? () => goToStep(prev) : undefined,
         onNext: handleFinish,
-        nextLabel: submitting ? 'Salvando…' : 'Concluir cadastro',
+        nextLabel: submitting
+          ? 'Salvando…'
+          : isEdit
+            ? 'Salvar alterações'
+            : 'Concluir cadastro',
         nextDisabled: submitting,
       }
     }

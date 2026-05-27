@@ -1,5 +1,7 @@
-import { redirect } from "next/navigation";
+import { getImoveis } from '@/lib/imoveis/data'
+import ImoveisListContent from './ImoveisListContent'
 
-export default function ImoveisPage() {
-  redirect("/imoveis/imoveis");
+export default async function ImoveisPage() {
+  const imoveis = await getImoveis()
+  return <ImoveisListContent imoveis={imoveis} />
 }

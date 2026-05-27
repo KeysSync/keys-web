@@ -1,3 +1,4 @@
+import axios, { AxiosError, type AxiosRequestConfig } from "axios";
 import { requireApiUrl } from "@/lib/env";
 
 export class ApiError extends Error {
@@ -12,31 +13,19 @@ export class ApiError extends Error {
   }
 }
 
-export type ApiRequestInit = RequestInit & {
-  /** Body JSON-serializável. Sobrescreve `init.body`. */
+export type ApiRequestInit = {
+  method?: string;
   json?: unknown;
-  /** Token Bearer enviado em Authorization. */
   bearer?: string;
+  headers?: Record<string, string>;
+  signal?: AbortSignal;
 };
 
-function joinUrl(base: string, path: string): string {
-  if (/^https?:\/\//i.test(path)) return path;
-  if (path.startsWith("/")) return `${base}${path}`;
-  return `${base}/${path}`;
-}
-
-async function parseBody(response: Response): Promise<unknown> {
-  const contentType = response.headers.get("content-type") ?? "";
-  if (!contentType.includes("application/json")) {
-    const text = await response.text();
-    return text || null;
-  }
-  try {
-    return await response.json();
-  } catch {
-    return null;
-  }
-}
+const api = axios.create({
+  headers: {
+    Accept: "application/json",
+  },
+});
 
 function extractErrorMessage(payload: unknown, fallback: string): string {
   if (payload && typeof payload === "object") {
@@ -53,7 +42,7 @@ function extractErrorMessage(payload: unknown, fallback: string): string {
 }
 
 /**
- * Fetch wrapper para a API Keys.
+ * Wrapper Axios para a API Keys.
  *
  * - Resolve a URL contra `NEXT_PUBLIC_API_URL`.
  * - Serializa `init.json` como JSON e seta `Content-Type` automaticamente.
@@ -65,41 +54,44 @@ export async function apiFetch<T = unknown>(
   init: ApiRequestInit = {},
 ): Promise<T> {
   const { json, bearer, headers, ...rest } = init;
-  const url = joinUrl(requireApiUrl(), path);
+  const baseURL = requireApiUrl();
 
-  const composedHeaders = new Headers(headers);
-  if (json !== undefined && !composedHeaders.has("Content-Type")) {
-    composedHeaders.set("Content-Type", "application/json");
+  const config: AxiosRequestConfig = {
+    baseURL,
+    url: path,
+    method: (rest.method as AxiosRequestConfig["method"]) ?? "GET",
+    headers: { ...headers },
+    signal: rest.signal,
+  };
+
+  if (json !== undefined) {
+    config.data = json;
+    if (!config.headers!["Content-Type"]) {
+      config.headers!["Content-Type"] = "application/json";
+    }
   }
-  if (!composedHeaders.has("Accept")) {
-    composedHeaders.set("Accept", "application/json");
-  }
+
   if (bearer) {
-    composedHeaders.set("Authorization", `Bearer ${bearer}`);
+    config.headers!["Authorization"] = `Bearer ${bearer}`;
   }
 
-  const body = json !== undefined ? JSON.stringify(json) : rest.body;
+  try {
+    const response = await api.request<T>(config);
 
-  const response = await fetch(url, {
-    ...rest,
-    headers: composedHeaders,
-    body,
-    cache: rest.cache ?? "no-store",
-  });
+    if (response.status === 204) {
+      return undefined as T;
+    }
 
-  if (response.status === 204) {
-    return undefined as T;
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError && error.response) {
+      const { status, data } = error.response;
+      throw new ApiError(
+        extractErrorMessage(data, `Falha na requisição (${status})`),
+        status,
+        data,
+      );
+    }
+    throw error;
   }
-
-  const payload = await parseBody(response);
-
-  if (!response.ok) {
-    throw new ApiError(
-      extractErrorMessage(payload, `Falha na requisição (${response.status})`),
-      response.status,
-      payload,
-    );
-  }
-
-  return payload as T;
 }

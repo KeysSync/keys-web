@@ -23,8 +23,10 @@ export type CadastrosListViewProps<T> = {
   tableLayout?: CadastrosTableLayout;
   pageSize?: number;
   pagination?: boolean;
+  emptyMessage?: string;
   isRowSelected?: (row: T) => boolean;
   onRowClick?: (row: T) => void;
+  onRowDoubleClick?: (row: T) => void;
   onNewClick?: () => void;
 };
 

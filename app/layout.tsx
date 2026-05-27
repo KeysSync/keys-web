@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/lib/theme/ThemeProvider";
+import { ToastProvider } from "@/lib/toast/use-toast";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -32,7 +33,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

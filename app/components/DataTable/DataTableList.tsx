@@ -21,6 +21,7 @@ export type DataTableListProps<T> = {
   emptyMessage?: string;
   isRowSelected?: (row: T) => boolean;
   onRowClick?: (row: T) => void;
+  onRowDoubleClick?: (row: T) => void;
   onNewClick?: () => void;
 };
 
@@ -38,6 +39,7 @@ export function DataTableList<T>({
   emptyMessage,
   isRowSelected,
   onRowClick,
+  onRowDoubleClick,
   onNewClick,
 }: DataTableListProps<T>) {
   const [search, setSearch] = useState("");
@@ -98,6 +100,7 @@ export function DataTableList<T>({
           emptyMessage={emptyMessage}
           isRowSelected={isRowSelected}
           onRowClick={onRowClick}
+          onRowDoubleClick={onRowDoubleClick}
         />
 
         <footer className="cadastros-list-footer">

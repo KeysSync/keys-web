@@ -14,7 +14,7 @@ const imoveisTabs: SectionTabItem[] = [
   {
     value: "imoveis",
     label: "Imóveis",
-    href: "/imoveis/imoveis",
+    href: "/imoveis",
     icon: Building2,
   },
   {

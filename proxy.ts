@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import axios from "axios";
 import {
   AUTH_COOKIE,
   LOGIN_PATH,
@@ -18,17 +19,17 @@ const isPublicPath = (pathname: string): boolean => {
 async function tryRefresh(refreshToken: string): Promise<TokenResponse | null> {
   if (!API_URL) return null;
   try {
-    const response = await fetch(`${API_URL}/auth/v1/refresh`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+    const { data } = await axios.post<TokenResponse>(
+      `${API_URL}/auth/v1/refresh`,
+      { refresh_token: refreshToken },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       },
-      body: JSON.stringify({ refresh_token: refreshToken }),
-      cache: "no-store",
-    });
-    if (!response.ok) return null;
-    return (await response.json()) as TokenResponse;
+    );
+    return data;
   } catch {
     return null;
   }
