@@ -2,6 +2,7 @@
 
 import { EntityFormField } from '@/app/components/EntityForm/EntityFormField'
 import { FormSection } from '@/app/components/FormSection/FormSection'
+import { Checkbox } from '@/app/components/Checkbox/Checkbox'
 import { DocumentInputBr } from '@/components/ui/document-input-br'
 import { Select } from '@/components/ui/select'
 import { PROPRIETARIO_TYPE_OPTIONS } from '@/lib/proprietarios/constants'
@@ -99,6 +100,14 @@ export function StepIdentificacao({ data, errors, patch }: StepIdentificacaoProp
               value={data.document}
               onChange={(v) => patch({ document: v })}
               placeholder={isPerson ? '000.000.000-00' : '00.000.000/0000-00'}
+            />
+          </EntityFormField>
+
+          <EntityFormField label="Perfil" className="contrato-criar-field--wide">
+            <Checkbox
+              label="É inquilino?"
+              checked={data.is_renter}
+              onChange={(e) => patch({ is_renter: e.target.checked })}
             />
           </EntityFormField>
         </div>

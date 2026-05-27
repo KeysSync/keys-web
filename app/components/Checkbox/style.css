@@ -89,11 +89,14 @@
   line-height: 1.2;
 }
 
+html[data-theme="dark"] .keys-checkbox {
+  --keys-checkbox-label: rgba(242, 246, 250, 0.78);
+}
+
 html[data-theme="dark"] .keys-checkbox__input {
   --keys-checkbox-bg: #14141c;
   --keys-checkbox-border: rgba(242, 246, 250, 0.12);
   --keys-checkbox-border-strong: rgba(242, 246, 250, 0.22);
   --keys-checkbox-primary: #4c8df0;
   --keys-checkbox-primary-soft: rgba(76, 141, 240, 0.18);
-  --keys-checkbox-label: rgba(242, 246, 250, 0.65);
 }

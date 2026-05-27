@@ -7,6 +7,10 @@ import {
   hasFormErrors,
   validateProprietarioForm,
 } from '@/lib/proprietarios/form'
+import {
+  createProprietarioAction,
+  updateProprietarioAction,
+} from '@/lib/proprietarios/actions'
 import type {
   ProprietarioBankAccount,
   ProprietarioFormData,
@@ -28,6 +32,7 @@ import {
 import type { ProprietarioWizardStepId } from '@/lib/proprietarios/wizard/types'
 import { fetchAddressByCep } from '@/lib/utils/cep/fetch-viacep'
 import { onlyDigits } from '@/lib/utils/validation'
+import { useToast } from '@/lib/toast/use-toast'
 import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useMemo, useState } from 'react'
@@ -52,6 +57,7 @@ export function CriarProprietarioWizard({
   proprietarioId,
 }: ProprietarioWizardProps = {}) {
   const router = useRouter()
+  const { toast } = useToast()
   const isEdit = mode === 'edit'
 
   const [step, setStep] = useState<ProprietarioWizardStepId>(() => {
@@ -260,9 +266,42 @@ export function CriarProprietarioWizard({
       return
     }
 
+    if (isEdit && !proprietarioId) {
+      toast({
+        title: 'Erro ao salvar',
+        description:
+          'Identificador do proprietário não encontrado. Volte à lista e tente novamente.',
+        variant: 'error',
+      })
+      return
+    }
+
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 400))
+    const result =
+      isEdit && proprietarioId
+        ? await updateProprietarioAction(proprietarioId, data)
+        : await createProprietarioAction(data)
     setSubmitting(false)
+
+    if (!result.success) {
+      toast({
+        title: isEdit
+          ? 'Erro ao atualizar proprietário'
+          : 'Erro ao cadastrar proprietário',
+        description: result.error ?? 'Ocorreu um erro inesperado.',
+        variant: 'error',
+      })
+      return
+    }
+
+    toast({
+      title: isEdit ? 'Proprietário atualizado' : 'Proprietário cadastrado',
+      description: isEdit
+        ? 'As alterações foram salvas com sucesso.'
+        : 'O proprietário foi criado com sucesso.',
+      variant: 'success',
+    })
+
     if (!isEdit) clearProprietarioWizardDraft()
     router.push('/imoveis/proprietarios')
   }

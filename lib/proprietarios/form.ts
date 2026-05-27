@@ -44,6 +44,7 @@ export function defaultProprietarioFormData(): ProprietarioFormData {
     email: "",
     document: "",
     type: "person",
+    is_renter: false,
     rg: "",
     rg_origin: "",
     telefones: [createTelefone()],

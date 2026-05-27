@@ -1,16 +1,9 @@
-export type PessoaTipo = 'pf' | 'pj'
+import type { ProprietarioListRow } from '@/lib/proprietarios/types'
 
-export interface Proprietario {
-  id: string
-  nome: string
-  documento: string
-  tipo: PessoaTipo
-  email: string
-  telefone: string
-  qtdImoveis: number
-}
+export type PessoaTipo = ProprietarioListRow['tipo']
+export type Proprietario = ProprietarioListRow
 
-export const mockProprietarios: Proprietario[] = [
+export const mockProprietarios: ProprietarioListRow[] = [
   {
     id: 'pr1',
     nome: 'João Almeida',

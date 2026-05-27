@@ -1,5 +1,18 @@
 export type ProprietarioType = "person" | "enterprise";
 
+/** Para listagens (mantém compat com cadastros de pessoas física/jurídica na UI). */
+export type ProprietarioListTipo = "pf" | "pj";
+
+export type ProprietarioListRow = {
+  id: string;
+  nome: string;
+  documento: string;
+  tipo: ProprietarioListTipo;
+  email: string;
+  telefone: string;
+  qtdImoveis: number;
+};
+
 export type MarriageRegime =
   | "Comunhão parcial de bens"
   | "Comunhão total de bens"
@@ -35,6 +48,7 @@ export type ProprietarioFormData = {
   email: string;
   document: string;
   type: ProprietarioType;
+  is_renter: boolean;
   rg: string;
   rg_origin: string;
   telefones: ProprietarioTelefone[];
