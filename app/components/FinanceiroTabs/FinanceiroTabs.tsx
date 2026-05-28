@@ -13,7 +13,7 @@ import {
 const financeiroTabs: SectionTabItem[] = [
   {
     value: "lancamentos",
-    label: "Lançamentos",
+    label: "Parcelas",
     href: "/financeiro/lancamentos",
     icon: BadgePercent,
   },
