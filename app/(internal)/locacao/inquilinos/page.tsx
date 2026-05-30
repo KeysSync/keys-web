@@ -1,8 +1,8 @@
-import InquilinosListContent from './InquilinosListContent'
-import { getInquilinosList } from '@/lib/inquilinos/data'
+import TenantsListContent from './TenantsListContent'
+import { getTenantsList } from '@/lib/tenants/data'
 
 export default async function LocacaoInquilinosPage() {
-  const inquilinos = await getInquilinosList()
+  const inquilinos = await getTenantsList()
 
-  return <InquilinosListContent inquilinos={inquilinos} />
+  return <TenantsListContent tenants={inquilinos} />
 }

@@ -1,4 +1,4 @@
-.configuracoes-layout {
+.settings-layout {
   flex: 1;
   width: 100%;
   min-height: 0;
@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 
-.configuracoes-shell {
+.settings-shell {
   flex: 1;
   width: 100%;
   min-height: 0;
@@ -17,7 +17,7 @@
   color: #08080c;
 }
 
-.configuracoes-shell__content {
+.settings-shell__content {
   flex: 1;
   min-height: 0;
 }
@@ -131,43 +131,43 @@
   color: rgba(8, 8, 12, 0.55);
 }
 
-.cadastros-badge--perfil-admin {
+.records-badge--role-admin {
   background: rgba(8, 8, 12, 0.08);
   color: #08080c;
 }
 
-.cadastros-badge--perfil-gerente {
+.records-badge--role-gerente {
   background: rgba(9, 98, 215, 0.12);
   color: #0754b8;
 }
 
-.cadastros-badge--perfil-corretor {
+.records-badge--role-corretor {
   background: rgba(38, 153, 90, 0.12);
   color: #26995a;
 }
 
-.cadastros-badge--perfil-financeiro {
+.records-badge--role-financeiro {
   background: rgba(124, 77, 255, 0.12);
   color: #5e35b1;
 }
 
-.cadastros-badge--membro-ativo {
+.records-badge--member-ativo {
   background: rgba(38, 153, 90, 0.12);
   color: #26995a;
 }
 
-.cadastros-badge--membro-convite_pendente {
+.records-badge--member-convite_pendente {
   background: rgba(245, 124, 0, 0.12);
   color: #e65100;
 }
 
-.cadastros-badge--membro-inativo {
+.records-badge--member-inativo {
   background: rgba(8, 8, 12, 0.08);
   color: rgba(8, 8, 12, 0.55);
 }
 
 /* —— Lista de membros —— */
-.membros-list-avatar {
+.memberCount-list-avatar {
   display: inline-flex;
   width: 2.5rem;
   height: 2.5rem;
@@ -177,23 +177,23 @@
   background: #eef2f6;
 }
 
-.membros-list-avatar img {
+.memberCount-list-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.membros-list-name {
+.memberCount-list-name {
   font-size: 0.9rem;
 }
 
-.membros-list-date {
+.memberCount-list-date {
   font-size: 0.875rem;
   color: rgba(8, 8, 12, 0.65);
   white-space: nowrap;
 }
 
-.membros-list-action {
+.memberCount-list-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -210,74 +210,74 @@
     color 0.2s ease;
 }
 
-.membros-list-action:hover {
+.memberCount-list-action:hover {
   background: rgba(8, 8, 12, 0.06);
   color: #08080c;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--select {
+.records-list-table--memberCount .records-list-col--select {
   width: 3rem;
   padding-left: 1rem;
   padding-right: 0.5rem;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--foto {
+.records-list-table--memberCount .records-list-col--photo {
   width: 3.75rem;
   padding-left: 0.5rem;
   padding-right: 0.75rem;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--nome {
+.records-list-table--memberCount .records-list-col--name {
   width: 22%;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--role {
+.records-list-table--memberCount .records-list-col--role {
   width: 11rem;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--status {
+.records-list-table--memberCount .records-list-col--status {
   width: 9.5rem;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--status .membros-list-toggle {
+.records-list-table--memberCount .records-list-col--status .memberCount-list-toggle {
   margin-inline: auto;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--dataCriacao {
+.records-list-table--memberCount .records-list-col--createdAt {
   width: 10rem;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--acoes {
+.records-list-table--memberCount .records-list-col--actions {
   width: 3.5rem;
   padding-left: 0.5rem;
   padding-right: 1rem;
 }
 
-.cadastros-list-table--membros .cadastros-list-col--nome .membros-list-name {
+.records-list-table--memberCount .records-list-col--name .memberCount-list-name {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-html[data-theme="dark"] .membros-list-avatar {
+html[data-theme="dark"] .memberCount-list-avatar {
   border-color: rgba(242, 246, 250, 0.12);
   background: #1c1c26;
 }
 
-html[data-theme="dark"] .membros-list-date {
+html[data-theme="dark"] .memberCount-list-date {
   color: rgba(242, 246, 250, 0.65);
 }
 
-html[data-theme="dark"] .membros-list-action {
+html[data-theme="dark"] .memberCount-list-action {
   color: rgba(242, 246, 250, 0.55);
 }
 
-html[data-theme="dark"] .membros-list-action:hover {
+html[data-theme="dark"] .memberCount-list-action:hover {
   background: rgba(242, 246, 250, 0.08);
   color: #f2f6fa;
 }
 
-html[data-theme="dark"] .configuracoes-shell,
+html[data-theme="dark"] .settings-shell,
 html[data-theme="dark"] .configuracoes-page__title,
 html[data-theme="dark"] .configuracoes-overview__title {
   color: #f2f6fa;
@@ -303,29 +303,29 @@ html[data-theme="dark"] .configuracoes-overview__card-text strong {
   color: #f2f6fa;
 }
 
-html[data-theme="dark"] .cadastros-badge--perfil-admin,
-html[data-theme="dark"] .cadastros-badge--membro-inativo {
+html[data-theme="dark"] .records-badge--role-admin,
+html[data-theme="dark"] .records-badge--member-inativo {
   background: rgba(242, 246, 250, 0.1);
   color: rgba(242, 246, 250, 0.75);
 }
 
-html[data-theme="dark"] .cadastros-badge--perfil-gerente {
+html[data-theme="dark"] .records-badge--role-gerente {
   background: rgba(61, 142, 240, 0.15);
   color: #3d8ef0;
 }
 
-html[data-theme="dark"] .cadastros-badge--perfil-corretor,
-html[data-theme="dark"] .cadastros-badge--membro-ativo {
+html[data-theme="dark"] .records-badge--role-corretor,
+html[data-theme="dark"] .records-badge--member-ativo {
   background: rgba(9, 215, 102, 0.12);
   color: #09d766;
 }
 
-html[data-theme="dark"] .cadastros-badge--perfil-financeiro {
+html[data-theme="dark"] .records-badge--role-financeiro {
   background: rgba(179, 136, 255, 0.15);
   color: #b388ff;
 }
 
-html[data-theme="dark"] .cadastros-badge--membro-convite_pendente {
+html[data-theme="dark"] .records-badge--member-convite_pendente {
   background: rgba(255, 183, 77, 0.15);
   color: #ffb74d;
 }

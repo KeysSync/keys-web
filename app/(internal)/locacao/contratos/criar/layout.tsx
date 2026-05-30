@@ -1,4 +1,4 @@
-import { hasContratoCriarEntryServer } from '@/lib/contratos/wizard/entry-server'
+import { hasContractCreateEntryServer } from '@/lib/contracts/wizard/entry-server'
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import './style.css'
@@ -13,9 +13,9 @@ export default async function ContratoCriarLayout({
 }: {
   children: React.ReactNode
 }) {
-  if (!(await hasContratoCriarEntryServer())) {
+  if (!(await hasContractCreateEntryServer())) {
     redirect('/locacao/contratos')
   }
 
-  return <div className="contratos-criar-layout">{children}</div>
+  return <div className="contracts-create-layout">{children}</div>
 }

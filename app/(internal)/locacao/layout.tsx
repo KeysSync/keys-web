@@ -1,4 +1,4 @@
-import LocacaoShell from "@/app/components/LocacaoShell/LocacaoShell";
+import RentalShell from "@/app/components/RentalShell/RentalShell";
 
 export default function LocacaoLayout({
   children,
@@ -6,8 +6,8 @@ export default function LocacaoLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="locacao-layout">
-      <LocacaoShell>{children}</LocacaoShell>
+    <div className="rental-layout">
+      <RentalShell>{children}</RentalShell>
     </div>
   );
 }

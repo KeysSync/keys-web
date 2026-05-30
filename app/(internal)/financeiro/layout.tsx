@@ -1,4 +1,4 @@
-import FinanceiroShell from "@/app/components/FinanceiroShell/FinanceiroShell";
+import FinancialShell from "@/app/components/FinancialShell/FinancialShell";
 
 export default function FinanceiroLayout({
   children,
@@ -6,8 +6,8 @@ export default function FinanceiroLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="financeiro-layout">
-      <FinanceiroShell>{children}</FinanceiroShell>
+    <div className="financial-layout">
+      <FinancialShell>{children}</FinancialShell>
     </div>
   );
 }

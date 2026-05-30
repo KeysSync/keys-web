@@ -16,12 +16,12 @@ export function FormField({
   children,
 }: FormFieldProps) {
   return (
-    <div className={`contrato-criar-field${className ? ` ${className}` : ''}`}>
-      <label className="contrato-criar-field__label" htmlFor={htmlFor}>
+    <div className={`contract-create-field${className ? ` ${className}` : ''}`}>
+      <label className="contract-create-field__label" htmlFor={htmlFor}>
         {label}
       </label>
       {children}
-      {hint ? <span className="contrato-criar-field__hint">{hint}</span> : null}
+      {hint ? <span className="contract-create-field__hint">{hint}</span> : null}
     </div>
   )
 }

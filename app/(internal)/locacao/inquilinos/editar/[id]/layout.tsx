@@ -12,5 +12,5 @@ export default function EditarInquilinoLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <div className="contratos-criar-layout">{children}</div>
+  return <div className="contracts-create-layout">{children}</div>
 }

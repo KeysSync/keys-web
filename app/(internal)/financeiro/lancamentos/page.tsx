@@ -1,5 +1,7 @@
-import { ParcelasListContent } from '@/app/components/Parcelas'
+import { InstallmentsListContent } from '@/app/components/Installments'
+import { getInstallmentsList } from '@/lib/installments/data'
 
-export default function LancamentosPage() {
-  return <ParcelasListContent />
+export default async function LancamentosPage() {
+  const installments = await getInstallmentsList()
+  return <InstallmentsListContent installments={installments} />
 }

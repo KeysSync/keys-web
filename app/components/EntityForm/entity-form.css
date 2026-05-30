@@ -101,8 +101,8 @@
   color: var(--keys-danger);
 }
 
-.contrato-criar-input--error,
-.contrato-criar-input--error:focus {
+.contract-create-input--error,
+.contract-create-input--error:focus {
   border-color: var(--keys-danger);
   background-color: var(--keys-danger-soft);
   box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.12);
@@ -203,7 +203,7 @@
   color: var(--keys-info);
 }
 
-.proprietario-form-layout {
+.owner-form-layout {
   flex: 1;
   width: 100%;
   height: 100%;
@@ -213,12 +213,12 @@
   background: var(--keys-surface);
 }
 
-.contrato-criar-stepper__marker--warning {
+.contract-create-stepper__marker--warning {
   background: var(--keys-warning, #e6a817) !important;
   color: #fff !important;
 }
 
-.contrato-criar-stepper__marker--error {
+.contract-create-stepper__marker--error {
   background: var(--keys-danger, #c62828) !important;
   color: #fff !important;
 }

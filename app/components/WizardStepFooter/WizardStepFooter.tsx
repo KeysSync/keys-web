@@ -20,11 +20,11 @@ export function WizardStepFooter({
   nextDisabled = false,
 }: WizardStepFooterProps) {
   return (
-    <footer className="contrato-criar-footer">
-      <p className="contrato-criar-footer__hint">{hint}</p>
-      <div className="contrato-criar-footer__actions">
+    <footer className="contract-create-footer">
+      <p className="contract-create-footer__hint">{hint}</p>
+      <div className="contract-create-footer__actions">
         {onBack ? (
-          <button type="button" className="contrato-criar-footer__back" onClick={onBack}>
+          <button type="button" className="contract-create-footer__back" onClick={onBack}>
             <ArrowLeft size={18} />
             {backLabel}
           </button>
@@ -32,7 +32,7 @@ export function WizardStepFooter({
         {onNext ? (
           <button
             type="button"
-            className="contrato-criar-footer__next"
+            className="contract-create-footer__next"
             disabled={nextDisabled}
             onClick={onNext}
           >

@@ -38,8 +38,8 @@ export function DataTableRow<T>({
   return (
     <tr
       className={[
-        selectable || onRowDoubleClick ? "cadastros-list-row--selectable" : "",
-        selected ? "cadastros-list-row--selected" : "",
+        selectable || onRowDoubleClick ? "records-list-row--selectable" : "",
+        selected ? "records-list-row--selected" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -50,8 +50,8 @@ export function DataTableRow<T>({
         <td
           key={col.id}
           className={[
-            `cadastros-list-col--${col.id}`,
-            col.align === "center" ? "cadastros-list-col-center" : "",
+            `records-list-col--${col.id}`,
+            col.align === "center" ? "records-list-col-center" : "",
           ]
             .filter(Boolean)
             .join(" ")}

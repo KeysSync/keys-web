@@ -1,4 +1,4 @@
-.contratos-layout {
+.contracts-layout {
   --keys-branco: #f2f6fa;
 
   flex: 1;
@@ -8,11 +8,11 @@
   flex-direction: column;
 }
 
-html[data-theme='dark'] .contratos-layout {
+html[data-theme='dark'] .contracts-layout {
   --keys-branco: #14141c;
 }
 
-.contratos-page {
+.contracts-page {
   --keys-preto: #08080c;
   --keys-branco: #f2f6fa;
   --keys-info: #0962d7;
@@ -39,7 +39,7 @@ html[data-theme='dark'] .contratos-layout {
   overflow: auto;
 }
 
-.contratos-hero {
+.contracts-hero {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -47,7 +47,7 @@ html[data-theme='dark'] .contratos-layout {
   margin-bottom: 1.5rem;
 }
 
-.contratos-page-title {
+.contracts-page-title {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
@@ -55,7 +55,7 @@ html[data-theme='dark'] .contratos-layout {
   color: var(--keys-preto);
 }
 
-.contratos-page-desc {
+.contracts-page-desc {
   margin: 0.5rem 0 0;
   max-width: 36rem;
   font-size: 0.95rem;
@@ -63,7 +63,7 @@ html[data-theme='dark'] .contratos-layout {
   color: var(--keys-text-muted);
 }
 
-.contratos-hero-actions {
+.contracts-hero-actions {
   display: flex;
   flex-shrink: 0;
   gap: 0.75rem;
@@ -358,13 +358,13 @@ html[data-theme='dark'] .contratos-layout {
   text-decoration: underline;
 }
 
-.contratos-imovel {
+.contracts-property {
   display: flex;
   align-items: center;
   gap: 0.65rem;
 }
 
-.contratos-imovel-icon {
+.contracts-property-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -375,13 +375,13 @@ html[data-theme='dark'] .contratos-layout {
   color: var(--keys-info);
 }
 
-.contratos-imovel-titulo {
+.contracts-property-titulo {
   display: block;
   font-weight: 600;
   color: var(--keys-preto);
 }
 
-.contratos-imovel-bairro {
+.contracts-property-bairro {
   display: block;
   font-size: 0.78rem;
   color: var(--keys-text-faint);
@@ -518,11 +518,11 @@ html[data-theme='dark'] .contratos-layout {
 }
 
 @media (max-width: 900px) {
-  .contratos-hero {
+  .contracts-hero {
     flex-direction: column;
   }
 
-  .contratos-hero-actions {
+  .contracts-hero-actions {
     width: 100%;
   }
 
@@ -547,7 +547,7 @@ html[data-theme='dark'] .contratos-layout {
   }
 }
 
-html[data-theme='dark'] .contratos-page {
+html[data-theme='dark'] .contracts-page {
   --keys-preto: #f2f6fa;
   --keys-branco: #14141c;
   --keys-surface: #1c1c26;

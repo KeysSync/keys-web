@@ -1,24 +1,24 @@
-import { CriarProprietarioWizard } from '@/app/components/CriarProprietarioWizard/CriarProprietarioWizard'
-import { getProprietarioFormById } from '@/lib/proprietarios/data'
+import { CreateOwnerWizard } from '@/app/components/CreateOwnerWizard/CreateOwnerWizard'
+import { getOwnerFormById } from '@/lib/owners/data'
 import { redirect } from 'next/navigation'
 
-export default async function EditarProprietarioPage({
+export default async function EditOwnerPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
 
-  const initialData = await getProprietarioFormById(id)
+  const initialData = await getOwnerFormById(id)
   if (!initialData) {
     redirect('/imoveis/proprietarios')
   }
 
   return (
-    <CriarProprietarioWizard
+    <CreateOwnerWizard
       mode="edit"
       initialData={initialData}
-      proprietarioId={id}
+      ownerId={id}
     />
   )
 }

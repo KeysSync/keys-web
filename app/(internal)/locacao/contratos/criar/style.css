@@ -1,4 +1,4 @@
-.contratos-criar-layout {
+.contracts-create-layout {
   --keys-preto: #08080c;
   --keys-info: #0962d7;
   --keys-info-hover: #0754b8;
@@ -29,7 +29,7 @@
   color: var(--keys-preto);
 }
 
-.contrato-criar-error {
+.contract-create-error {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -38,20 +38,20 @@
   padding: 2rem 1.5rem;
 }
 
-.contrato-criar-error__title {
+.contract-create-error__title {
   margin: 0;
   font-size: 1.125rem;
   font-weight: 700;
 }
 
-.contrato-criar-error__desc {
+.contract-create-error__desc {
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.5;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-error__actions {
+.contract-create-error__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -59,7 +59,7 @@
   margin-top: 0.25rem;
 }
 
-.contrato-criar-error__btn {
+.contract-create-error__btn {
   padding: 0.55rem 1rem;
   border: none;
   border-radius: 0.5rem;
@@ -70,22 +70,22 @@
   cursor: pointer;
 }
 
-.contrato-criar-error__btn:hover {
+.contract-create-error__btn:hover {
   background: var(--keys-info-hover);
 }
 
-.contrato-criar-error__link {
+.contract-create-error__link {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--keys-info);
   text-decoration: none;
 }
 
-.contrato-criar-error__link:hover {
+.contract-create-error__link:hover {
   text-decoration: underline;
 }
 
-.contrato-criar-page {
+.contract-create-page {
   flex: 1;
   width: 100%;
   height: 100%;
@@ -98,7 +98,7 @@
 }
 
 /* —— Sidebar —— */
-.contrato-criar-sidebar {
+.contract-create-sidebar {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -107,7 +107,7 @@
   background: var(--keys-surface);
 }
 
-.contrato-criar-back {
+.contract-create-back {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -126,33 +126,33 @@
     border-color 0.15s ease;
 }
 
-.contrato-criar-back:hover {
+.contract-create-back:hover {
   color: var(--keys-preto);
   border-color: var(--keys-border-strong);
 }
 
-.contrato-criar-stepper {
+.contract-create-stepper {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   min-height: 0;
 }
 
-.contrato-criar-stepper__progress {
+.contract-create-stepper__progress {
   height: 4px;
   border-radius: 999px;
   background: var(--keys-surface-muted);
   overflow: hidden;
 }
 
-.contrato-criar-stepper__progress-fill {
+.contract-create-stepper__progress-fill {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--keys-info), var(--keys-success));
   transition: width 0.25s ease;
 }
 
-.contrato-criar-stepper__meta {
+.contract-create-stepper__meta {
   margin: 0;
   font-size: 0.75rem;
   font-weight: 500;
@@ -161,7 +161,7 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-stepper__list {
+.contract-create-stepper__list {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -170,7 +170,7 @@
   list-style: none;
 }
 
-.contrato-criar-stepper__btn {
+.contract-create-stepper__btn {
   display: flex;
   align-items: center;
   gap: 0.65rem;
@@ -186,25 +186,25 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.contrato-criar-stepper__item--active .contrato-criar-stepper__btn {
+.contract-create-stepper__item--active .contract-create-stepper__btn {
   background: var(--keys-info-soft);
   color: var(--keys-preto);
   font-weight: 600;
 }
 
-.contrato-criar-stepper__item--past .contrato-criar-stepper__btn {
+.contract-create-stepper__item--past .contract-create-stepper__btn {
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-stepper__btn:not(:disabled) {
+.contract-create-stepper__btn:not(:disabled) {
   cursor: pointer;
 }
 
-.contrato-criar-stepper__btn:not(:disabled):hover {
+.contract-create-stepper__btn:not(:disabled):hover {
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-stepper__marker {
+.contract-create-stepper__marker {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -218,18 +218,18 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-stepper__item--active .contrato-criar-stepper__marker {
+.contract-create-stepper__item--active .contract-create-stepper__marker {
   background: var(--keys-info);
   color: #fff;
 }
 
-.contrato-criar-stepper__item--past .contrato-criar-stepper__marker {
+.contract-create-stepper__item--past .contract-create-stepper__marker {
   background: var(--keys-surface-muted);
   color: var(--keys-text-muted);
 }
 
 /* —— Main panel —— */
-.contrato-criar-main {
+.contract-create-main {
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -238,21 +238,21 @@
   background: var(--keys-surface);
 }
 
-.contrato-criar-main__body {
+.contract-create-main__body {
   flex: 1;
   min-height: 0;
   overflow: auto;
   padding: 1.25rem 1.5rem 1.25rem;
 }
 
-.contrato-criar-main__body:has(.contrato-criar-step-locatarios) {
+.contract-create-main__body:has(.contract-create-step-locatarios) {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   padding: 1rem 1.5rem;
 }
 
-.contrato-criar-footer {
+.contract-create-footer {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -264,7 +264,7 @@
   box-shadow: 0 -4px 16px rgba(8, 8, 12, 0.04);
 }
 
-.contrato-criar-footer__actions {
+.contract-create-footer__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -272,7 +272,7 @@
   gap: 0.65rem;
 }
 
-.contrato-criar-footer__back {
+.contract-create-footer__back {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -286,18 +286,18 @@
   cursor: pointer;
 }
 
-.contrato-criar-footer__back:hover {
+.contract-create-footer__back:hover {
   color: var(--keys-preto);
   border-color: var(--keys-info);
 }
 
-.contrato-criar-footer__hint {
+.contract-create-footer__hint {
   margin: 0;
   font-size: 0.875rem;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-footer__next {
+.contract-create-footer__next {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -312,29 +312,29 @@
   transition: background 0.15s ease, opacity 0.15s ease;
 }
 
-.contrato-criar-footer__next:hover:not(:disabled) {
+.contract-create-footer__next:hover:not(:disabled) {
   background: var(--keys-success-hover);
 }
 
-.contrato-criar-footer__next:disabled {
+.contract-create-footer__next:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
 /* —— Step: imóvel —— */
-.contrato-criar-step-imovel {
+.contract-create-step-property {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.contrato-criar-toolbar {
+.contract-create-toolbar {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.contrato-criar-segmented {
+.contract-create-segmented {
   display: inline-flex;
   align-self: flex-start;
   padding: 0.2rem;
@@ -343,7 +343,7 @@
   border: 1px solid var(--keys-border);
 }
 
-.contrato-criar-segmented__btn {
+.contract-create-segmented__btn {
   padding: 0.45rem 0.85rem;
   border: none;
   border-radius: 0.45rem;
@@ -358,27 +358,27 @@
     box-shadow 0.15s ease;
 }
 
-.contrato-criar-segmented__btn--active {
+.contract-create-segmented__btn--active {
   background: var(--keys-surface);
   color: var(--keys-preto);
   font-weight: 600;
   box-shadow: var(--keys-shadow);
 }
 
-.contrato-criar-toolbar__actions {
+.contract-create-toolbar__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
   gap: 0.65rem;
 }
 
-.contrato-criar-search-field {
+.contract-create-search-field {
   position: relative;
   flex: 1;
   min-width: 200px;
 }
 
-.contrato-criar-search-icon {
+.contract-create-search-icon {
   position: absolute;
   left: 0.9rem;
   top: 50%;
@@ -387,7 +387,7 @@
   pointer-events: none;
 }
 
-.contrato-criar-search-field input {
+.contract-create-search-field input {
   width: 100%;
   height: 2.75rem;
   padding: 0 1rem 0 2.6rem;
@@ -400,12 +400,12 @@
   transition: border-color 0.15s ease;
 }
 
-.contrato-criar-search-field input:focus {
+.contract-create-search-field input:focus {
   outline: none;
   border-color: var(--keys-info);
 }
 
-.contrato-criar-btn-ghost {
+.contract-create-btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -421,12 +421,12 @@
   white-space: nowrap;
 }
 
-.contrato-criar-btn-ghost:hover {
+.contract-create-btn-ghost:hover {
   background: var(--keys-info-soft);
   border-style: solid;
 }
 
-.contrato-criar-callout {
+.contract-create-callout {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
@@ -440,24 +440,24 @@
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-callout svg {
+.contract-create-callout svg {
   flex-shrink: 0;
   margin-top: 0.1rem;
   color: var(--keys-info);
 }
 
-.contrato-criar-callout p {
+.contract-create-callout p {
   margin: 0;
 }
 
-.contrato-criar-results-meta {
+.contract-create-results-meta {
   margin: 0;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-imovel-list {
+.contract-create-property-list {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -466,7 +466,7 @@
   list-style: none;
 }
 
-.contrato-criar-imovel-empty {
+.contract-create-property-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -479,17 +479,17 @@
   text-align: center;
 }
 
-.contrato-criar-imovel-empty p {
+.contract-create-property-empty p {
   margin: 0.5rem 0 0;
   font-weight: 600;
   color: var(--keys-preto);
 }
 
-.contrato-criar-imovel-empty span {
+.contract-create-property-empty span {
   font-size: 0.875rem;
 }
 
-.contrato-criar-imovel-card {
+.contract-create-property-card {
   display: grid;
   grid-template-columns: auto auto 1fr auto;
   align-items: center;
@@ -508,12 +508,12 @@
     transform 0.15s ease;
 }
 
-.contrato-criar-imovel-card:hover {
+.contract-create-property-card:hover {
   border-color: var(--keys-border-strong);
   transform: translateY(-1px);
 }
 
-.contrato-criar-imovel-card--selected {
+.contract-create-property-card--selected {
   border-color: var(--keys-success);
   background: linear-gradient(
     90deg,
@@ -525,17 +525,17 @@
     var(--keys-shadow);
 }
 
-.contrato-criar-imovel-card__select {
+.contract-create-property-card__select {
   display: flex;
   align-items: center;
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-imovel-card--selected .contrato-criar-imovel-card__check {
+.contract-create-property-card--selected .contract-create-property-card__check {
   color: var(--keys-success);
 }
 
-.contrato-criar-imovel-card__thumb {
+.contract-create-property-card__thumb {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -546,27 +546,27 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-imovel-card__body {
+.contract-create-property-card__body {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   min-width: 0;
 }
 
-.contrato-criar-imovel-card__row {
+.contract-create-property-card__row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 }
 
-.contrato-criar-imovel-card__title {
+.contract-create-property-card__title {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--keys-preto);
 }
 
-.contrato-criar-imovel-tag {
+.contract-create-property-tag {
   padding: 0.12rem 0.45rem;
   border-radius: 0.25rem;
   background: var(--keys-info-soft);
@@ -575,7 +575,7 @@
   color: var(--keys-info);
 }
 
-.contrato-criar-imovel-card__address {
+.contract-create-property-card__address {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -583,7 +583,7 @@
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-imovel-card__refs {
+.contract-create-property-card__refs {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
@@ -591,7 +591,7 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-imovel-card__price {
+.contract-create-property-card__price {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -599,27 +599,27 @@
   padding-left: 0.5rem;
 }
 
-.contrato-criar-imovel-card__price-value {
+.contract-create-property-card__price-value {
   font-size: 1rem;
   font-weight: 700;
   color: var(--keys-preto);
   white-space: nowrap;
 }
 
-.contrato-criar-imovel-card__price-period {
+.contract-create-property-card__price-period {
   font-size: 0.75rem;
   color: var(--keys-text-faint);
 }
 
 /* —— Step: geral (form) —— */
-.contrato-criar-step-geral {
+.contract-create-step-geral {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   padding-bottom: 0.5rem;
 }
 
-.contrato-criar-geral-imovel {
+.contract-create-geral-property {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -632,7 +632,7 @@
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-geral-imovel__label {
+.contract-create-geral-property__label {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -640,46 +640,46 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-geral-imovel strong {
+.contract-create-geral-property strong {
   color: var(--keys-preto);
   font-size: 0.9rem;
 }
 
-.contrato-criar-form-section {
+.contract-create-form-section {
   border: 1px solid var(--keys-border);
   border-radius: 0.75rem;
   background: var(--keys-surface);
   overflow: visible;
 }
 
-.contrato-criar-form-section__head {
+.contract-create-form-section__head {
   padding: 1rem 1.15rem 0.75rem;
   border-bottom: 1px solid var(--keys-border);
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-form-section__title {
+.contract-create-form-section__title {
   margin: 0;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.contrato-criar-form-section__desc {
+.contract-create-form-section__desc {
   margin: 0.35rem 0 0;
   font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-form-section__body {
+.contract-create-form-section__body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem 1.15rem 1.15rem;
 }
 
-.contrato-criar-form-subhead {
+.contract-create-form-subhead {
   display: flex;
   align-items: center;
   gap: 0.65rem;
@@ -691,25 +691,25 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-form-subhead::after {
+.contract-create-form-subhead::after {
   content: '';
   flex: 1;
   height: 1px;
   background: var(--keys-border);
 }
 
-.contrato-criar-form-subhead:first-child {
+.contract-create-form-subhead:first-child {
   margin-top: 0;
 }
 
-.contrato-criar-form-grid {
+.contract-create-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
   gap: 0.85rem 1rem;
 }
 
-.contrato-criar-form-row {
+.contract-create-form-row {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -717,101 +717,101 @@
   width: 100%;
 }
 
-.contrato-criar-field {
+.contract-create-field {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   min-width: 0;
 }
 
-.contrato-criar-form-row > .contrato-criar-field {
+.contract-create-form-row > .contract-create-field {
   flex: 1 1 14rem;
   min-width: 0;
   max-width: none;
 }
 
-.contrato-criar-form-row > .contrato-criar-date-row {
+.contract-create-form-row > .contract-create-date-row {
   flex: 0 0 auto;
 }
 
-.contrato-criar-field--wide {
+.contract-create-field--wide {
   grid-column: 1 / -1;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--wide,
-.contrato-criar-form-row > .contrato-criar-field--full {
+.contract-create-form-row > .contract-create-field--wide,
+.contract-create-form-row > .contract-create-field--full {
   flex: 1 1 100%;
 }
 
-.contrato-criar-field--date,
-.contrato-criar-field--month {
+.contract-create-field--date,
+.contract-create-field--month {
   width: 100%;
   max-width: 11rem;
   min-width: 0;
 }
 
-.contrato-criar-field--date .date-input-br,
-.contrato-criar-field--date .month-input-br,
-.contrato-criar-field--month .date-input-br {
+.contract-create-field--date .date-input-br,
+.contract-create-field--date .month-input-br,
+.contract-create-field--month .date-input-br {
   width: 100%;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--date,
-.contrato-criar-form-row > .contrato-criar-field--month {
+.contract-create-form-row > .contract-create-field--date,
+.contract-create-form-row > .contract-create-field--month {
   flex: 0 0 11rem;
   max-width: 11rem;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--day {
+.contract-create-form-row > .contract-create-field--day {
   flex: 0 0 6.5rem;
   max-width: 6.5rem;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--num {
+.contract-create-form-row > .contract-create-field--num {
   flex: 0 0 9.5rem;
   max-width: 9.5rem;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--percent {
+.contract-create-form-row > .contract-create-field--percent {
   flex: 0 0 9.5rem;
   max-width: 9.5rem;
 }
 
-.contrato-criar-field--currency {
+.contract-create-field--currency {
   max-width: 14rem;
 }
 
-.contrato-criar-field--currency .masked-input-br {
+.contract-create-field--currency .masked-input-br {
   max-width: 14rem;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--currency {
+.contract-create-form-row > .contract-create-field--currency {
   flex: 0 0 13rem;
   max-width: 13rem;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--grow {
+.contract-create-form-row > .contract-create-field--grow {
   flex: 1 1 16rem;
   max-width: 22rem;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--half {
+.contract-create-form-row > .contract-create-field--half {
   flex: 1 1 0;
   min-width: 0;
   max-width: none;
 }
 
-.contrato-criar-form-row > .contrato-criar-field--toggle {
+.contract-create-form-row > .contract-create-field--toggle {
   flex: 0 0 auto;
   max-width: none;
 }
 
-.contrato-criar-field--toggle .contrato-criar-toggle {
+.contract-create-field--toggle .contract-create-toggle {
   height: 2.5rem;
   padding: 0 0.15rem;
 }
 
-.contrato-criar-date-row {
+.contract-create-date-row {
   display: inline-flex;
   flex-wrap: nowrap;
   gap: 0.75rem;
@@ -819,30 +819,30 @@
   max-width: 100%;
 }
 
-.contrato-criar-date-row > .contrato-criar-field--date,
-.contrato-criar-date-row > .contrato-criar-field--month {
+.contract-create-date-row > .contract-create-field--date,
+.contract-create-date-row > .contract-create-field--month {
   flex: 0 0 11rem;
   width: 11rem;
   max-width: 11rem;
 }
 
-.contrato-criar-form-grid > .contrato-criar-date-row {
+.contract-create-form-grid > .contract-create-date-row {
   grid-column: 1 / -1;
 }
 
-.contrato-criar-field__label {
+.contract-create-field__label {
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--keys-preto);
 }
 
-.contrato-criar-field__hint {
+.contract-create-field__hint {
   font-size: 0.75rem;
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-input,
-.contrato-criar-select {
+.contract-create-input,
+.contract-create-select {
   width: 100%;
   height: 2.5rem;
   padding: 0 0.75rem;
@@ -854,66 +854,66 @@
   transition: border-color 0.15s ease;
 }
 
-.contrato-criar-form-section .date-input-br {
+.contract-create-form-section .date-input-br {
   border-color: var(--keys-border-strong);
   background: var(--keys-surface);
 }
 
-.contrato-criar-form-section .date-input-br:focus-within {
+.contract-create-form-section .date-input-br:focus-within {
   border-color: var(--keys-info);
 }
 
-.contrato-criar-form-section .date-input-br__field {
+.contract-create-form-section .date-input-br__field {
   color: var(--keys-preto);
 }
 
-.contrato-criar-form-section .date-input-br__trigger {
+.contract-create-form-section .date-input-br__trigger {
   border-left-color: var(--keys-border);
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-form-section .date-input-br__trigger:hover:not(:disabled) {
+.contract-create-form-section .date-input-br__trigger:hover:not(:disabled) {
   background: var(--keys-info-soft);
   color: var(--keys-info);
 }
 
-.contrato-criar-form-section .date-input-br--disabled {
+.contract-create-form-section .date-input-br--disabled {
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-form-section .masked-input-br {
+.contract-create-form-section .masked-input-br {
   border-color: var(--keys-border-strong);
   background: var(--keys-surface);
 }
 
-.contrato-criar-form-section .masked-input-br:focus-within {
+.contract-create-form-section .masked-input-br:focus-within {
   border-color: var(--keys-info);
 }
 
-.contrato-criar-form-section .masked-input-br__prefix {
+.contract-create-form-section .masked-input-br__prefix {
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-form-section .masked-input-br__field {
+.contract-create-form-section .masked-input-br__field {
   color: var(--keys-preto);
 }
 
-.contrato-criar-form-section .masked-input-br--disabled {
+.contract-create-form-section .masked-input-br--disabled {
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-input:focus,
-.contrato-criar-select:focus {
+.contract-create-input:focus,
+.contract-create-select:focus {
   outline: none;
   border-color: var(--keys-info);
 }
 
-.contrato-criar-custom-select {
+.contract-create-custom-select {
   position: relative;
   width: 100%;
 }
 
-.contrato-criar-custom-select__trigger {
+.contract-create-custom-select__trigger {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -923,12 +923,12 @@
   cursor: pointer;
 }
 
-.contrato-criar-custom-select__trigger:disabled {
+.contract-create-custom-select__trigger:disabled {
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.contrato-criar-custom-select__value {
+.contract-create-custom-select__value {
   flex: 1;
   min-width: 0;
   overflow: hidden;
@@ -936,25 +936,25 @@
   white-space: nowrap;
 }
 
-.contrato-criar-custom-select__value--placeholder {
+.contract-create-custom-select__value--placeholder {
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-custom-select__chevron {
+.contract-create-custom-select__chevron {
   flex-shrink: 0;
   color: var(--keys-text-faint);
   transition: transform 0.15s ease;
 }
 
-.contrato-criar-custom-select--open .contrato-criar-custom-select__chevron {
+.contract-create-custom-select--open .contract-create-custom-select__chevron {
   transform: rotate(180deg);
 }
 
-.contrato-criar-custom-select--open .contrato-criar-custom-select__trigger {
+.contract-create-custom-select--open .contract-create-custom-select__trigger {
   border-color: var(--keys-info);
 }
 
-.contrato-criar-custom-select__list {
+.contract-create-custom-select__list {
   margin: 0;
   padding: 0.35rem;
   list-style: none;
@@ -967,11 +967,11 @@
   scrollbar-gutter: stable;
 }
 
-.contrato-criar-custom-select__list--portal {
+.contract-create-custom-select__list--portal {
   z-index: 2000;
 }
 
-.contrato-criar-custom-select__option {
+.contract-create-custom-select__option {
   display: block;
   width: 100%;
   padding: 0.5rem 0.65rem;
@@ -989,24 +989,24 @@
     color 0.12s ease;
 }
 
-.contrato-criar-custom-select__option:hover {
+.contract-create-custom-select__option:hover {
   background: var(--keys-info-soft);
   color: var(--keys-info);
 }
 
-.contrato-criar-custom-select__option--selected,
-.contrato-criar-custom-select__option--selected:hover {
+.contract-create-custom-select__option--selected,
+.contract-create-custom-select__option--selected:hover {
   background: var(--keys-info);
   color: #fff;
 }
 
-.contrato-criar-input--readonly {
+.contract-create-input--readonly {
   background: var(--keys-surface-muted);
   color: var(--keys-text-muted);
   cursor: not-allowed;
 }
 
-.contrato-criar-toggle {
+.contract-create-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
@@ -1014,13 +1014,13 @@
   user-select: none;
 }
 
-.contrato-criar-toggle input {
+.contract-create-toggle input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.contrato-criar-toggle__track {
+.contract-create-toggle__track {
   position: relative;
   width: 2.5rem;
   height: 1.35rem;
@@ -1030,7 +1030,7 @@
   transition: background 0.15s ease;
 }
 
-.contrato-criar-toggle__track::after {
+.contract-create-toggle__track::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -1043,21 +1043,21 @@
   transition: transform 0.15s ease;
 }
 
-.contrato-criar-toggle input:checked + .contrato-criar-toggle__track {
+.contract-create-toggle input:checked + .contract-create-toggle__track {
   background: var(--keys-success);
   border-color: var(--keys-success);
 }
 
-.contrato-criar-toggle input:checked + .contrato-criar-toggle__track::after {
+.contract-create-toggle input:checked + .contract-create-toggle__track::after {
   transform: translateX(1.1rem);
 }
 
-.contrato-criar-toggle__text {
+.contract-create-toggle__text {
   font-size: 0.875rem;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-radio-group {
+.contract-create-radio-group {
   margin: 0;
   padding: 0;
   border: none;
@@ -1067,7 +1067,7 @@
   gap: 0.75rem 1.25rem;
 }
 
-.contrato-criar-radio-group legend {
+.contract-create-radio-group legend {
   width: 100%;
   margin-bottom: 0.35rem;
   font-size: 0.8125rem;
@@ -1075,18 +1075,18 @@
   color: var(--keys-preto);
 }
 
-.contrato-criar-radio-group--inline {
+.contract-create-radio-group--inline {
   flex: 0 0 auto;
   align-content: flex-end;
   min-width: 0;
 }
 
-.contrato-criar-radio-group--inline legend {
+.contract-create-radio-group--inline legend {
   font-size: 0.75rem;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-radio {
+.contract-create-radio {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -1095,46 +1095,46 @@
   cursor: pointer;
 }
 
-.contrato-criar-inline-modes {
+.contract-create-inline-modes {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 }
 
-.contrato-criar-inline-modes--stack {
+.contract-create-inline-modes--stack {
   flex-direction: column;
   align-items: stretch;
 }
 
-.contrato-criar-inline-modes .contrato-criar-input {
+.contract-create-inline-modes .contract-create-input {
   flex: 1;
   min-width: 6rem;
 }
 
-.contrato-criar-inline-modes:not(.contrato-criar-inline-modes--stack) {
+.contract-create-inline-modes:not(.contract-create-inline-modes--stack) {
   flex-wrap: nowrap;
 }
 
-.contrato-criar-inline-modes .masked-input-br {
+.contract-create-inline-modes .masked-input-br {
   flex: 1 1 auto;
   min-width: 0;
   max-width: 100%;
 }
 
-.contrato-criar-inline-modes .contrato-criar-btn-secondary {
+.contract-create-inline-modes .contract-create-btn-secondary {
   flex: 0 0 auto;
   padding: 0;
   width: 2.5rem;
   justify-content: center;
 }
 
-.contrato-criar-segmented--compact .contrato-criar-segmented__btn {
+.contract-create-segmented--compact .contract-create-segmented__btn {
   padding: 0.35rem 0.65rem;
   font-size: 0.75rem;
 }
 
-.contrato-criar-segmented--wrap {
+.contract-create-segmented--wrap {
   display: flex;
   flex-wrap: wrap;
   align-self: stretch;
@@ -1142,25 +1142,25 @@
   gap: 0.15rem;
 }
 
-.contrato-criar-seguros-submenu {
+.contract-create-seguros-submenu {
   margin-bottom: 0.35rem;
 }
 
-.contrato-criar-seguros-submenu__hint {
+.contract-create-seguros-submenu__hint {
   margin: 0 0 0.85rem;
   font-size: 0.8125rem;
   color: var(--keys-text-muted);
   line-height: 1.45;
 }
 
-.contrato-criar-seguros-actions {
+.contract-create-seguros-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
 
-.contrato-criar-seguros-list {
+.contract-create-seguros-list {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -1169,14 +1169,14 @@
   list-style: none;
 }
 
-.contrato-criar-seguro-card {
+.contract-create-seguro-card {
   padding: 0.85rem 1rem;
   border: 1px solid var(--keys-border);
   border-radius: 0.6rem;
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-seguro-card__head {
+.contract-create-seguro-card__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -1184,13 +1184,13 @@
   margin-bottom: 0.65rem;
 }
 
-.contrato-criar-seguro-card__head strong {
+.contract-create-seguro-card__head strong {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
 }
 
-.contrato-criar-seguro-card__meta {
+.contract-create-seguro-card__meta {
   display: block;
   margin-top: 0.2rem;
   font-size: 0.75rem;
@@ -1198,18 +1198,18 @@
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-seguro-card__head .contrato-criar-lancamento-row__remove {
+.contract-create-seguro-card__head .contract-create-lancamento-row__remove {
   margin-top: 0;
 }
 
-.contrato-criar-seguro-card__details {
+.contract-create-seguro-card__details {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.65rem;
   margin: 0;
 }
 
-.contrato-criar-seguro-card__details dt {
+.contract-create-seguro-card__details dt {
   margin: 0 0 0.15rem;
   font-size: 0.6875rem;
   font-weight: 500;
@@ -1218,19 +1218,19 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-seguro-card__details dd {
+.contract-create-seguro-card__details dd {
   margin: 0;
   font-size: 0.8125rem;
   font-weight: 500;
 }
 
 @media (max-width: 640px) {
-  .contrato-criar-seguro-card__details {
+  .contract-create-seguro-card__details {
     grid-template-columns: 1fr;
   }
 }
 
-.contrato-criar-btn-secondary {
+.contract-create-btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -1246,18 +1246,18 @@
   white-space: nowrap;
 }
 
-.contrato-criar-btn-secondary:hover {
+.contract-create-btn-secondary:hover {
   background: var(--keys-info-soft);
   border-color: var(--keys-info);
 }
 
-.contrato-criar-checklist {
+.contract-create-checklist {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem 1.25rem;
 }
 
-.contrato-criar-check {
+.contract-create-check {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -1266,76 +1266,76 @@
   cursor: pointer;
 }
 
-.contrato-criar-check input {
+.contract-create-check input {
   width: 1rem;
   height: 1rem;
   accent-color: var(--keys-info);
 }
 
 @media (max-width: 720px) {
-  .contrato-criar-form-grid {
+  .contract-create-form-grid {
     grid-template-columns: 1fr;
   }
 
-  .contrato-criar-date-row {
+  .contract-create-date-row {
     flex-wrap: wrap;
     width: 100%;
   }
 
-  .contrato-criar-date-row > .contrato-criar-field--date,
-  .contrato-criar-date-row > .contrato-criar-field--month {
+  .contract-create-date-row > .contract-create-field--date,
+  .contract-create-date-row > .contract-create-field--month {
     flex: 1 1 9rem;
     max-width: none;
     width: auto;
   }
 
-  .contrato-criar-form-row {
+  .contract-create-form-row {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .contrato-criar-form-row > .contrato-criar-field,
-  .contrato-criar-form-row > .contrato-criar-date-row,
-  .contrato-criar-form-row > .contrato-criar-field--date,
-  .contrato-criar-form-row > .contrato-criar-field--month,
-  .contrato-criar-form-row > .contrato-criar-field--day,
-  .contrato-criar-form-row > .contrato-criar-field--num,
-  .contrato-criar-form-row > .contrato-criar-field--percent,
-  .contrato-criar-form-row > .contrato-criar-field--currency,
-  .contrato-criar-form-row > .contrato-criar-field--grow,
-  .contrato-criar-form-row > .contrato-criar-field--half,
-  .contrato-criar-form-row > .contrato-criar-field--toggle {
+  .contract-create-form-row > .contract-create-field,
+  .contract-create-form-row > .contract-create-date-row,
+  .contract-create-form-row > .contract-create-field--date,
+  .contract-create-form-row > .contract-create-field--month,
+  .contract-create-form-row > .contract-create-field--day,
+  .contract-create-form-row > .contract-create-field--num,
+  .contract-create-form-row > .contract-create-field--percent,
+  .contract-create-form-row > .contract-create-field--currency,
+  .contract-create-form-row > .contract-create-field--grow,
+  .contract-create-form-row > .contract-create-field--half,
+  .contract-create-form-row > .contract-create-field--toggle {
     flex: 1 1 100%;
     max-width: none;
     width: 100%;
   }
 
-  .contrato-criar-footer {
+  .contract-create-footer {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .contrato-criar-footer__actions {
+  .contract-create-footer__actions {
     width: 100%;
     flex-direction: column-reverse;
   }
 
-  .contrato-criar-footer__back,
-  .contrato-criar-footer__next {
+  .contract-create-footer__back,
+  .contract-create-footer__next {
     width: 100%;
     justify-content: center;
   }
 }
 
 /* —— Step: locatários —— */
-.contrato-criar-step-locatarios {
+.contract-create-step-locatarios {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-.contrato-criar-locatarios-grid {
+.contract-create-locatarios-grid {
   flex: 1;
   min-height: 0;
   display: grid;
@@ -1344,7 +1344,7 @@
   align-items: stretch;
 }
 
-.contrato-criar-locatarios-panel {
+.contract-create-locatarios-panel {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1356,11 +1356,11 @@
   overflow: hidden;
 }
 
-.contrato-criar-locatarios-panel--selected {
+.contract-create-locatarios-panel--selected {
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-locatarios-panel__head {
+.contract-create-locatarios-panel__head {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1370,14 +1370,14 @@
   border-bottom: 1px solid var(--keys-border);
 }
 
-.contrato-criar-locatarios-panel__title {
+.contract-create-locatarios-panel__title {
   margin: 0;
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.contrato-criar-locatarios-panel__toolbar {
+.contract-create-locatarios-panel__toolbar {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -1387,12 +1387,12 @@
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-locatarios-panel--selected .contrato-criar-locatarios-panel__head {
+.contract-create-locatarios-panel--selected .contract-create-locatarios-panel__head {
   background: var(--keys-surface);
 }
 
-.contrato-criar-locatarios-panel__body,
-.contrato-criar-locatarios-panel__scroll {
+.contract-create-locatarios-panel__body,
+.contract-create-locatarios-panel__scroll {
   flex: 1;
   min-height: 0;
   display: flex;
@@ -1403,31 +1403,31 @@
   padding: 0.85rem 0.5rem 1rem 1.15rem;
 }
 
-.contrato-criar-locatarios-panel__body {
+.contract-create-locatarios-panel__body {
   padding-right: 0.45rem;
 }
 
-.contrato-criar-search-field--panel {
+.contract-create-search-field--panel {
   width: 100%;
 }
 
-.contrato-criar-search-field--panel input {
+.contract-create-search-field--panel input {
   height: 2.5rem;
   box-shadow: none;
 }
 
-.contrato-criar-locatarios-panel__toolbar .contrato-criar-results-meta {
+.contract-create-locatarios-panel__toolbar .contract-create-results-meta {
   margin: 0;
 }
 
-.contrato-criar-btn-ghost--compact {
+.contract-create-btn-ghost--compact {
   height: 2.25rem;
   padding: 0 0.75rem;
   font-size: 0.8125rem;
 }
 
-.contrato-criar-locatarios-pick-list,
-.contrato-criar-locatarios-selected-list {
+.contract-create-locatarios-pick-list,
+.contract-create-locatarios-selected-list {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -1437,7 +1437,7 @@
   overflow: visible;
 }
 
-.contrato-criar-locatario-pick {
+.contract-create-locatario-pick {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 0.75rem;
@@ -1448,7 +1448,7 @@
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-locatario-pick__avatar {
+.contract-create-locatario-pick__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1459,19 +1459,19 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-locatario-pick__name {
+.contract-create-locatario-pick__name {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.contrato-criar-locatario-pick__doc {
+.contract-create-locatario-pick__doc {
   margin: 0.15rem 0 0;
   font-size: 0.75rem;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-locatario-pick__contact {
+.contract-create-locatario-pick__contact {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -1480,7 +1480,7 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-locatario-pick__add {
+.contract-create-locatario-pick__add {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -1495,15 +1495,15 @@
   white-space: nowrap;
 }
 
-.contrato-criar-locatario-pick__add:hover {
+.contract-create-locatario-pick__add:hover {
   background: var(--keys-info-hover);
 }
 
-.contrato-criar-locatarios-panel__body .contrato-criar-locatarios-empty {
+.contract-create-locatarios-panel__body .contract-create-locatarios-empty {
   margin-right: 0.65rem;
 }
 
-.contrato-criar-locatarios-empty {
+.contract-create-locatarios-empty {
   display: flex;
   flex: 1;
   min-height: 12rem;
@@ -1520,13 +1520,13 @@
   background: var(--keys-surface);
 }
 
-.contrato-criar-locatarios-empty p {
+.contract-create-locatarios-empty p {
   margin: 0.5rem 0 0;
   font-weight: 600;
   color: var(--keys-preto);
 }
 
-.contrato-criar-locatario-selected {
+.contract-create-locatario-selected {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -1536,14 +1536,14 @@
   background: var(--keys-surface);
 }
 
-.contrato-criar-locatario-selected__top {
+.contract-create-locatario-selected__top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.5rem;
 }
 
-.contrato-criar-locatario-selected__name {
+.contract-create-locatario-selected__name {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1553,7 +1553,7 @@
   font-weight: 600;
 }
 
-.contrato-criar-locatario-selected__badge {
+.contract-create-locatario-selected__badge {
   padding: 0.1rem 0.45rem;
   border-radius: 0.25rem;
   background: var(--keys-success-soft);
@@ -1562,17 +1562,17 @@
   color: var(--keys-success);
 }
 
-.contrato-criar-locatario-selected__doc {
+.contract-create-locatario-selected__doc {
   margin: 0.2rem 0 0;
   font-size: 0.75rem;
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-locatario-selected__doc span {
+.contract-create-locatario-selected__doc span {
   margin: 0 0.25rem;
 }
 
-.contrato-criar-locatario-selected__remove {
+.contract-create-locatario-selected__remove {
   display: flex;
   padding: 0.35rem;
   border: none;
@@ -1582,12 +1582,12 @@
   cursor: pointer;
 }
 
-.contrato-criar-locatario-selected__remove:hover {
+.contract-create-locatario-selected__remove:hover {
   background: rgba(254, 84, 72, 0.12);
   color: #fe5448;
 }
 
-.contrato-criar-locatario-selected__meta {
+.contract-create-locatario-selected__meta {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -1595,13 +1595,13 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-locatario-selected__meta span {
+.contract-create-locatario-selected__meta span {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
-.contrato-criar-locatario-selected__papel {
+.contract-create-locatario-selected__papel {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -1610,42 +1610,42 @@
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-locatario-selected__papel .contrato-criar-select {
+.contract-create-locatario-selected__papel .contract-create-select {
   font-size: 0.8125rem;
 }
 
 @media (max-width: 960px) {
-  .contrato-criar-main__body:has(.contrato-criar-step-locatarios) {
+  .contract-create-main__body:has(.contract-create-step-locatarios) {
     overflow: auto;
   }
 
-  .contrato-criar-step-locatarios {
+  .contract-create-step-locatarios {
     min-height: min(70vh, 40rem);
   }
 
-  .contrato-criar-locatarios-grid {
+  .contract-create-locatarios-grid {
     grid-template-columns: 1fr;
     align-items: stretch;
   }
 
-  .contrato-criar-locatarios-panel {
+  .contract-create-locatarios-panel {
     min-height: 18rem;
   }
 
-  .contrato-criar-locatarios-panel__scroll {
+  .contract-create-locatarios-panel__scroll {
     max-height: 16rem;
     flex: none;
   }
 }
 
-.contrato-criar-step-form {
+.contract-create-step-form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   padding-bottom: 0.5rem;
 }
 
-.contrato-criar-textarea {
+.contract-create-textarea {
   width: 100%;
   min-height: 5rem;
   padding: 0.65rem 0.75rem;
@@ -1660,16 +1660,16 @@
   box-sizing: border-box;
 }
 
-.contrato-criar-textarea:focus {
+.contract-create-textarea:focus {
   outline: none;
   border-color: var(--keys-info);
 }
 
-.contrato-criar-textarea--tall {
+.contract-create-textarea--tall {
   min-height: 9rem;
 }
 
-.contrato-criar-lancamentos-toolbar {
+.contract-create-lancamentos-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1677,7 +1677,7 @@
   gap: 0.75rem;
 }
 
-.contrato-criar-lancamentos-list {
+.contract-create-lancamentos-list {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -1686,7 +1686,7 @@
   list-style: none;
 }
 
-.contrato-criar-lancamento-row {
+.contract-create-lancamento-row {
   display: flex;
   gap: 0.5rem;
   align-items: flex-start;
@@ -1696,7 +1696,7 @@
   background: var(--keys-surface-muted);
 }
 
-.contrato-criar-lancamento-row__grid {
+.contract-create-lancamento-row__grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1704,7 +1704,7 @@
   min-width: 0;
 }
 
-.contrato-criar-lancamento-field {
+.contract-create-lancamento-field {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -1713,16 +1713,16 @@
   color: var(--keys-text-muted);
 }
 
-.contrato-criar-lancamento-field--wide {
+.contract-create-lancamento-field--wide {
   grid-column: 1 / -1;
 }
 
-.contrato-criar-lancamento-field--check {
+.contract-create-lancamento-field--check {
   justify-content: flex-end;
   padding-top: 1.25rem;
 }
 
-.contrato-criar-lancamento-row__remove {
+.contract-create-lancamento-row__remove {
   flex-shrink: 0;
   display: flex;
   padding: 0.45rem;
@@ -1734,12 +1734,12 @@
   cursor: pointer;
 }
 
-.contrato-criar-lancamento-row__remove:hover {
+.contract-create-lancamento-row__remove:hover {
   background: rgba(254, 84, 72, 0.12);
   color: #fe5448;
 }
 
-.contrato-criar-redacao-resumo {
+.contract-create-redacao-resumo {
   display: flex;
   gap: 0.85rem;
   padding: 1rem;
@@ -1749,7 +1749,7 @@
   color: var(--keys-info);
 }
 
-.contrato-criar-redacao-resumo dl {
+.contract-create-redacao-resumo dl {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.65rem 1.25rem;
@@ -1757,7 +1757,7 @@
   flex: 1;
 }
 
-.contrato-criar-redacao-resumo dt {
+.contract-create-redacao-resumo dt {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -1765,7 +1765,7 @@
   color: var(--keys-text-faint);
 }
 
-.contrato-criar-redacao-resumo dd {
+.contract-create-redacao-resumo dd {
   margin: 0.15rem 0 0;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1773,16 +1773,16 @@
 }
 
 @media (max-width: 720px) {
-  .contrato-criar-lancamento-row__grid {
+  .contract-create-lancamento-row__grid {
     grid-template-columns: 1fr;
   }
 
-  .contrato-criar-redacao-resumo dl {
+  .contract-create-redacao-resumo dl {
     grid-template-columns: 1fr;
   }
 }
 
-.contrato-criar-step-placeholder {
+.contract-create-step-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1795,13 +1795,13 @@
   text-align: center;
 }
 
-.contrato-criar-step-placeholder__label {
+.contract-create-step-placeholder__label {
   margin: 0 0 0.5rem;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.contrato-criar-step-placeholder__desc {
+.contract-create-step-placeholder__desc {
   margin: 0;
   max-width: 28rem;
   font-size: 0.9rem;
@@ -1810,17 +1810,17 @@
 }
 
 @media (max-width: 960px) {
-  .contrato-criar-page {
+  .contract-create-page {
     grid-template-columns: 1fr;
   }
 
-  .contrato-criar-sidebar {
+  .contract-create-sidebar {
     border-right: none;
     border-bottom: 1px solid var(--keys-border);
     padding: 1rem 1.25rem;
   }
 
-  .contrato-criar-stepper__list {
+  .contract-create-stepper__list {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -1828,34 +1828,34 @@
     padding-bottom: 0.25rem;
   }
 
-  .contrato-criar-stepper__btn {
+  .contract-create-stepper__btn {
     white-space: nowrap;
   }
 
-  .contrato-criar-main__body {
+  .contract-create-main__body {
     padding: 1rem 1.25rem 1rem;
   }
 
-  .contrato-criar-main__body:has(.contrato-criar-step-locatarios) {
+  .contract-create-main__body:has(.contract-create-step-locatarios) {
     padding: 0.75rem 1rem;
   }
 
-  .contrato-criar-footer {
+  .contract-create-footer {
     padding: 1rem 1.25rem;
     flex-direction: column;
     align-items: stretch;
   }
 
-  .contrato-criar-imovel-card {
+  .contract-create-property-card {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
   }
 
-  .contrato-criar-imovel-card__thumb {
+  .contract-create-property-card__thumb {
     display: none;
   }
 
-  .contrato-criar-imovel-card__price {
+  .contract-create-property-card__price {
     grid-column: 1 / -1;
     flex-direction: row;
     align-items: baseline;
@@ -1865,7 +1865,7 @@
   }
 }
 
-html[data-theme='dark'] .contratos-criar-layout {
+html[data-theme='dark'] .contracts-create-layout {
   --keys-preto: #f2f6fa;
   --keys-surface: #14141c;
   --keys-surface-elevated: #1c1c26;
@@ -1885,23 +1885,23 @@ html[data-theme='dark'] .contratos-criar-layout {
   background: #14141c;
 }
 
-html[data-theme='dark'] .contrato-criar-segmented__btn--active {
+html[data-theme='dark'] .contract-create-segmented__btn--active {
   background: #242430;
 }
 
-html[data-theme='dark'] .contrato-criar-custom-select__list,
-html[data-theme='dark'] .contrato-criar-custom-select__list--portal {
+html[data-theme='dark'] .contract-create-custom-select__list,
+html[data-theme='dark'] .contract-create-custom-select__list--portal {
   border-color: rgba(242, 246, 250, 0.14);
   background: #1c1c26;
 }
 
-html[data-theme='dark'] .contrato-criar-custom-select__option:hover {
+html[data-theme='dark'] .contract-create-custom-select__option:hover {
   background: var(--keys-info-soft);
   color: #7eb8ff;
 }
 
-html[data-theme='dark'] .contrato-criar-custom-select__option--selected,
-html[data-theme='dark'] .contrato-criar-custom-select__option--selected:hover {
+html[data-theme='dark'] .contract-create-custom-select__option--selected,
+html[data-theme='dark'] .contract-create-custom-select__option--selected:hover {
   background: #0962d7;
   color: #fff;
 }

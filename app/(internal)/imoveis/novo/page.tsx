@@ -1,14 +1,14 @@
-import { CriarImovelWizard } from '@/app/components/CriarImovelWizard/CriarImovelWizard'
-import { getCategories, getSubcategories } from '@/lib/imoveis/data'
+import { CreatePropertyWizard } from '@/app/components/CreatePropertyWizard/CreatePropertyWizard'
+import { getCategories, getSubcategories } from '@/lib/properties/data'
 
-export default async function NovoImovelPage() {
+export default async function NewPropertyPage() {
   const [categories, subcategories] = await Promise.all([
     getCategories(),
     getSubcategories(),
   ])
 
   return (
-    <CriarImovelWizard
+    <CreatePropertyWizard
       categories={categories}
       subcategories={subcategories}
     />

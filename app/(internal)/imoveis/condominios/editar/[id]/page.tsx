@@ -1,4 +1,4 @@
-import { CriarCondominioWizard } from '@/app/components/CriarCondominioWizard/CriarCondominioWizard'
+import { CreateCondominiumWizard } from '@/app/components/CreateCondominiumWizard/CreateCondominiumWizard'
 import { getCondominiumById } from '@/lib/condominiums/data'
 import type { Condominium } from '@/lib/condominiums/api'
 import type { CondominiumFormData } from '@/lib/condominiums/types'
@@ -36,7 +36,7 @@ export default async function EditarCondominioPage({
   const initialData = mapCondominiumToFormData(condominium)
 
   return (
-    <CriarCondominioWizard
+    <CreateCondominiumWizard
       mode="edit"
       initialData={initialData}
       condominiumId={condominium.id}

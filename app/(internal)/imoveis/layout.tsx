@@ -1,13 +1,13 @@
-import ImoveisShell from "@/app/components/ImoveisShell/ImoveisShell";
+import PropertiesShell from "@/app/components/PropertiesShell/PropertiesShell";
 
-export default function ImoveisLayout({
+export default function PropertiesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="imoveis-layout">
-      <ImoveisShell>{children}</ImoveisShell>
+    <div className="properties-layout">
+      <PropertiesShell>{children}</PropertiesShell>
     </div>
   );
 }

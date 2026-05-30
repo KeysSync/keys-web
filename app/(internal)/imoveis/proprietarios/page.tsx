@@ -1,8 +1,8 @@
-import { getProprietariosList } from '@/lib/proprietarios/data'
-import ProprietariosListContent from './ProprietariosListContent'
+import { getOwnersList } from '@/lib/owners/data'
+import OwnersListContent from './OwnersListContent'
 
-export default async function ImoveisProprietariosPage() {
-  const proprietarios = await getProprietariosList()
+export default async function OwnersPage() {
+  const owners = await getOwnersList()
 
-  return <ProprietariosListContent proprietarios={proprietarios} />
+  return <OwnersListContent owners={owners} />
 }

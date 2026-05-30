@@ -71,23 +71,23 @@ export function DataTableList<T>({
   }, [page, totalPages]);
 
   return (
-    <section className="cadastros-list">
-      <div className="cadastros-list-toolbar">
-        <label className="cadastros-list-search">
-          <Search size={18} className="cadastros-list-search-icon" aria-hidden />
+    <section className="records-list">
+      <div className="records-list-toolbar">
+        <label className="records-list-search">
+          <Search size={18} className="records-list-search-icon" aria-hidden />
           <input
             type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder={searchPlaceholder}
-            className="cadastros-list-search-input"
+            className="records-list-search-input"
           />
         </label>
-        <div className="cadastros-list-toolbar-actions">
+        <div className="records-list-toolbar-actions">
           {toolbarExtra}
           <button
             type="button"
-            className="cadastros-list-btn-primary"
+            className="records-list-btn-primary"
             onClick={onNewClick}
           >
             <Plus size={18} />
@@ -96,7 +96,7 @@ export function DataTableList<T>({
         </div>
       </div>
 
-      <div className="cadastros-list-panel">
+      <div className="records-list-panel">
         <DataTable
           columns={columns}
           rows={paginatedRows}
@@ -108,7 +108,7 @@ export function DataTableList<T>({
           onRowDoubleClick={onRowDoubleClick}
         />
 
-        <footer className="cadastros-list-footer">
+        <footer className="records-list-footer">
           {pagination ? (
             <DataTablePagination
               page={currentPage}

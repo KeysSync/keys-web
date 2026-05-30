@@ -39,7 +39,7 @@ const plans = [
     name: "Enterprise",
     price: "Sob consulta",
     period: "",
-    description: "Para grupos, holdings e administradoras com alto volume.",
+    description: "Para groups, holdings e administradoras com alto volume.",
     cta: "Falar com vendas",
     href: "/home",
     highlight: false,

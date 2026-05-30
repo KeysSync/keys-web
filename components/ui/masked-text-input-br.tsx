@@ -85,7 +85,7 @@ export function MaskedTextInputBr({
       inputMode={mask === 'policy' ? 'text' : 'numeric'}
       autoComplete="off"
       disabled={disabled}
-      className={cn('contrato-criar-input', className)}
+      className={cn('contract-create-input', className)}
       placeholder={placeholder ?? PLACEHOLDERS[mask]}
       value={display}
       onChange={(e) => handleChange(e.target.value)}

@@ -1,44 +1,44 @@
-import { CriarImovelWizard } from '@/app/components/CriarImovelWizard/CriarImovelWizard'
-import { getImovelById, getCategories, getSubcategories } from '@/lib/imoveis/data'
-import type { ImovelFormData } from '@/lib/imoveis/types'
-import type { Imovel } from '@/lib/imoveis/api'
+import { CreatePropertyWizard } from '@/app/components/CreatePropertyWizard/CreatePropertyWizard'
+import { getPropertyById, getCategories, getSubcategories } from '@/lib/properties/data'
+import type { PropertyFormData } from '@/lib/properties/types'
+import type { Property } from '@/lib/properties/api'
 import { redirect } from 'next/navigation'
 
-function mapImovelToFormData(imovel: Imovel): ImovelFormData {
+function mapPropertyToFormData(property: Property): PropertyFormData {
   return {
-    address: { ...imovel.address },
-    code: imovel.code,
-    status: imovel.status,
-    rent_price: Number(imovel.rent_price) || 0,
-    category_id: imovel.category_id,
-    subcategory_id: imovel.subcategory_id,
+    address: { ...property.address },
+    code: property.code,
+    status: property.status,
+    rent_price: Number(property.rent_price) || 0,
+    category_id: property.category_id,
+    subcategory_id: property.subcategory_id,
   }
 }
 
-export default async function EditarImovelPage({
+export default async function EditPropertyPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
 
-  const [imovel, categories, subcategories] = await Promise.all([
-    getImovelById(id),
+  const [property, categories, subcategories] = await Promise.all([
+    getPropertyById(id),
     getCategories(),
     getSubcategories(),
   ])
 
-  if (!imovel) {
+  if (!property) {
     redirect('/imoveis')
   }
 
-  const initialData = mapImovelToFormData(imovel)
+  const initialData = mapPropertyToFormData(property)
 
   return (
-    <CriarImovelWizard
+    <CreatePropertyWizard
       mode="edit"
       initialData={initialData}
-      imovelId={imovel.id}
+      propertyId={property.id}
       categories={categories}
       subcategories={subcategories}
     />

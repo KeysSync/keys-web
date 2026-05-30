@@ -1,5 +1,5 @@
-import { AgrupamentosWorkspace } from "@/app/components/AgrupamentosWorkspace/AgrupamentosWorkspace";
+import { GroupsWorkspace } from "@/app/components/GroupsWorkspace/GroupsWorkspace";
 
 export default function AgrupamentosPage() {
-  return <AgrupamentosWorkspace />;
+  return <GroupsWorkspace />;
 }

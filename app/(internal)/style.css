@@ -351,21 +351,21 @@
     padding: 24px;
   }
 
-  .internal-box__content:has(.contratos-criar-layout) {
+  .internal-box__content:has(.contracts-create-layout) {
     display: flex;
     flex-direction: column;
     min-height: 0;
     padding: 0;
   }
 
-  .internal-box__content:has(.agrupamentos-page) {
+  .internal-box__content:has(.groups-page) {
     display: flex;
     flex-direction: column;
     min-height: 0;
     overflow: hidden;
   }
 
-  .internal-box__content:has(.contratos-criar-layout) > .locacao-layout {
+  .internal-box__content:has(.contracts-create-layout) > .rental-layout {
     flex: 1;
     min-height: 0;
     height: 100%;

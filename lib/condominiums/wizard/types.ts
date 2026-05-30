@@ -1,1 +1,1 @@
-export type CondominiumWizardStepId = 'identificacao' | 'endereco'
+export type CondominiumWizardStepId = 'identification' | 'address'

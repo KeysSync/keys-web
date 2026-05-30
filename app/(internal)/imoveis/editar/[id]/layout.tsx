@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   description: 'Editar informações do imóvel',
 }
 
-export default function EditarImovelLayout({
+export default function EditPropertyLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <div className="contratos-criar-layout">{children}</div>
+  return <div className="contracts-create-layout">{children}</div>
 }

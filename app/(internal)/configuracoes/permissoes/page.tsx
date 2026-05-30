@@ -4,32 +4,32 @@ import {
   DataTableList,
   type DataTableColumn,
 } from "@/app/components/DataTable";
-import { mockCargos, type Cargo } from "@/lib/mocks/cargos";
+import type { Role } from "@/lib/roles/types";
 
-function filterCargo(row: Cargo, q: string) {
+function filterRole(row: Role, q: string) {
   return (
-    row.nome.toLowerCase().includes(q) ||
-    row.descricao.toLowerCase().includes(q)
+    row.name.toLowerCase().includes(q) ||
+    row.description.toLowerCase().includes(q)
   );
 }
 
-const columns: DataTableColumn<Cargo>[] = [
+const columns: DataTableColumn<Role>[] = [
   {
-    id: "nome",
+    id: "name",
     header: "Cargo",
     cell: (row) => (
       <div>
-        <span className="cadastros-list-strong">{row.nome}</span>
-        <span className="cadastros-list-entity-sub">{row.descricao}</span>
+        <span className="records-list-strong">{row.name}</span>
+        <span className="records-list-entity-sub">{row.description}</span>
       </div>
     ),
   },
   {
-    id: "membros",
-    header: "Membros",
+    id: "members",
+    header: "Members",
     align: "center",
     cell: (row) => (
-      <span className="cadastros-list-num">{row.membros}</span>
+      <span className="records-list-num">{row.memberCount}</span>
     ),
   },
 ];
@@ -45,14 +45,14 @@ export default function ConfiguracoesPermissoesPage() {
       </header>
 
       <DataTableList
-        entityName="cargos"
+        entityName="roles"
         newButtonLabel="Novo cargo"
         searchPlaceholder="Buscar cargo ou descrição…"
-        rows={mockCargos}
+        rows={[]}
         columns={columns}
-        filterRow={filterCargo}
+        filterRow={filterRole}
         getRowKey={(row) => row.id}
-        tableLayout="cargos"
+        tableLayout="roles"
         pageSize={5}
       />
     </div>

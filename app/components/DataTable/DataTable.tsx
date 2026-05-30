@@ -25,11 +25,11 @@ export function DataTable<T>({
   onRowDoubleClick,
 }: DataTableProps<T>) {
   return (
-    <div className="cadastros-list-table-wrap">
+    <div className="records-list-table-wrap">
       <table
         className={[
-          "cadastros-list-table",
-          tableLayout ? `cadastros-list-table--${tableLayout}` : "",
+          "records-list-table",
+          tableLayout ? `records-list-table--${tableLayout}` : "",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -40,8 +40,8 @@ export function DataTable<T>({
               <th
                 key={col.id}
                 className={[
-                  `cadastros-list-col--${col.id}`,
-                  col.align === "center" ? "cadastros-list-col-center" : "",
+                  `records-list-col--${col.id}`,
+                  col.align === "center" ? "records-list-col-center" : "",
                 ]
                   .filter(Boolean)
                   .join(" ")}
@@ -50,7 +50,7 @@ export function DataTable<T>({
                   col.headerCell
                 ) : col.align === "center" ? (
                   <span
-                    className={`cadastros-list-col-head cadastros-list-col-head--${col.id}`}
+                    className={`records-list-col-head records-list-col-head--${col.id}`}
                   >
                     {col.header}
                   </span>
@@ -64,7 +64,7 @@ export function DataTable<T>({
         <tbody>
           {rows.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="cadastros-list-empty">
+              <td colSpan={columns.length} className="records-list-empty">
                 {emptyMessage}
               </td>
             </tr>

@@ -1,9 +1,9 @@
 /* Layout compartilhado para os superapps com abas no topo */
-.imoveis-layout,
-.locacao-layout,
-.financeiro-layout,
+.properties-layout,
+.rental-layout,
+.financial-layout,
 .crm-layout,
-.relatorios-layout {
+.reports-layout {
   flex: 1;
   width: 100%;
   min-height: 0;
@@ -11,11 +11,11 @@
   flex-direction: column;
 }
 
-.imoveis-shell,
-.locacao-shell,
-.financeiro-shell,
+.properties-shell,
+.rental-shell,
+.financial-shell,
 .crm-shell,
-.relatorios-shell {
+.reports-shell {
   flex: 1;
   width: 100%;
   min-height: 0;
@@ -26,11 +26,11 @@
   color: #08080c;
 }
 
-.imoveis-shell__content,
-.locacao-shell__content,
-.financeiro-shell__content,
+.properties-shell__content,
+.rental-shell__content,
+.financial-shell__content,
 .crm-shell__content,
-.relatorios-shell__content {
+.reports-shell__content {
   flex: 1;
   min-height: 0;
 }
@@ -49,29 +49,29 @@
   color: #08080c;
 }
 
-html[data-theme="dark"] .imoveis-shell,
-html[data-theme="dark"] .locacao-shell,
-html[data-theme="dark"] .financeiro-shell,
+html[data-theme="dark"] .properties-shell,
+html[data-theme="dark"] .rental-shell,
+html[data-theme="dark"] .financial-shell,
 html[data-theme="dark"] .crm-shell,
-html[data-theme="dark"] .relatorios-shell,
+html[data-theme="dark"] .reports-shell,
 html[data-theme="dark"] .section-placeholder__title {
   color: #f2f6fa;
 }
 
 /* Wizards de criação ocupam tela inteira: escondem tabs e zeram paddings */
-.locacao-layout:has(.contratos-criar-layout),
-.locacao-shell:has(.contratos-criar-layout),
-.locacao-shell__content:has(.contratos-criar-layout),
-.imoveis-layout:has(.contratos-criar-layout),
-.imoveis-shell:has(.contratos-criar-layout),
-.imoveis-shell__content:has(.contratos-criar-layout) {
+.rental-layout:has(.contracts-create-layout),
+.rental-shell:has(.contracts-create-layout),
+.rental-shell__content:has(.contracts-create-layout),
+.properties-layout:has(.contracts-create-layout),
+.properties-shell:has(.contracts-create-layout),
+.properties-shell__content:has(.contracts-create-layout) {
   flex: 1;
   min-height: 0;
   padding: 0;
   gap: 0;
 }
 
-.locacao-shell:has(.contratos-criar-layout) > .section-tabs,
-.imoveis-shell:has(.contratos-criar-layout) > .section-tabs {
+.rental-shell:has(.contracts-create-layout) > .section-tabs,
+.properties-shell:has(.contracts-create-layout) > .section-tabs {
   display: none;
 }

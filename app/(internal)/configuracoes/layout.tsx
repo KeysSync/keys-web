@@ -1,4 +1,4 @@
-import ConfiguracoesShell from "@/app/components/ConfiguracoesShell/ConfiguracoesShell";
+import SettingsShell from "@/app/components/SettingsShell/SettingsShell";
 import "./style.css";
 
 export default function ConfiguracoesLayout({
@@ -7,8 +7,8 @@ export default function ConfiguracoesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="configuracoes-layout">
-      <ConfiguracoesShell>{children}</ConfiguracoesShell>
+    <div className="settings-layout">
+      <SettingsShell>{children}</SettingsShell>
     </div>
   );
 }

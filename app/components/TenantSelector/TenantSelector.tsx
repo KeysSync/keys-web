@@ -1,20 +1,17 @@
 "use client";
 
-import {
-  mockTenants,
-  type Tenant,
-} from "@/lib/mocks/tenants";
+import type { OrganizationTenant } from "@/lib/tenants/org-types";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import "./style.css";
 
 type TenantSelectorProps = {
-  tenants?: Tenant[];
+  tenants?: OrganizationTenant[];
   defaultTenantId?: string;
-  onTenantChange?: (tenant: Tenant) => void;
+  onTenantChange?: (tenant: OrganizationTenant) => void;
 };
 
-function TenantBrand({ tenant }: { tenant: Tenant }) {
+function TenantBrand({ tenant }: { tenant: OrganizationTenant }) {
   if (tenant.imageUrl) {
     return (
       <span className="tenant-selector__brand tenant-selector__brand--image" aria-hidden>
@@ -35,7 +32,7 @@ function TenantBrand({ tenant }: { tenant: Tenant }) {
 }
 
 export function TenantSelector({
-  tenants = mockTenants,
+  tenants = [],
   defaultTenantId,
   onTenantChange,
 }: TenantSelectorProps) {
@@ -71,7 +68,7 @@ export function TenantSelector({
     };
   }, [open]);
 
-  const selectTenant = (tenant: Tenant) => {
+  const selectTenant = (tenant: OrganizationTenant) => {
     setActiveTenantId(tenant.id);
     setOpen(false);
     onTenantChange?.(tenant);

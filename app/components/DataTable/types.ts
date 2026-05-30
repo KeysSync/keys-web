@@ -9,7 +9,7 @@ export type DataTableColumn<T> = {
 };
 
 export type DataTableLayout =
-  | "imoveis"
-  | "pessoas"
-  | "membros"
-  | "cargos";
+  | "properties"
+  | "people"
+  | "members"
+  | "roles";

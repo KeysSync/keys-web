@@ -1,5 +1,5 @@
-import { CriarInquilinoWizard } from '@/app/components/CriarInquilinoWizard/CriarInquilinoWizard'
+import { CreateTenantWizard } from '@/app/components/CreateTenantWizard/CreateTenantWizard'
 
 export default function NovoInquilinoPage() {
-  return <CriarInquilinoWizard />
+  return <CreateTenantWizard />
 }

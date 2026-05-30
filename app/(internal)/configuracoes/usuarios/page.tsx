@@ -1,4 +1,4 @@
-import { MembrosDataTable } from "@/app/components/MembrosDataTable";
+import { MembersDataTable } from "@/app/components/MembersDataTable";
 
 export default function ConfiguracoesUsuariosPage() {
   return (
@@ -8,8 +8,7 @@ export default function ConfiguracoesUsuariosPage() {
           Convide pessoas e gerencie perfis de acesso da imobiliária.
         </p>
       </header>
-
-      <MembrosDataTable />
+      <MembersDataTable />
     </div>
   );
 }

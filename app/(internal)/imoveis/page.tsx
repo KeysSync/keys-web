@@ -1,16 +1,16 @@
-import { getImoveis, getCategories, getSubcategories } from '@/lib/imoveis/data'
-import ImoveisListContent from './ImoveisListContent'
+import { getProperties, getCategories, getSubcategories } from '@/lib/properties/data'
+import PropertiesListContent from './PropertiesListContent'
 
-export default async function ImoveisPage() {
-  const [imoveis, categories, subcategories] = await Promise.all([
-    getImoveis(),
+export default async function PropertiesPage() {
+  const [properties, categories, subcategories] = await Promise.all([
+    getProperties(),
     getCategories(),
     getSubcategories(),
   ])
 
   return (
-    <ImoveisListContent
-      imoveis={imoveis}
+    <PropertiesListContent
+      properties={properties}
       categories={categories}
       subcategories={subcategories}
     />

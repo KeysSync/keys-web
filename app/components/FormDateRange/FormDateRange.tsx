@@ -29,10 +29,10 @@ export function FormDateRange({
   endDisabled,
   variant = 'date',
 }: FormDateRangeProps) {
-  const fieldClass = 'contrato-criar-field--date'
+  const fieldClass = 'contract-create-field--date'
 
   return (
-    <div className="contrato-criar-date-row">
+    <div className="contract-create-date-row">
       <FormField label={startLabel} htmlFor={startId} className={fieldClass}>
         {variant === 'month' ? (
           <MonthInputBr

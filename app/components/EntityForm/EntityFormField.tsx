@@ -20,8 +20,8 @@ export function EntityFormField({
   children,
 }: EntityFormFieldProps) {
   return (
-    <div className={`contrato-criar-field${className ? ` ${className}` : ""}`}>
-      <label className="contrato-criar-field__label" htmlFor={htmlFor}>
+    <div className={`contract-create-field${className ? ` ${className}` : ""}`}>
+      <label className="contract-create-field__label" htmlFor={htmlFor}>
         {label}
         {required ? (
           <span className="entity-form-field__required" aria-hidden>
@@ -36,7 +36,7 @@ export function EntityFormField({
           {error}
         </span>
       ) : hint ? (
-        <span className="contrato-criar-field__hint">{hint}</span>
+        <span className="contract-create-field__hint">{hint}</span>
       ) : null}
     </div>
   );

@@ -51,7 +51,7 @@ const activity = [
   },
   {
     id: "a2",
-    text: "Contrato CNT-1023 renovado com sucesso",
+    text: "Contract CNT-1023 renovado com sucesso",
     when: "há 38 min",
   },
   {

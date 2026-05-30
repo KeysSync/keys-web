@@ -6,7 +6,7 @@ import {
   Search
 } from "lucide-react";
 import { TenantSelector } from "@/app/components/TenantSelector/TenantSelector";
-import { mockTenants, type Tenant } from "@/lib/mocks/tenants";
+import type { OrganizationTenant } from "@/lib/tenants/org-types";
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./style.css";
 
@@ -18,40 +18,16 @@ type NotificationItem = {
   read: boolean;
 };
 
-const MOCK_NOTIFICATIONS: NotificationItem[] = [
-  {
-    id: "1",
-    title: "Contrato atualizado",
-    message: "O contrato #1042 teve o status alterado para ativo.",
-    time: "Há 2 horas",
-    read: false,
-  },
-  {
-    id: "2",
-    title: "Pagamento confirmado",
-    message: "Recebimento de aluguel registrado para a unidade 302.",
-    time: "Ontem",
-    read: false,
-  },
-  {
-    id: "3",
-    title: "Lembrete de vencimento",
-    message: "3 boletos vencem nos próximos 5 dias.",
-    time: "Há 3 dias",
-    read: true,
-  },
-];
-
 export type InternalHeaderProps = {
   userName?: string;
   searchPlaceholder?: string;
   settingsHref?: string;
   notifications?: NotificationItem[];
-  tenants?: Tenant[];
+  tenants?: OrganizationTenant[];
   showNotificationDot?: boolean;
   onSearch?: (value: string) => void;
   onNotificationsClick?: () => void;
-  onTenantChange?: (tenant: Tenant) => void;
+  onTenantChange?: (tenant: OrganizationTenant) => void;
 };
 
 const formatCurrentDate = () => {
@@ -67,8 +43,8 @@ const InternalHeader = ({
   userName = "Usuario",
   searchPlaceholder = "Buscar algo",
   settingsHref = "/configuracoes",
-  notifications = MOCK_NOTIFICATIONS,
-  tenants = mockTenants,
+  notifications = [],
+  tenants = [],
   showNotificationDot,
   onSearch,
   onNotificationsClick,

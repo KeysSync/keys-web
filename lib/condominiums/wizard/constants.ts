@@ -5,16 +5,16 @@ export const CONDOMINIUM_WIZARD_STEPS: {
   id: CondominiumWizardStepId
   label: string
 }[] = [
-  { id: 'identificacao', label: 'Identificação' },
-  { id: 'endereco', label: 'Endereço' },
+  { id: 'identification', label: 'Identificação' },
+  { id: 'address', label: 'Endereço' },
 ]
 
 export const CONDOMINIUM_WIZARD_DEFAULT_STEP: CondominiumWizardStepId =
-  'identificacao'
+  'identification'
 
 export const CONDOMINIUM_STEP_HINTS: Record<CondominiumWizardStepId, string> = {
-  identificacao: 'Código, nome e observações do condomínio.',
-  endereco: 'Informe o CEP para preencher o endereço automaticamente.',
+  identification: 'Código, nome e observações do condomínio.',
+  address: 'Informe o CEP para preencher o endereço automaticamente.',
 }
 
 export function condominiumStepHasErrors(
@@ -22,9 +22,9 @@ export function condominiumStepHasErrors(
   errors: CondominiumFormErrors,
 ): boolean {
   switch (stepId) {
-    case 'identificacao':
+    case 'identification':
       return Boolean(errors.code || errors.name)
-    case 'endereco':
+    case 'address':
       return Boolean(
         errors.postal_code ||
           errors.street ||

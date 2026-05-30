@@ -1,4 +1,4 @@
-import RelatoriosShell from "@/app/components/RelatoriosShell/RelatoriosShell";
+import ReportsShell from "@/app/components/ReportsShell/ReportsShell";
 
 export default function RelatoriosLayout({
   children,
@@ -6,8 +6,8 @@ export default function RelatoriosLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relatorios-layout">
-      <RelatoriosShell>{children}</RelatoriosShell>
+    <div className="reports-layout">
+      <ReportsShell>{children}</ReportsShell>
     </div>
   );
 }

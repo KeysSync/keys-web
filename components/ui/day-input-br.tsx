@@ -41,7 +41,7 @@ export function DayInputBr({
       inputMode="numeric"
       autoComplete="off"
       disabled={disabled}
-      className={cn('contrato-criar-input', className)}
+      className={cn('contract-create-input', className)}
       placeholder={placeholder}
       value={display}
       onChange={(e) => handleChange(e.target.value)}

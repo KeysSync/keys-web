@@ -42,7 +42,7 @@ export function CepInputBr({
       inputMode="numeric"
       autoComplete="postal-code"
       disabled={disabled}
-      className={cn("contrato-criar-input", className)}
+      className={cn("contract-create-input", className)}
       placeholder={placeholder}
       value={display}
       onChange={(e) => handleChange(e.target.value)}

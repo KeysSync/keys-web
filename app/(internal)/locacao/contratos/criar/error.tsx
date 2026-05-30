@@ -15,17 +15,17 @@ export default function ContratoCriarError({
   }, [error])
 
   return (
-    <div className="contrato-criar-error">
-      <h2 className="contrato-criar-error__title">Não foi possível carregar o assistente</h2>
-      <p className="contrato-criar-error__desc">
+    <div className="contract-create-error">
+      <h2 className="contract-create-error__title">Não foi possível carregar o assistente</h2>
+      <p className="contract-create-error__desc">
         Ocorreu um erro inesperado. Você pode tentar novamente ou voltar para a lista de
         contratos.
       </p>
-      <div className="contrato-criar-error__actions">
-        <button type="button" className="contrato-criar-error__btn" onClick={reset}>
+      <div className="contract-create-error__actions">
+        <button type="button" className="contract-create-error__btn" onClick={reset}>
           Tentar novamente
         </button>
-        <Link href="/locacao/contratos" className="contrato-criar-error__link">
+        <Link href="/locacao/contratos" className="contract-create-error__link">
           Voltar para contratos
         </Link>
       </div>

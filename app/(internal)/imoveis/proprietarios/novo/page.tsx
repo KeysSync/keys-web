@@ -1,5 +1,5 @@
-import { CriarProprietarioWizard } from '@/app/components/CriarProprietarioWizard/CriarProprietarioWizard'
+import { CreateOwnerWizard } from '@/app/components/CreateOwnerWizard/CreateOwnerWizard'
 
-export default function NovoProprietarioPage() {
-  return <CriarProprietarioWizard />
+export default function NewOwnerPage() {
+  return <CreateOwnerWizard />
 }
